@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <title>Sheds | Rent-To-Own or Buy Now | North Florida Building Solutions</title>
+    <meta name="description" content="Browse our shed inventory — rent-to-own with no credit check or buy outright. Free delivery & setup in North Florida.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0F172A',
+                        secondary: '#2563EB',
+                        accent: '#60A5FA',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-sans antialiased text-gray-800 bg-gray-50">
+
+    <!-- Top Bar -->
+    <div class="bg-primary text-white py-2 text-sm">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-2">
+            <div class="flex items-center gap-6">
+                <span><i class="fa-solid fa-flag-usa text-secondary mr-2"></i>100% American Owned & Operated</span>
+                <span class="hidden md:inline"><i class="fa-solid fa-award text-secondary mr-2"></i>10+ Years Experience</span>
+            </div>
+            <a href="tel:+13863501047" class="flex items-center gap-2 font-bold text-secondary hover:text-blue-300 transition">
+                <i class="fa-solid fa-phone"></i> (386) 350-1047
+            </a>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-3">
+                <img src="logo.png" alt="North Florida Building Solutions" class="h-20 w-auto">
+            </a>
+            <div class="hidden lg:flex items-center space-x-8">
+                <a href="sheds-for-sale.html" class="bg-secondary hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-semibold transition shadow-lg">
+                    Buy Now
+                </a>
+                <a href="sheds.html" class="hover:text-secondary transition font-medium">Sheds - Rent-To-Own</a>
+                <a href="steel-buildings.html" class="hover:text-secondary transition font-medium">Steel Buildings</a>
+                <a href="locations.html" class="hover:text-secondary transition font-medium">Service Areas</a>
+                <a href="about.html" class="hover:text-secondary transition font-medium">About</a>
+            </div>
+            <button id="mobile-menu-btn" class="lg:hidden text-gray-700 text-2xl focus:outline-none">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+        <div id="mobile-menu" class="hidden lg:hidden border-t bg-white px-6 pb-4">
+            <a href="sheds-for-sale.html" class="block py-3 border-b border-gray-100 font-semibold text-secondary hover:text-blue-700 transition">Buy Now</a>
+            <a href="sheds.html" class="block py-3 border-b border-gray-100 font-medium hover:text-secondary transition">Sheds - Rent-To-Own</a>
+            <a href="steel-buildings.html" class="block py-3 border-b border-gray-100 font-medium hover:text-secondary transition">Steel Buildings</a>
+            <a href="locations.html" class="block py-3 border-b border-gray-100 font-medium hover:text-secondary transition">Service Areas</a>
+            <a href="about.html" class="block py-3 border-b border-gray-100 font-medium hover:text-secondary transition">About</a>
+            <a href="tel:+13863501047" class="block py-3 font-bold text-secondary">
+                <i class="fa-solid fa-phone mr-2"></i>(386) 350-1047
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="bg-primary text-white py-16">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">Quality Sheds for Every Need</h1>
+            <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8">Utility sheds, lofted barns, garages & more. Choose to rent-to-own with no credit check or buy outright. Free delivery and setup included.</p>
+            <div class="flex flex-wrap justify-center items-center gap-6 md:gap-12 text-sm">
+                <span class="flex items-center gap-2"><i class="fa-solid fa-truck text-accent"></i> Free Delivery</span>
+                <span class="flex items-center gap-2"><i class="fa-solid fa-tools text-accent"></i> Free Setup</span>
+                <span class="flex items-center gap-2"><i class="fa-solid fa-shield-halved text-accent"></i> Quality Built</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Two Options -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-4">How Would You Like to Get Your Shed?</h2>
+            <p class="text-gray-600 text-center mb-12 max-w-2xl mx-auto">We offer two easy ways to get the shed you need. Pick the option that works best for you.</p>
+
+            <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+
+                <!-- Rent-To-Own Card -->
+                <a href="sheds.html" class="group bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition border-2 border-transparent hover:border-secondary">
+                    <div class="bg-secondary/10 p-8 text-center">
+                        <i class="fa-solid fa-calendar-check text-5xl text-secondary mb-4"></i>
+                        <h3 class="text-2xl font-bold text-primary">Rent-To-Own</h3>
+                    </div>
+                    <div class="p-6">
+                        <ul class="space-y-3 mb-6">
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-check-circle text-green-500 mt-0.5"></i>
+                                <span><strong>No credit check</strong> required</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-check-circle text-green-500 mt-0.5"></i>
+                                <span>Low <strong>monthly payments</strong></span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-check-circle text-green-500 mt-0.5"></i>
+                                <span><strong>36, 48 or 60 month</strong> terms</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-check-circle text-green-500 mt-0.5"></i>
+                                <span>Own it or <strong>return anytime</strong></span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-check-circle text-green-500 mt-0.5"></i>
+                                <span><strong>Free delivery & setup</strong></span>
+                            </li>
+                        </ul>
+                        <div class="bg-secondary text-white text-center py-3 rounded-xl font-bold text-lg group-hover:bg-blue-700 transition">
+                            Browse Rent-To-Own Sheds <i class="fa-solid fa-arrow-right ml-2"></i>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Buy Now Card -->
+                <a href="sheds-for-sale.html" class="group bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition border-2 border-transparent hover:border-secondary">
+                    <div class="bg-purple-50 p-8 text-center">
+                        <i class="fa-solid fa-tag text-5xl text-purple-600 mb-4"></i>
+                        <h3 class="text-2xl font-bold text-primary">Buy Now</h3>
+                    </div>
+                    <div class="p-6">
+                        <ul class="space-y-3 mb-6">
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-check-circle text-green-500 mt-0.5"></i>
+                                <span><strong>Best price</strong> — pay once, own forever</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-check-circle text-green-500 mt-0.5"></i>
+                                <span><strong>No monthly payments</strong></span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-check-circle text-green-500 mt-0.5"></i>
+                                <span><strong>Immediate ownership</strong></span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-check-circle text-green-500 mt-0.5"></i>
+                                <span>Great <strong>savings</strong> vs. rent-to-own</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-check-circle text-green-500 mt-0.5"></i>
+                                <span><strong>Free delivery & setup</strong></span>
+                            </li>
+                        </ul>
+                        <div class="bg-purple-600 text-white text-center py-3 rounded-xl font-bold text-lg group-hover:bg-purple-700 transition">
+                            Browse Sheds for Sale <i class="fa-solid fa-arrow-right ml-2"></i>
+                        </div>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-16 bg-secondary text-white">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl font-bold mb-4">Not Sure Which Option Is Right for You?</h2>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">Give us a call and we'll help you find the perfect shed and payment option for your needs.</p>
+            <a href="tel:+13863501047" class="bg-white hover:bg-gray-100 text-secondary px-8 py-4 rounded-xl font-bold text-lg shadow-xl transition inline-flex items-center gap-2">
+                <i class="fa-solid fa-phone"></i> (386) 350-1047
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <img src="logo.png" alt="North Florida Building Solutions" class="h-12 w-auto mb-4 brightness-0 invert">
+                    <p class="text-sm">Quality metal buildings at affordable prices. Serving North Florida for over 10 years.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-white mb-4">Products</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="services/metal-carports.html" class="hover:text-secondary transition">Metal Carports</a></li>
+                        <li><a href="services/metal-garages.html" class="hover:text-secondary transition">Metal Garages</a></li>
+                        <li><a href="services/metal-barns.html" class="hover:text-secondary transition">Metal Barns</a></li>
+                        <li><a href="services/rv-covers.html" class="hover:text-secondary transition">RV Covers</a></li>
+                        <li><a href="steel-buildings.html" class="hover:text-secondary transition">Steel Buildings</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-white mb-4">Company</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="about.html" class="hover:text-secondary transition">About Us</a></li>
+                        <li><a href="locations.html" class="hover:text-secondary transition">Service Areas</a></li>
+                        <li><a href="sheds.html" class="hover:text-secondary transition">Sheds - Rent-To-Own</a></li>
+                        <li><a href="sheds-for-sale.html" class="hover:text-secondary transition">Buy Now</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-white mb-4">Contact Us</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="tel:+13863501047" class="flex items-center gap-2 hover:text-secondary transition"><i class="fa-solid fa-phone"></i> (386) 350-1047</a></li>
+                        <li><a href="mailto:northfloridabuildingsolutions@outlook.com" class="flex items-center gap-2 hover:text-secondary transition"><i class="fa-solid fa-envelope"></i> northfloridabuildingsolutions@outlook.com</a></li>
+                        <li class="flex items-start gap-2"><i class="fa-solid fa-location-dot mt-1"></i> <span>102 Whispering Pines Trail<br>Interlachen, FL 32148</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <img src="logo.png" alt="North Florida Building Solutions" class="w-[150px] h-[150px] object-contain brightness-0 invert">
+                <p class="text-sm">&copy; 2026 North Florida Building Solutions. All rights reserved.</p>
+                <div class="flex items-center gap-4">
+                    <a href="tel:+13863501047" class="hover:text-secondary transition"><i class="fa-solid fa-phone text-xl"></i></a>
+                    <a href="mailto:northfloridabuildingsolutions@outlook.com" class="hover:text-secondary transition"><i class="fa-solid fa-envelope text-xl"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            var menu = document.getElementById('mobile-menu');
+            var icon = this.querySelector('i');
+            menu.classList.toggle('hidden');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-xmark');
+        });
+    </script>
+</body>
+</html>
