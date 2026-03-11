@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <title>Steel Building Estimator | Custom Metal Buildings | North Florida Building Solutions</title>
+    <meta name="description" content="Design your custom steel building and get an instant price estimate. Carports, garages, barns, workshops. Free delivery and installation throughout North Florida.">
+    <link rel="canonical" href="https://nflbuildingsolutions.com/steel-buildings.html">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0F172A',
+                        secondary: '#2563EB',
+                        accent: '#60A5FA',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="font-sans antialiased text-gray-800 bg-gray-50">
+    <!-- Top Bar -->
+    <div class="bg-primary text-white py-2 text-sm">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-2">
+            <div class="flex items-center gap-6">
+                <span><i class="fa-solid fa-flag-usa text-secondary mr-2"></i>100% American Owned</span>
+                <span class="hidden md:inline"><i class="fa-solid fa-award text-secondary mr-2"></i>10+ Years Experience</span>
+            </div>
+            <a href="tel:+13863501047" class="flex items-center gap-2 font-bold text-secondary hover:text-blue-300 transition">
+                <i class="fa-solid fa-phone"></i> (386) 350-1047
+            </a>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-3">
+                <img src="logo.png" alt="North Florida Building Solutions" class="h-20 w-auto">
+            </a>
+            <div class="hidden lg:flex items-center space-x-8">
+                <a href="sheds-for-sale.html" class="bg-secondary hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-semibold transition shadow-lg">Buy Now</a>
+                <a href="sheds.html" class="hover:text-secondary transition font-medium">Sheds - Rent-To-Own</a>
+                <a href="steel-buildings.html" class="text-secondary font-medium">Steel Buildings</a>
+                <a href="locations.html" class="hover:text-secondary transition font-medium">Service Areas</a>
+                <a href="about.html" class="hover:text-secondary transition font-medium">About</a>
+            </div>
+            <button onclick="document.getElementById('mobile-menu').classList.toggle('hidden');this.querySelector('i').classList.toggle('fa-bars');this.querySelector('i').classList.toggle('fa-xmark')" class="lg:hidden text-gray-700 text-2xl focus:outline-none">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+        <div id="mobile-menu" class="hidden lg:hidden border-t bg-white px-6 pb-4">
+            <a href="sheds-for-sale.html" class="block py-3 border-b border-gray-100 font-semibold text-secondary hover:text-blue-700 transition">Buy Now</a>
+            <a href="sheds.html" class="block py-3 border-b border-gray-100 font-medium hover:text-secondary transition">Sheds - Rent-To-Own</a>
+            <a href="steel-buildings.html" class="block py-3 border-b border-gray-100 font-medium text-secondary">Steel Buildings</a>
+            <a href="locations.html" class="block py-3 border-b border-gray-100 font-medium hover:text-secondary transition">Service Areas</a>
+            <a href="about.html" class="block py-3 border-b border-gray-100 font-medium hover:text-secondary transition">About</a>
+            <a href="tel:+13863501047" class="block py-3 font-bold text-secondary"><i class="fa-solid fa-phone mr-2"></i>(386) 350-1047</a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="bg-primary text-white py-12">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-3xl md:text-4xl font-bold mb-3">Design Your Custom Steel Building</h1>
+            <p class="text-lg text-gray-300 max-w-2xl mx-auto">Configure your building below and get an instant price estimate. Free delivery &amp; installation throughout North Florida.</p>
+        </div>
+    </section>
+
+    <!-- Configurator -->
+    <section class="py-10 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="grid lg:grid-cols-3 gap-8">
+
+                <!-- LEFT: Configuration Form -->
+                <div class="lg:col-span-2 space-y-6">
+
+                    <!-- Building Specs -->
+                    <div class="bg-white rounded-2xl shadow-lg p-6">
+                        <h2 class="text-xl font-bold mb-5 flex items-center gap-2"><i class="fa-solid fa-sliders text-secondary"></i> Building Configuration</h2>
+                        <div class="grid md:grid-cols-2 gap-5">
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-1">Building Type</label>
+                                <select id="cfg-type" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-secondary focus:border-transparent outline-none">
+                                    <option value="carport">Carport</option>
+                                    <option value="garage" selected>Garage</option>
+                                    <option value="barn">Barn</option>
+                                    <option value="rv-cover">RV / Boat Cover</option>
+                                    <option value="workshop">Workshop</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-1">Roof Style</label>
+                                <select id="cfg-roof" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-secondary focus:border-transparent outline-none">
+                                    <option value="regular">Regular Roof</option>
+                                    <option value="a-frame" selected>A-Frame (Boxed Eave)</option>
+                                    <option value="vertical">Vertical Roof</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-1">Width</label>
+                                <select id="cfg-width" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-secondary focus:border-transparent outline-none">
+                                    <option value="12">12'</option>
+                                    <option value="18">18'</option>
+                                    <option value="20">20'</option>
+                                    <option value="24" selected>24'</option>
+                                    <option value="26">26'</option>
+                                    <option value="28">28'</option>
+                                    <option value="30">30'</option>
+                                    <option value="32">32'</option>
+                                    <option value="34">34'</option>
+                                    <option value="36">36'</option>
+                                    <option value="38">38'</option>
+                                    <option value="40">40'</option>
+                                    <option value="42">42'</option>
+                                    <option value="44">44'</option>
+                                    <option value="46">46'</option>
+                                    <option value="50">50'</option>
+                                    <option value="52">52'</option>
+                                    <option value="54">54'</option>
+                                    <option value="56">56'</option>
+                                    <option value="58">58'</option>
+                                    <option value="60">60'</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-1">Length</label>
+                                <select id="cfg-length" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-secondary focus:border-transparent outline-none">
+                                    <option value="20">20'</option>
+                                    <option value="25">25'</option>
+                                    <option value="30" selected>30'</option>
+                                    <option value="35">35'</option>
+                                    <option value="40">40'</option>
+                                    <option value="50">50'</option>
+                                    <option value="60">60'</option>
+                                    <option value="80">80'</option>
+                                    <option value="100">100'</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-1">Height (Leg)</label>
+                                <select id="cfg-height" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-secondary focus:border-transparent outline-none">
+                                    <option value="8">8'</option>
+                                    <option value="9">9'</option>
+                                    <option value="10" selected>10'</option>
+                                    <option value="11">11'</option>
+                                    <option value="12">12'</option>
+                                    <option value="13">13'</option>
+                                    <option value="14">14'</option>
+                                    <option value="15">15'</option>
+                                    <option value="16">16'</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-1">Enclosure</label>
+                                <select id="cfg-enclosure" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-secondary focus:border-transparent outline-none">
+                                    <option value="open">Open (No Walls)</option>
+                                    <option value="partial">Partially Enclosed</option>
+                                    <option value="full" selected>Fully Enclosed</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Add-Ons -->
+                    <div class="bg-white rounded-2xl shadow-lg p-6">
+                        <h2 class="text-xl font-bold mb-5 flex items-center gap-2"><i class="fa-solid fa-plus-circle text-secondary"></i> Doors, Windows &amp; Extras</h2>
+                        <div class="grid md:grid-cols-2 gap-5">
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-1">Garage Doors</label>
+                                <div class="flex gap-2">
+                                    <select id="cfg-gdoor-qty" class="w-20 px-3 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-secondary outline-none">
+                                        <option value="0">0</option>
+                                        <option value="1" selected>1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                    </select>
+                                    <select id="cfg-gdoor-size" class="flex-1 px-3 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-secondary outline-none">
+                                        <option value="6x7">6' x 7'</option>
+                                        <option value="8x8">8' x 8'</option>
+                                        <option value="9x8">9' x 8'</option>
+                                        <option value="10x10" selected>10' x 10'</option>
+                                        <option value="12x12">12' x 12'</option>
+                                        <option value="14x14">14' x 14'</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-1">Walk-In Doors</label>
+                                <select id="cfg-walkin" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-secondary focus:border-transparent outline-none">
+                                    <option value="0">0</option>
+                                    <option value="1" selected>1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-1">Windows</label>
+                                <select id="cfg-windows" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-secondary focus:border-transparent outline-none">
+                                    <option value="0" selected>0</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="6">6</option>
+                                    <option value="8">8</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="flex items-center gap-3 cursor-pointer">
+                                    <input type="checkbox" id="cfg-concrete" class="w-5 h-5 rounded border-gray-300 text-secondary focus:ring-secondary">
+                                    <div>
+                                        <span class="font-semibold text-gray-700">4" Concrete Slab with Footer</span>
+                                        <span class="text-sm text-gray-500 block">Poured foundation for maximum stability</span>
+                                    </div>
+                                </label>
+                            </div>
+                            <div class="md:col-span-2">
+                                <label class="flex items-center gap-3 cursor-pointer">
+                                    <input type="checkbox" id="cfg-cert" class="w-5 h-5 rounded border-gray-300 text-secondary focus:ring-secondary">
+                                    <div>
+                                        <span class="font-semibold text-gray-700">Florida Certified</span>
+                                        <span class="text-sm text-gray-500 block">All buildings are Florida certified &mdash; 140 MPH wind rated</span>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Info -->
+                    <div class="bg-white rounded-2xl shadow-lg p-6">
+                        <h2 class="text-xl font-bold mb-5 flex items-center gap-2"><i class="fa-solid fa-user text-secondary"></i> Your Information</h2>
+                        <p class="text-sm text-gray-500 mb-4">Fill in your details to submit your quote or pay a deposit to lock in pricing.</p>
+                        <div class="grid md:grid-cols-2 gap-5">
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-1">Full Name *</label>
+                                <input type="text" id="cfg-name" required placeholder="John Smith" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-secondary focus:border-transparent outline-none">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-1">Email *</label>
+                                <input type="email" id="cfg-email" required placeholder="john@example.com" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-secondary focus:border-transparent outline-none">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-1">Phone *</label>
+                                <input type="tel" id="cfg-phone" required placeholder="(904) 555-1234" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-secondary focus:border-transparent outline-none">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-1">Zip Code *</label>
+                                <input type="text" id="cfg-zip" required placeholder="32148" maxlength="5" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-secondary focus:border-transparent outline-none">
+                            </div>
+                        </div>
+                        <div class="mt-5 flex flex-col sm:flex-row gap-3">
+                            <button type="button" id="btn-submit-quote" class="flex-1 bg-secondary hover:bg-blue-700 text-white py-3 rounded-xl font-bold text-base shadow-lg transition">
+                                <i class="fa-solid fa-paper-plane mr-2"></i>Submit Quote Request
+                            </button>
+                            <a href="tel:+13863501047" class="flex-1 text-center bg-white border-2 border-secondary text-secondary py-3 rounded-xl font-bold text-base hover:bg-blue-50 transition">
+                                <i class="fa-solid fa-phone mr-1"></i>Prefer to call? (386) 350-1047
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RIGHT: Price Sidebar -->
+                <div class="lg:col-span-1">
+                    <div class="lg:sticky lg:top-24">
+                        <div id="price-summary" class="bg-white rounded-2xl shadow-lg border-2 border-secondary/20 overflow-hidden">
+                            <div class="bg-secondary text-white p-6 text-center">
+                                <span class="text-sm uppercase tracking-wide block mb-1">Your Estimated Price</span>
+                                <div id="price-range" class="text-3xl font-extrabold">$0 &ndash; $0</div>
+                            </div>
+                            <div class="p-6 space-y-4">
+                                <div class="flex justify-between items-center">
+                                    <span class="text-gray-500 text-sm">Monthly Payment</span>
+                                    <span id="price-monthly" class="font-bold text-lg">~$0/mo</span>
+                                </div>
+                                <hr>
+                                <div class="text-sm text-gray-600 space-y-2" id="price-breakdown">
+                                    <div class="flex justify-between"><span>Type</span><span id="sum-type" class="font-medium">Garage</span></div>
+                                    <div class="flex justify-between"><span>Size</span><span id="sum-size" class="font-medium">24' x 30'</span></div>
+                                    <div class="flex justify-between"><span>Height</span><span id="sum-height" class="font-medium">10'</span></div>
+                                    <div class="flex justify-between"><span>Roof</span><span id="sum-roof" class="font-medium">A-Frame</span></div>
+                                    <div class="flex justify-between"><span>Enclosure</span><span id="sum-enc" class="font-medium">Fully Enclosed</span></div>
+                                    <div class="flex justify-between"><span>Doors</span><span id="sum-doors" class="font-medium">1x 10x10, 1 walk-in</span></div>
+                                    <div class="flex justify-between"><span>Windows</span><span id="sum-windows" class="font-medium">0</span></div>
+                                    <div class="flex justify-between"><span>Concrete</span><span id="sum-concrete" class="font-medium">None</span></div>
+                                    <div class="flex justify-between"><span>Certified</span><span id="sum-cert" class="font-medium">No</span></div>
+                                </div>
+                                <hr>
+                                <p class="text-xs text-gray-400">Final price depends on site conditions, color choices, and local requirements. We'll confirm all details after you submit.</p>
+
+                                <!-- Deposit section (hidden until quote submitted) -->
+                                <div id="sidebar-deposit" class="hidden">
+                                    <hr>
+                                    <div class="bg-green-50 border border-green-200 rounded-xl p-4 text-center">
+                                        <div class="text-xs uppercase tracking-wide text-green-700 font-semibold mb-1">Start Your Order Today</div>
+                                        <div class="text-2xl font-extrabold text-primary" id="sidebar-deposit-amount">$0</div>
+                                        <div class="text-xs text-gray-500 mb-3" id="sidebar-deposit-label">deposit to lock in your price</div>
+                                        <div id="paypal-button-container"></div>
+                                        <div class="flex items-center justify-center gap-2 mt-2">
+                                            <i class="fa-solid fa-shield-halved text-gray-400 text-xs"></i>
+                                            <span class="text-xs text-gray-400">Secure checkout via PayPal</span>
+                                        </div>
+                                    </div>
+                                    <ul class="text-xs text-gray-500 space-y-1 mt-3">
+                                        <li><i class="fa-solid fa-check text-green-500 mr-1"></i>Locks in today's pricing</li>
+                                        <li><i class="fa-solid fa-check text-green-500 mr-1"></i>Priority build queue</li>
+                                        <li><i class="fa-solid fa-check text-green-500 mr-1"></i>Balance due at installation</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-4 text-center">
+                            <a href="tel:+13863501047" class="text-secondary font-semibold hover:underline">
+                                <i class="fa-solid fa-phone mr-1"></i>Questions? Call (386) 350-1047
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Bar -->
+    <section class="py-8 bg-white border-t">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                <div>
+                    <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-2 text-xl"><i class="fa-solid fa-hammer"></i></div>
+                    <h3 class="font-bold text-sm">Premium Materials</h3>
+                    <p class="text-gray-500 text-xs">12 &amp; 14-gauge steel tubing, 26 &amp; 29-gauge sheeting</p>
+                </div>
+                <div>
+                    <div class="w-12 h-12 bg-gray-100 text-gray-700 rounded-full flex items-center justify-center mx-auto mb-2 text-xl"><i class="fa-solid fa-truck-fast"></i></div>
+                    <h3 class="font-bold text-sm">Free Delivery</h3>
+                    <p class="text-gray-500 text-xs">Throughout North Florida</p>
+                </div>
+                <div>
+                    <div class="w-12 h-12 bg-blue-50 text-blue-500 rounded-full flex items-center justify-center mx-auto mb-2 text-xl"><i class="fa-solid fa-tools"></i></div>
+                    <h3 class="font-bold text-sm">Free Installation</h3>
+                    <p class="text-gray-500 text-xs">Professional crew</p>
+                </div>
+                <div>
+                    <div class="w-12 h-12 bg-slate-100 text-slate-600 rounded-full flex items-center justify-center mx-auto mb-2 text-xl"><i class="fa-solid fa-shield-halved"></i></div>
+                    <h3 class="font-bold text-sm">10-Year Warranty</h3>
+                    <p class="text-gray-500 text-xs">Industry-leading coverage</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <img src="logo.png" alt="North Florida Building Solutions" class="h-12 w-auto mb-4 brightness-0 invert">
+                    <p class="text-sm">Quality metal buildings at affordable prices. Serving North Florida for over 10 years.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-white mb-4">Products</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="services/metal-carports.html" class="hover:text-secondary transition">Metal Carports</a></li>
+                        <li><a href="services/metal-garages.html" class="hover:text-secondary transition">Metal Garages</a></li>
+                        <li><a href="services/metal-barns.html" class="hover:text-secondary transition">Metal Barns</a></li>
+                        <li><a href="services/rv-covers.html" class="hover:text-secondary transition">RV Covers &amp; Boat Covers</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-white mb-4">Service Areas</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="locations/bradford-county.html" class="hover:text-secondary transition">Bradford County</a></li>
+                        <li><a href="locations/clay-county.html" class="hover:text-secondary transition">Clay County</a></li>
+                        <li><a href="locations/alachua-county.html" class="hover:text-secondary transition">Alachua County</a></li>
+                        <li><a href="locations/putnam-county.html" class="hover:text-secondary transition">Putnam County</a></li>
+                        <li><a href="locations/marion-county.html" class="hover:text-secondary transition">Marion County</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-white mb-4">Contact Us</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="tel:+13863501047" class="flex items-center gap-2 hover:text-secondary transition"><i class="fa-solid fa-phone"></i> (386) 350-1047</a></li>
+                        <li><a href="mailto:northfloridabuildingsolutions@outlook.com" class="flex items-center gap-2 hover:text-secondary transition"><i class="fa-solid fa-envelope"></i> northfloridabuildingsolutions@outlook.com</a></li>
+                        <li class="flex items-start gap-2"><i class="fa-solid fa-location-dot mt-1"></i> <span>102 Whispering Pines Trail<br>Interlachen, FL 32148</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <img src="logo.png" alt="North Florida Building Solutions" class="w-[150px] h-[150px] object-contain brightness-0 invert">
+                <p class="text-sm">&copy; 2026 North Florida Building Solutions. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ========== PRICE CALCULATOR ========== -->
+    <script>
+    (function() {
+        // ---- PRICING CONSTANTS (easy to adjust) ----
+        var BASE_RATE = { 'carport': 7, 'garage': 11, 'barn': 12, 'rv-cover': 8, 'workshop': 13 };
+        var TYPE_LABEL = { 'carport': 'Carport', 'garage': 'Garage', 'barn': 'Barn', 'rv-cover': 'RV / Boat Cover', 'workshop': 'Workshop' };
+        var ROOF_MULT = { 'regular': 1.0, 'a-frame': 1.08, 'vertical': 1.15 };
+        var ROOF_LABEL = { 'regular': 'Regular', 'a-frame': 'A-Frame', 'vertical': 'Vertical' };
+        var ENC_MULT = { 'open': 1.0, 'partial': 1.15, 'full': 1.35 };
+        var ENC_LABEL = { 'open': 'Open', 'partial': 'Partially Enclosed', 'full': 'Fully Enclosed' };
+        var GDOOR_COST = { '6x7': 600, '8x8': 800, '9x8': 900, '10x10': 1100, '12x12': 1500, '14x14': 2000 };
+        var WALKIN_COST = 350;
+        var WINDOW_COST = 250;
+        var CONCRETE_RATE = 8.50;
+        var CONCRETE_LABEL = { false: 'None', true: '4" Slab w/ Footer' };
+        var CERT_COST = 1200;
+        var HEIGHT_BASE = 10;
+        var HEIGHT_EXTRA_PER_FT = 0.50;
+        var FINANCE_MONTHS = 48;
+        var FINANCE_APR = 0.07;
+        var RANGE_LOW = 0.95;
+        var RANGE_HIGH = 1.15;
+
+        // ---- DOM refs ----
+        var ids = ['type','roof','width','length','height','enclosure','gdoor-qty','gdoor-size','walkin','windows','concrete','cert'];
+        var els = {};
+        ids.forEach(function(k) { els[k] = document.getElementById('cfg-' + k); });
+
+        function val(id) { return els[id].value; }
+        function num(id) { return parseInt(els[id].value) || 0; }
+        function fmt(n) { return '$' + n.toLocaleString('en-US'); }
+
+        // ---- Enforce minimum leg height based on garage door size ----
+        function getDoorHeight(sizeStr) {
+            var parts = sizeStr.split('x');
+            return parseInt(parts[1]) || 0;
+        }
+
+        function enforceMinHeight() {
+            var gdoorQty = num('gdoor-qty');
+            var doorH = gdoorQty > 0 ? getDoorHeight(val('gdoor-size')) : 0;
+            var minHeight = doorH > 0 ? doorH + 2 : 0;
+            var heightEl = els['height'];
+            var opts = heightEl.options;
+            for (var i = 0; i < opts.length; i++) {
+                opts[i].disabled = parseInt(opts[i].value) < minHeight;
+            }
+            if (parseInt(heightEl.value) < minHeight) {
+                for (var j = 0; j < opts.length; j++) {
+                    if (parseInt(opts[j].value) >= minHeight) {
+                        heightEl.value = opts[j].value;
+                        break;
+                    }
+                }
+            }
+        }
+
+        els['gdoor-size'].addEventListener('change', function() { enforceMinHeight(); calculate(); });
+        els['gdoor-qty'].addEventListener('change', function() { enforceMinHeight(); calculate(); });
+        enforceMinHeight();
+
+        function calculate() {
+            var type = val('type');
+            var w = num('width'), l = num('length'), h = num('height');
+            var sqft = w * l;
+
+            var base = sqft * BASE_RATE[type];
+            base *= ROOF_MULT[val('roof')];
+            if (h > HEIGHT_BASE) base += sqft * HEIGHT_EXTRA_PER_FT * (h - HEIGHT_BASE);
+            base *= ENC_MULT[val('enclosure')];
+
+            var addons = 0;
+            var gdoorQty = num('gdoor-qty'), gdoorSize = val('gdoor-size');
+            addons += gdoorQty * GDOOR_COST[gdoorSize];
+            addons += num('walkin') * WALKIN_COST;
+            addons += num('windows') * WINDOW_COST;
+            addons += els['concrete'].checked ? CONCRETE_RATE * sqft : 0;
+            if (els['cert'].checked) addons += CERT_COST;
+
+            var total = Math.round(base + addons);
+            var low = Math.round(total * RANGE_LOW);
+            var high = Math.round(total * RANGE_HIGH);
+
+            var mr = FINANCE_APR / 12;
+            var monthly = Math.round(total * mr / (1 - Math.pow(1 + mr, -FINANCE_MONTHS)));
+
+            var depositPct = total >= 4000 ? 0.16 : 0.11;
+            var deposit = Math.round(total * depositPct);
+
+            document.getElementById('price-range').textContent = fmt(low) + ' \u2013 ' + fmt(high);
+            document.getElementById('price-monthly').textContent = '~' + fmt(monthly) + '/mo';
+            document.getElementById('sum-type').textContent = TYPE_LABEL[type];
+            document.getElementById('sum-size').textContent = w + "' x " + l + "'";
+            document.getElementById('sum-height').textContent = h + "'";
+            document.getElementById('sum-roof').textContent = ROOF_LABEL[val('roof')];
+            document.getElementById('sum-enc').textContent = ENC_LABEL[val('enclosure')];
+
+            var doorParts = [];
+            if (gdoorQty > 0) doorParts.push(gdoorQty + 'x ' + gdoorSize);
+            var wk = num('walkin');
+            if (wk > 0) doorParts.push(wk + ' walk-in');
+            document.getElementById('sum-doors').textContent = doorParts.length ? doorParts.join(', ') : 'None';
+            document.getElementById('sum-windows').textContent = num('windows') || '0';
+            document.getElementById('sum-concrete').textContent = CONCRETE_LABEL[els['concrete'].checked];
+            document.getElementById('sum-cert').textContent = els['cert'].checked ? 'Yes' : 'No';
+
+            document.getElementById('sidebar-deposit-amount').textContent = fmt(deposit);
+            document.getElementById('sidebar-deposit-label').textContent = Math.round(depositPct * 100) + '% deposit to lock in your price';
+            document.getElementById('deposit-btn-amount').textContent = fmt(deposit);
+
+            window._bldEst = { total: total, low: low, high: high, deposit: deposit, monthly: monthly };
+        }
+
+        ids.forEach(function(k) {
+            els[k].addEventListener('change', calculate);
+            if (els[k].type === 'checkbox') els[k].addEventListener('click', calculate);
+        });
+        calculate();
+
+        // ---- Quote Submit ----
+        document.getElementById('btn-submit-quote').addEventListener('click', function() {
+            var name = document.getElementById('cfg-name').value.trim();
+            var email = document.getElementById('cfg-email').value.trim();
+            var phone = document.getElementById('cfg-phone').value.trim();
+            var zip = document.getElementById('cfg-zip').value.trim();
+            if (!name || !email || !phone || !zip) { alert('Please fill in all contact fields.'); return; }
+
+            var est = window._bldEst;
+            var notes = 'Steel Building Quote | ' + TYPE_LABEL[val('type')] + ' ' + num('width') + "x" + num('length') + "x" + num('height') +
+                ' | Roof: ' + ROOF_LABEL[val('roof')] + ' | ' + ENC_LABEL[val('enclosure')] +
+                ' | Garage Doors: ' + (num('gdoor-qty') > 0 ? num('gdoor-qty') + 'x ' + val('gdoor-size') : 'None') +
+                ' | Walk-in: ' + num('walkin') + ' | Windows: ' + num('windows') +
+                ' | Concrete: ' + CONCRETE_LABEL[els['concrete'].checked] + ' | Certified: ' + (els['cert'].checked ? 'Yes' : 'No') +
+                ' | Est: ' + fmt(est.low) + '-' + fmt(est.high);
+
+            var btn = this;
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-2"></i>Submitting...';
+
+            fetch('/api/submissions', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ type: 'quote', name: name, email: email, phone: phone, zip: zip,
+                    building_type: TYPE_LABEL[val('type')], building_size: num('width') + "' x " + num('length') + "'", notes: notes })
+            }).then(function(r) { return r.json(); })
+            .then(function() {
+                document.getElementById('sidebar-deposit').classList.remove('hidden');
+                loadPayPalButtons();
+                btn.innerHTML = '<i class="fa-solid fa-check mr-2"></i>Quote Submitted!';
+                btn.classList.remove('bg-secondary', 'hover:bg-blue-700');
+                btn.classList.add('bg-green-600');
+                if (window.innerWidth < 1024) {
+                    document.getElementById('sidebar-deposit').scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            })
+            .catch(function() {
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fa-solid fa-paper-plane mr-2"></i>Submit Quote Request';
+                alert('Something went wrong. Please try again or call us.');
+            });
+        });
+
+        // ---- PayPal Deposit ----
+        function loadPayPalButtons() {
+            var container = document.getElementById('paypal-button-container');
+            if (!container || container.dataset.loaded) return;
+            container.dataset.loaded = '1';
+
+            // Load PayPal JS SDK dynamically
+            var clientId = window._paypalClientId || 'sb'; // 'sb' = sandbox fallback
+            var script = document.createElement('script');
+            script.src = 'https://www.paypal.com/sdk/js?client-id=' + clientId + '&currency=USD';
+            script.onload = function() {
+                paypal.Buttons({
+                    style: { layout: 'vertical', color: 'gold', shape: 'rect', label: 'pay', height: 45 },
+                    createOrder: function() {
+                        var name = document.getElementById('cfg-name').value.trim();
+                        var email = document.getElementById('cfg-email').value.trim();
+                        var phone = document.getElementById('cfg-phone').value.trim();
+                        var zip = document.getElementById('cfg-zip').value.trim();
+                        var est = window._bldEst;
+                        var config = TYPE_LABEL[val('type')] + ' ' + num('width') + 'x' + num('length') + 'x' + num('height') + ' ' + ROOF_LABEL[val('roof')] + ' ' + ENC_LABEL[val('enclosure')];
+
+                        return fetch('/api/create-paypal-order', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ amount: est.deposit, total: est.total, config: config, name: name, email: email, phone: phone, zip: zip })
+                        }).then(function(r) { return r.json(); })
+                        .then(function(data) {
+                            if (data.id) return data.id;
+                            throw new Error(data.error || 'Could not create order');
+                        });
+                    },
+                    onApprove: function(data) {
+                        return fetch('/api/capture-paypal-order', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ orderId: data.orderID })
+                        }).then(function(r) { return r.json(); })
+                        .then(function(result) {
+                            if (result.success) {
+                                window.location.href = '/deposit-success.html';
+                            } else {
+                                alert('Payment could not be completed. Please try again or call (386) 350-1047.');
+                            }
+                        });
+                    },
+                    onError: function() {
+                        alert('Something went wrong with PayPal. Please try again or call (386) 350-1047.');
+                    }
+                }).render('#paypal-button-container');
+            };
+            document.head.appendChild(script);
+        }
+
+        // Load PayPal client ID from env, then render buttons when deposit section is shown
+        fetch('/api/paypal-client-id').then(function(r) { return r.json(); }).then(function(d) {
+            if (d.clientId) window._paypalClientId = d.clientId;
+        }).catch(function() {});
+    })();
+    </script>
+</body>
+</html>

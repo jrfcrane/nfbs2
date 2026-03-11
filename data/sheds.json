@@ -1,0 +1,16 @@
+{
+  "sheds": [
+    {
+      "slug": "10x12",
+      "name": "10x12",
+      "size": "10x12",
+      "style": "Garage",
+      "image": "images/sheds/carport.jpg",
+      "cashPrice": 5999,
+      "rtoTerm": "60 months",
+      "description": "big nice shed",
+      "features": [],
+      "available": true
+    }
+  ]
+}

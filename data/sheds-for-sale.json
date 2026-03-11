@@ -1,0 +1,32 @@
+{
+  "sheds": [
+    {
+      "slug": "8x12-economy-shed",
+      "name": "8x12 Economy Shed",
+      "size": "8' x 12'",
+      "style": "Economy",
+      "image": "images/sheds/8x12-economy.avif",
+      "salePrice": 2899,
+      "description": "A compact and affordable storage shed, perfect for smaller yards. Great for garden tools, lawn equipment, and seasonal items.",
+      "features": [
+        "LP Smart Siding",
+        "Double Doors",
+        "Treated Floor Joists",
+        "Shingle Roof",
+        "1 Window"
+      ],
+      "available": true
+    },
+    {
+      "slug": "10x12",
+      "name": "10x12",
+      "size": "10x12",
+      "style": "Garage",
+      "image": "images/sheds/carport.jpg",
+      "salePrice": 5999,
+      "description": "big nice shed",
+      "features": [],
+      "available": true
+    }
+  ]
+}

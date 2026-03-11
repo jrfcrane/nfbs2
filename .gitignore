@@ -1,0 +1,7 @@
+node_modules/
+cms/node_modules/
+cms/data/*.db
+cms/data/*.db-shm
+cms/data/*.db-wal
+.vercel
+.env*.local
