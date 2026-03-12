@@ -296,13 +296,28 @@
                                 <hr>
                                 <p class="text-xs text-gray-400">Final price depends on site conditions, color choices, and local requirements. We'll confirm all details after you submit.</p>
 
-                                <!-- Deposit section (hidden until quote submitted) -->
+                                <!-- Pay Deposit Button (always visible) -->
+                                <button id="deposit-btn" onclick="showDepositSection()" class="w-full bg-green-600 hover:bg-green-700 text-white py-3 rounded-xl font-bold text-lg transition shadow-lg">
+                                    <i class="fa-solid fa-lock mr-2"></i>Pay Deposit <span id="deposit-btn-amount">$0</span>
+                                </button>
+                                <p class="text-xs text-gray-400 text-center mt-1">11% deposit to lock in your price</p>
+
+                                <!-- Deposit payment section (hidden until button clicked) -->
                                 <div id="sidebar-deposit" class="hidden">
                                     <hr>
                                     <div class="bg-green-50 border border-green-200 rounded-xl p-4 text-center">
                                         <div class="text-xs uppercase tracking-wide text-green-700 font-semibold mb-1">Start Your Order Today</div>
                                         <div class="text-2xl font-extrabold text-primary" id="sidebar-deposit-amount">$0</div>
-                                        <div class="text-xs text-gray-500 mb-3" id="sidebar-deposit-label">deposit to lock in your price</div>
+                                        <div class="text-xs text-gray-500 mb-3" id="sidebar-deposit-label">11% deposit to lock in your price</div>
+
+                                        <!-- Contact info for deposit -->
+                                        <div id="deposit-info-form" class="text-left space-y-2 mb-4">
+                                            <input type="text" id="dep-name" placeholder="Full Name *" required class="w-full px-3 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-500 focus:border-transparent text-sm">
+                                            <input type="email" id="dep-email" placeholder="Email *" required class="w-full px-3 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-500 focus:border-transparent text-sm">
+                                            <input type="tel" id="dep-phone" placeholder="Phone *" required class="w-full px-3 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-500 focus:border-transparent text-sm">
+                                            <input type="text" id="dep-zip" placeholder="ZIP Code *" required class="w-full px-3 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-500 focus:border-transparent text-sm">
+                                        </div>
+
                                         <div id="paypal-button-container"></div>
                                         <div class="flex items-center justify-center gap-2 mt-2">
                                             <i class="fa-solid fa-shield-halved text-gray-400 text-xs"></i>
@@ -314,6 +329,9 @@
                                         <li><i class="fa-solid fa-check text-green-500 mr-1"></i>Priority build queue</li>
                                         <li><i class="fa-solid fa-check text-green-500 mr-1"></i>Balance due at installation</li>
                                     </ul>
+                                    <button onclick="hideDepositSection()" class="w-full mt-3 text-gray-500 hover:text-gray-700 text-sm font-medium transition">
+                                        <i class="fa-solid fa-arrow-left mr-1"></i> Back
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -486,8 +504,8 @@
             var mr = FINANCE_APR / 12;
             var monthly = Math.round(total * mr / (1 - Math.pow(1 + mr, -FINANCE_MONTHS)));
 
-            var depositPct = total >= 4000 ? 0.16 : 0.11;
-            var deposit = Math.round(total * depositPct);
+            var avgPrice = Math.round((low + high) / 2);
+            var deposit = Math.round(avgPrice * 0.11);
 
             document.getElementById('price-range').textContent = fmt(low) + ' \u2013 ' + fmt(high);
             document.getElementById('price-monthly').textContent = '~' + fmt(monthly) + '/mo';
@@ -507,7 +525,7 @@
             document.getElementById('sum-cert').textContent = els['cert'].checked ? 'Yes' : 'No';
 
             document.getElementById('sidebar-deposit-amount').textContent = fmt(deposit);
-            document.getElementById('sidebar-deposit-label').textContent = Math.round(depositPct * 100) + '% deposit to lock in your price';
+            document.getElementById('sidebar-deposit-label').textContent = '11% deposit to lock in your price';
             document.getElementById('deposit-btn-amount').textContent = fmt(deposit);
 
             window._bldEst = { total: total, low: low, high: high, deposit: deposit, monthly: monthly };
@@ -546,14 +564,18 @@
                     building_type: TYPE_LABEL[val('type')], building_size: num('width') + "' x " + num('length') + "'", notes: notes })
             }).then(function(r) { return r.json(); })
             .then(function() {
-                document.getElementById('sidebar-deposit').classList.remove('hidden');
-                loadPayPalButtons();
                 btn.innerHTML = '<i class="fa-solid fa-check mr-2"></i>Quote Submitted!';
                 btn.classList.remove('bg-secondary', 'hover:bg-blue-700');
                 btn.classList.add('bg-green-600');
-                if (window.innerWidth < 1024) {
-                    document.getElementById('sidebar-deposit').scrollIntoView({ behavior: 'smooth', block: 'center' });
-                }
+                // Pre-fill deposit form from quote form if available
+                var cfgName = document.getElementById('cfg-name');
+                if (cfgName && cfgName.value) document.getElementById('dep-name').value = cfgName.value;
+                var cfgEmail = document.getElementById('cfg-email');
+                if (cfgEmail && cfgEmail.value) document.getElementById('dep-email').value = cfgEmail.value;
+                var cfgPhone = document.getElementById('cfg-phone');
+                if (cfgPhone && cfgPhone.value) document.getElementById('dep-phone').value = cfgPhone.value;
+                var cfgZip = document.getElementById('cfg-zip');
+                if (cfgZip && cfgZip.value) document.getElementById('dep-zip').value = cfgZip.value;
             })
             .catch(function() {
                 btn.disabled = false;
@@ -562,24 +584,44 @@
             });
         });
 
+        // ---- Deposit Section Show/Hide ----
+        function showDepositSection() {
+            document.getElementById('sidebar-deposit').classList.remove('hidden');
+            document.getElementById('deposit-btn').classList.add('hidden');
+            loadPayPalButtons();
+            if (window.innerWidth < 1024) {
+                document.getElementById('sidebar-deposit').scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }
+
+        function hideDepositSection() {
+            document.getElementById('sidebar-deposit').classList.add('hidden');
+            document.getElementById('deposit-btn').classList.remove('hidden');
+        }
+
         // ---- PayPal Deposit ----
         function loadPayPalButtons() {
             var container = document.getElementById('paypal-button-container');
             if (!container || container.dataset.loaded) return;
             container.dataset.loaded = '1';
 
-            // Load PayPal JS SDK dynamically
-            var clientId = window._paypalClientId || 'sb'; // 'sb' = sandbox fallback
+            var clientId = window._paypalClientId || 'sb';
             var script = document.createElement('script');
             script.src = 'https://www.paypal.com/sdk/js?client-id=' + clientId + '&currency=USD';
             script.onload = function() {
                 paypal.Buttons({
                     style: { layout: 'vertical', color: 'gold', shape: 'rect', label: 'pay', height: 45 },
                     createOrder: function() {
-                        var name = document.getElementById('cfg-name').value.trim();
-                        var email = document.getElementById('cfg-email').value.trim();
-                        var phone = document.getElementById('cfg-phone').value.trim();
-                        var zip = document.getElementById('cfg-zip').value.trim();
+                        var name = document.getElementById('dep-name').value.trim();
+                        var email = document.getElementById('dep-email').value.trim();
+                        var phone = document.getElementById('dep-phone').value.trim();
+                        var zip = document.getElementById('dep-zip').value.trim();
+
+                        if (!name || !email || !phone) {
+                            alert('Please fill in your name, email, and phone before paying.');
+                            return Promise.reject('Missing info');
+                        }
+
                         var est = window._bldEst;
                         var config = TYPE_LABEL[val('type')] + ' ' + num('width') + 'x' + num('length') + 'x' + num('height') + ' ' + ROOF_LABEL[val('roof')] + ' ' + ENC_LABEL[val('enclosure')];
 
