@@ -498,8 +498,8 @@
             if (els['cert'].checked) addons += CERT_COST;
 
             var total = Math.round(base + addons);
-            var low = Math.round(total - 250);
-            var high = Math.round(total + 250);
+            var low = Math.round(total - 500);
+            var high = Math.round(total + 500);
 
             var mr = FINANCE_APR / 12;
             var monthly = Math.round(total * mr / (1 - Math.pow(1 + mr, -FINANCE_MONTHS)));
