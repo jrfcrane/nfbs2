@@ -232,10 +232,65 @@
                 <p>No sheds yet. Click "Add New Shed" to get started.</p>
             </div>
         </div>
+
+        <!-- ==================== BUILDINGS INVENTORY SECTION ==================== -->
+        <!-- Building Stats -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8 mt-12">
+            <div class="bg-white rounded-xl p-4 shadow-sm">
+                <div class="text-2xl font-bold text-primary" id="bldg-stat-total">-</div>
+                <div class="text-sm text-gray-500">Total Steel Buildings</div>
+            </div>
+            <div class="bg-white rounded-xl p-4 shadow-sm">
+                <div class="text-2xl font-bold text-green-600" id="bldg-stat-available">-</div>
+                <div class="text-sm text-gray-500">Available</div>
+            </div>
+            <div class="bg-white rounded-xl p-4 shadow-sm">
+                <div class="text-2xl font-bold text-blue-600" id="bldg-stat-carports">-</div>
+                <div class="text-sm text-gray-500">Carports</div>
+            </div>
+            <div class="bg-white rounded-xl p-4 shadow-sm">
+                <div class="text-2xl font-bold text-purple-600" id="bldg-stat-garages">-</div>
+                <div class="text-sm text-gray-500">Garages</div>
+            </div>
+        </div>
+
+        <!-- Building Header + Add Button -->
+        <div class="flex justify-between items-center mb-6">
+            <h2 class="text-2xl font-bold text-primary">All Steel Buildings</h2>
+            <a href="/admin/buildings/new" class="bg-secondary hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition shadow">
+                <i class="fa-solid fa-plus mr-2"></i> Add New Steel Building
+            </a>
+        </div>
+
+        <!-- Buildings Table -->
+        <div class="bg-white rounded-xl shadow-sm overflow-hidden mb-12">
+            <div class="overflow-x-auto">
+                <table class="w-full text-left">
+                    <thead class="bg-gray-50 border-b">
+                        <tr>
+                            <th class="px-4 py-3 text-xs font-semibold text-gray-500 uppercase">Image</th>
+                            <th class="px-4 py-3 text-xs font-semibold text-gray-500 uppercase">Name</th>
+                            <th class="px-4 py-3 text-xs font-semibold text-gray-500 uppercase">Category</th>
+                            <th class="px-4 py-3 text-xs font-semibold text-gray-500 uppercase">Size</th>
+                            <th class="px-4 py-3 text-xs font-semibold text-gray-500 uppercase">Price</th>
+                            <th class="px-4 py-3 text-xs font-semibold text-gray-500 uppercase">Available</th>
+                            <th class="px-4 py-3 text-xs font-semibold text-gray-500 uppercase">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="building-table">
+                    </tbody>
+                </table>
+            </div>
+            <div id="building-empty-state" class="hidden text-center py-12 text-gray-400">
+                <i class="fa-solid fa-building text-4xl mb-4"></i>
+                <p>No steel buildings yet. Click "Add New Steel Building" to get started.</p>
+            </div>
+        </div>
     </div>
 
     <script>
         var sheds = [];
+        var buildings = [];
         var promoConfig = null;
         var promoEnabled = false;
 
@@ -501,8 +556,87 @@
                 .then(function() { loadSheds(); });
         }
 
+        // ==================== BUILDINGS SECTION ====================
+
+        function loadBuildings() {
+            fetch('/api/admin/buildings')
+                .then(function(r) {
+                    if (r.status === 401) return null;
+                    return r.json();
+                })
+                .then(function(data) {
+                    if (!data) return;
+                    buildings = data;
+                    renderBuildingStats();
+                    renderBuildingTable();
+                });
+        }
+
+        function renderBuildingStats() {
+            document.getElementById('bldg-stat-total').textContent = buildings.length;
+            document.getElementById('bldg-stat-available').textContent = buildings.filter(function(b) { return b.available; }).length;
+            document.getElementById('bldg-stat-carports').textContent = buildings.filter(function(b) { return b.category === 'carport'; }).length;
+            document.getElementById('bldg-stat-garages').textContent = buildings.filter(function(b) { return b.category === 'garage'; }).length;
+        }
+
+        function renderBuildingTable() {
+            var tbody = document.getElementById('building-table');
+            var empty = document.getElementById('building-empty-state');
+
+            if (buildings.length === 0) {
+                tbody.innerHTML = '';
+                empty.classList.remove('hidden');
+                return;
+            }
+            empty.classList.add('hidden');
+
+            var catColors = { carport: 'bg-blue-100 text-blue-700', garage: 'bg-purple-100 text-purple-700', barn: 'bg-orange-100 text-orange-700' };
+            var catLabels = { carport: 'Carport', garage: 'Garage', barn: 'Barn' };
+
+            tbody.innerHTML = buildings.map(function(b) {
+                var imgSrc = (b.images && b.images[0]) || b.image || '';
+                var imgTag = imgSrc
+                    ? '<img src="' + imgSrc + '" alt="" class="w-12 h-12 object-cover rounded-lg">'
+                    : '<div class="w-12 h-12 bg-gray-200 rounded-lg flex items-center justify-center text-gray-400"><i class="fa-solid fa-image"></i></div>';
+
+                var catBadge = '<span class="' + (catColors[b.category] || 'bg-gray-100 text-gray-600') + ' text-xs font-semibold px-2 py-0.5 rounded-full">' + (catLabels[b.category] || b.category) + '</span>';
+                var sizeStr = b.width + "' x " + b.length + "' x " + b.height + "'";
+
+                return '<tr class="border-b hover:bg-gray-50">' +
+                    '<td class="px-4 py-3">' + imgTag + '</td>' +
+                    '<td class="px-4 py-3 font-semibold">' + b.name + '</td>' +
+                    '<td class="px-4 py-3">' + catBadge + '</td>' +
+                    '<td class="px-4 py-3 text-sm text-gray-600">' + sizeStr + '</td>' +
+                    '<td class="px-4 py-3 text-sm font-semibold">$' + (b.price ? b.price.toLocaleString() : '-') + '</td>' +
+                    '<td class="px-4 py-3">' +
+                        '<button onclick="toggleBuildingAvailable(' + b.id + ')" class="relative inline-flex h-6 w-11 items-center rounded-full transition ' + (b.available ? 'bg-green-500' : 'bg-gray-300') + '">' +
+                            '<span class="inline-block h-4 w-4 rounded-full bg-white transition transform ' + (b.available ? 'translate-x-6' : 'translate-x-1') + '"></span>' +
+                        '</button>' +
+                    '</td>' +
+                    '<td class="px-4 py-3">' +
+                        '<div class="flex gap-2">' +
+                            '<a href="/admin/buildings/' + b.id + '/edit" class="text-secondary hover:text-blue-700 transition" title="Edit"><i class="fa-solid fa-pen-to-square"></i></a>' +
+                            '<button onclick="deleteBldg(' + b.id + ', \'' + b.name.replace(/'/g, "\\'") + '\')" class="text-red-400 hover:text-red-600 transition" title="Delete"><i class="fa-solid fa-trash"></i></button>' +
+                        '</div>' +
+                    '</td>' +
+                '</tr>';
+            }).join('');
+        }
+
+        function toggleBuildingAvailable(id) {
+            fetch('/api/admin/buildings/' + id + '/toggle', { method: 'PATCH' })
+                .then(function() { loadBuildings(); });
+        }
+
+        function deleteBldg(id, name) {
+            if (!confirm('Delete "' + name + '"? This cannot be undone.')) return;
+            fetch('/api/admin/buildings/' + id, { method: 'DELETE' })
+                .then(function() { loadBuildings(); });
+        }
+
         // ==================== INIT ====================
         loadSheds();
+        loadBuildings();
         loadPromo();
     </script>
 </body>

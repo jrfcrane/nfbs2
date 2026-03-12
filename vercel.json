@@ -2,6 +2,8 @@
   "rewrites": [
     { "source": "/admin/sheds/:id/edit", "destination": "/admin/shed-form.html" },
     { "source": "/admin/sheds/new", "destination": "/admin/shed-form.html" },
+    { "source": "/admin/buildings/:id/edit", "destination": "/admin/building-form.html" },
+    { "source": "/admin/buildings/new", "destination": "/admin/building-form.html" },
     { "source": "/admin/dashboard", "destination": "/admin/dashboard.html" },
     { "source": "/admin/login", "destination": "/admin/login.html" },
     { "source": "/admin/logout", "destination": "/api/auth/logout" },

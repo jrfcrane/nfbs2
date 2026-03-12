@@ -105,69 +105,248 @@
         </div>
     </section>
 
-    <!-- Service Areas -->
+
+    <!-- Available Inventory -->
     <section class="py-16 bg-gray-50">
         <div class="container mx-auto px-6">
-            <h2 class="text-3xl font-bold text-center mb-4">Metal Carports By County</h2>
-            <p class="text-gray-600 text-center mb-12">Select your county to see availability and get a free quote</p>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <h2 class="text-3xl font-bold text-center mb-4">Available Metal Carports Inventory</h2>
+            <p class="text-gray-600 text-center mb-12">Pre-built and ready for delivery. Buy now with PayPal — free delivery & installation included.</p>
 
-                <a href="services/metal-carports/bradford-county.html" class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition group">
-                    <h3 class="font-bold text-lg mb-2">Metal Carports in Bradford County</h3>
-                    <p class="text-gray-500 text-sm mb-2">Serving Starke, Lawtey, Hampton & more</p>
-                    <span class="text-secondary font-semibold text-sm">View Options <i class="fa-solid fa-arrow-right ml-1"></i></span>
-                </a>
+            <div id="inventory-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Loading -->
+                <div class="col-span-full text-center py-12 text-gray-400">
+                    <i class="fa-solid fa-spinner fa-spin text-3xl mb-4"></i>
+                    <p>Loading inventory...</p>
+                </div>
+            </div>
 
-                <a href="services/metal-carports/clay-county.html" class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition group">
-                    <h3 class="font-bold text-lg mb-2">Metal Carports in Clay County</h3>
-                    <p class="text-gray-500 text-sm mb-2">Serving Keystone Heights, Lakeside, Lake Geneva & more</p>
-                    <span class="text-secondary font-semibold text-sm">View Options <i class="fa-solid fa-arrow-right ml-1"></i></span>
-                </a>
-
-                <a href="services/metal-carports/alachua-county.html" class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition group">
-                    <h3 class="font-bold text-lg mb-2">Metal Carports in Alachua County</h3>
-                    <p class="text-gray-500 text-sm mb-2">Serving Melrose, Hawthorne, Earleton & more</p>
-                    <span class="text-secondary font-semibold text-sm">View Options <i class="fa-solid fa-arrow-right ml-1"></i></span>
-                </a>
-
-                <a href="services/metal-carports/marion-county.html" class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition group">
-                    <h3 class="font-bold text-lg mb-2">Metal Carports in Marion County</h3>
-                    <p class="text-gray-500 text-sm mb-2">Serving Fort McCoy, Orange Springs, Citra & more</p>
-                    <span class="text-secondary font-semibold text-sm">View Options <i class="fa-solid fa-arrow-right ml-1"></i></span>
-                </a>
-
-                <a href="services/metal-carports/lake-county.html" class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition group">
-                    <h3 class="font-bold text-lg mb-2">Metal Carports in Lake County</h3>
-                    <p class="text-gray-500 text-sm mb-2">Serving Astor & more</p>
-                    <span class="text-secondary font-semibold text-sm">View Options <i class="fa-solid fa-arrow-right ml-1"></i></span>
-                </a>
-
-                <a href="services/metal-carports/volusia-county.html" class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition group">
-                    <h3 class="font-bold text-lg mb-2">Metal Carports in Volusia County</h3>
-                    <p class="text-gray-500 text-sm mb-2">Serving Pierson, Seville & more</p>
-                    <span class="text-secondary font-semibold text-sm">View Options <i class="fa-solid fa-arrow-right ml-1"></i></span>
-                </a>
-
-                <a href="services/metal-carports/putnam-county.html" class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition group">
-                    <h3 class="font-bold text-lg mb-2">Metal Carports in Putnam County</h3>
-                    <p class="text-gray-500 text-sm mb-2">Serving Rodman, Orange Springs, Edgar & more</p>
-                    <span class="text-secondary font-semibold text-sm">View Options <i class="fa-solid fa-arrow-right ml-1"></i></span>
-                </a>
-
-                <a href="services/metal-carports/flagler-county.html" class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition group">
-                    <h3 class="font-bold text-lg mb-2">Metal Carports in Flagler County</h3>
-                    <p class="text-gray-500 text-sm mb-2">Serving Bunnell, Palm Coast & more</p>
-                    <span class="text-secondary font-semibold text-sm">View Options <i class="fa-solid fa-arrow-right ml-1"></i></span>
-                </a>
-
-                <a href="services/metal-carports/st-johns-county.html" class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition group">
-                    <h3 class="font-bold text-lg mb-2">Metal Carports in St. Johns County</h3>
-                    <p class="text-gray-500 text-sm mb-2">Serving Hastings, Spuds, Elkton & more</p>
-                    <span class="text-secondary font-semibold text-sm">View Options <i class="fa-solid fa-arrow-right ml-1"></i></span>
-                </a>
+            <div id="inventory-empty" class="hidden text-center py-12 text-gray-400">
+                <i class="fa-solid fa-building text-4xl mb-4"></i>
+                <p class="text-lg mb-2">No pre-built carportss in stock right now.</p>
+                <p>Use our 3D designer to configure a custom build, or call us for availability.</p>
             </div>
         </div>
     </section>
+
+    <!-- Purchase Modal -->
+    <div id="purchase-modal" class="hidden fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto shadow-2xl">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 id="modal-title" class="text-xl font-bold text-primary">Purchase Building</h3>
+                    <button onclick="closeModal()" class="text-gray-400 hover:text-gray-600 text-2xl">&times;</button>
+                </div>
+                <div id="modal-summary" class="bg-gray-50 rounded-lg p-4 mb-4"></div>
+
+                <!-- Step 1: Contact Info -->
+                <div id="step1">
+                    <p class="text-sm text-gray-600 mb-4">Enter your contact info to proceed to payment.</p>
+                    <div class="space-y-3">
+                        <input type="text" id="buy-name" placeholder="Full Name *" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-secondary outline-none">
+                        <input type="email" id="buy-email" placeholder="Email *" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-secondary outline-none">
+                        <input type="tel" id="buy-phone" placeholder="Phone *" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-secondary outline-none">
+                        <input type="text" id="buy-zip" placeholder="Delivery Zip Code *" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-secondary outline-none">
+                    </div>
+                    <button onclick="goToStep2()" class="w-full bg-secondary hover:bg-blue-700 text-white py-3 rounded-lg font-bold mt-4 transition">
+                        Continue to Payment <i class="fa-solid fa-arrow-right ml-2"></i>
+                    </button>
+                </div>
+
+                <!-- Step 2: PayPal -->
+                <div id="step2" class="hidden">
+                    <p class="text-sm text-gray-600 mb-4">Complete your purchase with PayPal.</p>
+                    <div id="paypal-button-container"></div>
+                    <button onclick="backToStep1()" class="w-full text-gray-500 hover:text-gray-700 py-2 mt-2 text-sm transition">
+                        <i class="fa-solid fa-arrow-left mr-1"></i> Back
+                    </button>
+                </div>
+
+                <!-- Step 3: Success -->
+                <div id="step3" class="hidden text-center py-6">
+                    <i class="fa-solid fa-circle-check text-green-500 text-5xl mb-4"></i>
+                    <h3 class="text-xl font-bold text-primary mb-2">Payment Successful!</h3>
+                    <p class="text-gray-600">We'll contact you within 24 hours to schedule delivery.</p>
+                </div>
+
+                <div id="modal-error" class="hidden bg-red-50 text-red-700 rounded-lg p-3 mt-3 text-sm"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    var selectedBuilding = null;
+    var inventoryData = [];
+    var paypalLoaded = false;
+
+    function loadInventory() {
+        fetch('/api/buildings-for-sale?category=carport')
+            .then(function(r) { return r.json(); })
+            .then(function(data) {
+                var grid = document.getElementById('inventory-grid');
+                var empty = document.getElementById('inventory-empty');
+
+                if (!data.buildings || data.buildings.length === 0) {
+                    grid.classList.add('hidden');
+                    empty.classList.remove('hidden');
+                    return;
+                }
+
+                inventoryData = data.buildings;
+
+                grid.innerHTML = data.buildings.map(function(b, idx) {
+                    var imgSrc = (b.images && b.images[0]) || b.image || '';
+                    var imgTag = imgSrc
+                        ? '<img src="' + imgSrc + '" alt="' + b.name + '" class="w-full h-48 object-cover">'
+                        : '<div class="w-full h-48 bg-gray-200 flex items-center justify-center text-gray-400"><i class="fa-solid fa-image text-4xl"></i></div>';
+
+                    var roofLabels = { regular: 'Regular', 'a-frame': 'A-Frame', vertical: 'Vertical' };
+                    var encLabels = { open: 'Open', partial: 'Partial', full: 'Fully Enclosed' };
+
+                    var specs = '<div class="grid grid-cols-2 gap-2 text-xs text-gray-500 mb-3">';
+                    specs += '<span><i class="fa-solid fa-ruler-combined text-secondary mr-1"></i>' + b.width + "' x " + b.length + "' x " + b.height + "'</span>";
+                    specs += '<span><i class="fa-solid fa-house text-secondary mr-1"></i>' + (roofLabels[b.roof_style] || b.roof_style) + '</span>';
+                    specs += '<span><i class="fa-solid fa-door-open text-secondary mr-1"></i>' + (encLabels[b.enclosure] || b.enclosure) + '</span>';
+                    if (b.garage_doors) specs += '<span><i class="fa-solid fa-warehouse text-secondary mr-1"></i>' + b.garage_doors + '</span>';
+                    if (b.windows) specs += '<span><i class="fa-solid fa-window-maximize text-secondary mr-1"></i>' + b.windows + '</span>';
+                    if (b.walkin_doors) specs += '<span><i class="fa-solid fa-door-closed text-secondary mr-1"></i>' + b.walkin_doors + '</span>';
+                    specs += '</div>';
+
+                    var badges = '';
+                    if (b.certified) badges += '<span class="bg-green-100 text-green-700 text-xs font-semibold px-2 py-0.5 rounded-full">Certified</span> ';
+                    if (b.concrete) badges += '<span class="bg-blue-100 text-blue-700 text-xs font-semibold px-2 py-0.5 rounded-full">Concrete</span>';
+
+                    return '<div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition">' +
+                        imgTag +
+                        '<div class="p-5">' +
+                            '<h3 class="font-bold text-lg mb-1">' + b.name + '</h3>' +
+                            (badges ? '<div class="mb-2">' + badges + '</div>' : '') +
+                            specs +
+                            (b.description ? '<p class="text-sm text-gray-600 mb-3">' + b.description + '</p>' : '') +
+                            '<div class="flex items-center justify-between">' +
+                                '<div class="text-2xl font-bold text-primary">$' + (b.price ? b.price.toLocaleString() : '-') + '</div>' +
+                                '<button onclick="openPurchase(' + idx + ')" class="bg-secondary hover:bg-blue-700 text-white px-5 py-2 rounded-lg font-semibold transition">' +
+                                    '<i class="fa-solid fa-cart-shopping mr-1"></i> Buy Now' +
+                                '</button>' +
+                            '</div>' +
+                        '</div>' +
+                    '</div>';
+                }).join('');
+            })
+            .catch(function() {
+                document.getElementById('inventory-grid').innerHTML = '<div class="col-span-full text-center py-12 text-red-400"><p>Failed to load inventory. Please refresh.</p></div>';
+            });
+    }
+
+    function openPurchase(idx) {
+        var building = inventoryData[idx];
+        selectedBuilding = building;
+        document.getElementById('modal-title').textContent = 'Purchase: ' + building.name;
+        document.getElementById('modal-summary').innerHTML =
+            '<div class="flex justify-between items-center">' +
+                '<div><strong>' + building.name + '</strong><br><span class="text-sm text-gray-500">' + building.width + "' x " + building.length + "' x " + building.height + "'</span></div>" +
+                '<div class="text-xl font-bold text-primary">$' + (building.price ? building.price.toLocaleString() : '-') + '</div>' +
+            '</div>';
+
+        document.getElementById('step1').classList.remove('hidden');
+        document.getElementById('step2').classList.add('hidden');
+        document.getElementById('step3').classList.add('hidden');
+        document.getElementById('modal-error').classList.add('hidden');
+        document.getElementById('purchase-modal').classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+        document.getElementById('purchase-modal').classList.add('hidden');
+        document.body.style.overflow = '';
+    }
+
+    function goToStep2() {
+        var name = document.getElementById('buy-name').value.trim();
+        var email = document.getElementById('buy-email').value.trim();
+        var phone = document.getElementById('buy-phone').value.trim();
+        var zip = document.getElementById('buy-zip').value.trim();
+        if (!name || !email || !phone || !zip) {
+            showModalError('Please fill in all fields.');
+            return;
+        }
+        document.getElementById('modal-error').classList.add('hidden');
+        document.getElementById('step1').classList.add('hidden');
+        document.getElementById('step2').classList.remove('hidden');
+
+        if (!paypalLoaded) {
+            loadPayPalSDK();
+        } else {
+            renderPayPalButtons();
+        }
+    }
+
+    function backToStep1() {
+        document.getElementById('step2').classList.add('hidden');
+        document.getElementById('step1').classList.remove('hidden');
+    }
+
+    function loadPayPalSDK() {
+        fetch('/api/paypal-client-id')
+            .then(function(r) { return r.json(); })
+            .then(function(data) {
+                if (!data.clientId) { showModalError('Payment not configured.'); return; }
+                var script = document.createElement('script');
+                script.src = 'https://www.paypal.com/sdk/js?client-id=' + data.clientId + '&currency=USD';
+                script.onload = function() { paypalLoaded = true; renderPayPalButtons(); };
+                document.head.appendChild(script);
+            });
+    }
+
+    function renderPayPalButtons() {
+        var container = document.getElementById('paypal-button-container');
+        container.innerHTML = '';
+
+        paypal.Buttons({
+            createOrder: function() {
+                return fetch('/api/create-paypal-order', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        amount: selectedBuilding.price,
+                        description: selectedBuilding.name + ' (' + selectedBuilding.width + "x" + selectedBuilding.length + "x" + selectedBuilding.height + ')',
+                        name: document.getElementById('buy-name').value,
+                        email: document.getElementById('buy-email').value,
+                        phone: document.getElementById('buy-phone').value,
+                        zip: document.getElementById('buy-zip').value,
+                        type: 'purchase',
+                        building_name: selectedBuilding.name,
+                        building_price: '$' + selectedBuilding.price.toLocaleString()
+                    })
+                }).then(function(r) { return r.json(); }).then(function(d) { return d.id; });
+            },
+            onApprove: function(data) {
+                return fetch('/api/capture-paypal-order', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ orderID: data.orderID })
+                }).then(function(r) { return r.json(); }).then(function(d) {
+                    if (d.status === 'COMPLETED') {
+                        document.getElementById('step2').classList.add('hidden');
+                        document.getElementById('step3').classList.remove('hidden');
+                    } else {
+                        showModalError('Payment could not be completed.');
+                    }
+                });
+            },
+            onError: function() {
+                showModalError('Payment error. Please try again.');
+            }
+        }).render('#paypal-button-container');
+    }
+
+    function showModalError(msg) {
+        var el = document.getElementById('modal-error');
+        el.textContent = msg;
+        el.classList.remove('hidden');
+    }
+
+    loadInventory();
+    </script>
 
 
     <!-- CTA Section -->
