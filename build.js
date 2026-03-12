@@ -262,7 +262,7 @@ function generateTownPage(county, town) {
                         <ul class="text-sm text-gray-500 space-y-2 mb-6">
                             ${service.features.map(f => `<li><i class="fa-solid fa-check text-accent mr-2"></i>${f}</li>`).join('\n                            ')}
                         </ul>
-                        <a href="${townPrefix}sheds-for-sale.html" class="block w-full bg-secondary hover:bg-blue-700 text-white text-center py-3 rounded-lg font-semibold transition">
+                        <a href="https://estimate.carportsolution.com/?dealer=NORTH-FLORIDA-BUILDING-SOLUTIONS" class="block w-full bg-secondary hover:bg-blue-700 text-white text-center py-3 rounded-lg font-semibold transition">
                             Design Your ${service.shortName}
                         </a>
                     </div>
@@ -287,7 +287,7 @@ ${generateNav(2)}
             <h1 class="text-4xl md:text-5xl font-bold mb-4">Metal Buildings in ${town.name}, Florida</h1>
             <p class="text-xl text-gray-300 max-w-3xl">Custom carports, garages, and barns delivered and installed in ${town.name}, ${county.name}. Free delivery. Free installation. Financing available.</p>
             <div class="mt-8 flex flex-wrap gap-4">
-                <a href="${townPrefix}sheds-for-sale.html" class="bg-secondary hover:bg-blue-700 text-white px-8 py-4 rounded-xl font-bold shadow-xl transition">
+                <a href="https://estimate.carportsolution.com/?dealer=NORTH-FLORIDA-BUILDING-SOLUTIONS" class="bg-secondary hover:bg-blue-700 text-white px-8 py-4 rounded-xl font-bold shadow-xl transition">
                     <i class="fa-solid fa-cube mr-2"></i>Design Your Building
                 </a>
                 <a href="tel:${business.phoneLink}" class="bg-white hover:bg-gray-100 text-primary px-8 py-4 rounded-xl font-bold shadow-xl transition">
@@ -395,7 +395,7 @@ ${generateNav(1)}
                         ${service.features.map(f => `<li class="flex items-center gap-3"><i class="fa-solid fa-check text-accent"></i>${f}</li>`).join('\n                        ')}
                     </ul>
                     <div class="flex flex-wrap gap-4">
-                        <a href="${prefix}sheds-for-sale.html" class="bg-secondary hover:bg-blue-700 text-white px-8 py-4 rounded-xl font-bold shadow-xl transition">
+                        <a href="https://estimate.carportsolution.com/?dealer=NORTH-FLORIDA-BUILDING-SOLUTIONS" target="_blank" rel="noopener" class="bg-secondary hover:bg-blue-700 text-white px-8 py-4 rounded-xl font-bold shadow-xl transition">
                             <i class="fa-solid fa-cube mr-2"></i>Design Yours
                         </a>
                         <a href="tel:${business.phoneLink}" class="bg-white hover:bg-gray-100 text-primary px-8 py-4 rounded-xl font-bold shadow-xl transition">
@@ -448,7 +448,7 @@ ${generateNav(2)}
             <h1 class="text-4xl md:text-5xl font-bold mb-4">${service.name} in ${county.name}, Florida</h1>
             <p class="text-xl text-gray-300 max-w-3xl">${service.description} Free delivery and installation throughout ${county.name}.</p>
             <div class="mt-8 flex flex-wrap gap-4">
-                <a href="${prefix}sheds-for-sale.html" class="bg-secondary hover:bg-blue-700 text-white px-8 py-4 rounded-xl font-bold shadow-xl transition">
+                <a href="https://estimate.carportsolution.com/?dealer=NORTH-FLORIDA-BUILDING-SOLUTIONS" target="_blank" rel="noopener" class="bg-secondary hover:bg-blue-700 text-white px-8 py-4 rounded-xl font-bold shadow-xl transition">
                     <i class="fa-solid fa-cube mr-2"></i>Design Your ${service.shortName}
                 </a>
                 <a href="tel:${business.phoneLink}" class="bg-white hover:bg-gray-100 text-primary px-8 py-4 rounded-xl font-bold shadow-xl transition">
