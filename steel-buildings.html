@@ -498,8 +498,8 @@
             if (els['cert'].checked) addons += CERT_COST;
 
             var total = Math.round(base + addons);
-            var low = Math.round(total * RANGE_LOW);
-            var high = Math.round(total * RANGE_HIGH);
+            var low = Math.round(total - 250);
+            var high = Math.round(total + 250);
 
             var mr = FINANCE_APR / 12;
             var monthly = Math.round(total * mr / (1 - Math.pow(1 + mr, -FINANCE_MONTHS)));
@@ -585,6 +585,8 @@
         });
 
         // ---- Deposit Section Show/Hide ----
+        window.showDepositSection = showDepositSection;
+        window.hideDepositSection = hideDepositSection;
         function showDepositSection() {
             document.getElementById('sidebar-deposit').classList.remove('hidden');
             document.getElementById('deposit-btn').classList.add('hidden');
