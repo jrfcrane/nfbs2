@@ -63,7 +63,7 @@ function generateNav(depth = 0) {
     <!-- Navigation -->
     <nav class="bg-white shadow-md sticky top-0 z-50">
         <div class="container mx-auto px-6 py-3 flex justify-between items-center">
-            <a href="${prefix}index.html" class="flex items-center gap-3">
+            <a href="/" class="flex items-center gap-3">
                 <img src="${prefix}logo.png" alt="${business.name}" class="h-20 w-auto">
             </a>
             <div class="hidden lg:flex items-center space-x-8">
@@ -149,7 +149,7 @@ function generateCTA(location = '', depth = 0) {
             <h2 class="text-3xl font-bold mb-4">Ready to Get Started${locationText}?</h2>
             <p class="text-xl mb-8 max-w-2xl mx-auto">Get a free quote on your custom metal building. Free delivery and installation included.</p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="${prefix}sheds-for-sale.html" class="bg-white text-secondary px-8 py-4 rounded-xl font-bold text-lg shadow-xl hover:bg-gray-100 transition">
+                <a href="https://estimate.carportsolution.com/?dealer=NORTH-FLORIDA-BUILDING-SOLUTIONS" target="_blank" rel="noopener" class="bg-white text-secondary px-8 py-4 rounded-xl font-bold text-lg shadow-xl hover:bg-gray-100 transition">
                     <i class="fa-solid fa-cube mr-2"></i>Design in 3D
                 </a>
                 <a href="tel:${business.phoneLink}" class="bg-primary hover:bg-gray-800 text-white px-8 py-4 rounded-xl font-bold text-lg shadow-xl transition">
@@ -198,7 +198,7 @@ ${generateNav(1)}
     <section class="bg-primary text-white py-16">
         <div class="container mx-auto px-6">
             <nav class="text-sm mb-4 text-gray-400">
-                <a href="../index.html" class="hover:text-white">Home</a> /
+                <a href="/" class="hover:text-white">Home</a> /
                 <a href="../locations.html" class="hover:text-white">Service Areas</a> /
                 <span class="text-white">${county.name}</span>
             </nav>
@@ -279,7 +279,7 @@ ${generateNav(2)}
     <section class="bg-primary text-white py-16">
         <div class="container mx-auto px-6">
             <nav class="text-sm mb-4 text-gray-400">
-                <a href="../../index.html" class="hover:text-white">Home</a> /
+                <a href="/" class="hover:text-white">Home</a> /
                 <a href="../../locations.html" class="hover:text-white">Service Areas</a> /
                 <a href="../${county.slug}.html" class="hover:text-white">${county.name}</a> /
                 <span class="text-white">${town.name}</span>
@@ -381,7 +381,7 @@ ${generateNav(1)}
     <section class="bg-primary text-white py-20">
         <div class="container mx-auto px-6">
             <nav class="text-sm mb-4 text-gray-400">
-                <a href="../index.html" class="hover:text-white">Home</a> /
+                <a href="/" class="hover:text-white">Home</a> /
                 <span class="text-white">${service.name}</span>
             </nav>
             <div class="flex flex-col md:flex-row items-center gap-12">
@@ -441,7 +441,7 @@ ${generateNav(2)}
     <section class="bg-primary text-white py-16">
         <div class="container mx-auto px-6">
             <nav class="text-sm mb-4 text-gray-400">
-                <a href="../../index.html" class="hover:text-white">Home</a> /
+                <a href="/" class="hover:text-white">Home</a> /
                 <a href="../${service.slug}.html" class="hover:text-white">${service.name}</a> /
                 <span class="text-white">${county.name}</span>
             </nav>

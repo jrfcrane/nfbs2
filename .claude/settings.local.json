@@ -7,7 +7,8 @@
       "Bash(sleep 8 && curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000/admin/login 2>&1)",
       "Bash(curl:*)",
       "Bash(cd:*)",
-      "Bash(convert:*)"
+      "Bash(convert:*)",
+      "Bash(find \"C:\\\\1CURSOR\\\\josh nfbs\" -name \".env*\" -o -name \"package.json\" -o -name \"README*\" 2>/dev/null | head -20)"
     ]
   }
 }
