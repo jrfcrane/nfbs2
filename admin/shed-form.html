@@ -151,12 +151,8 @@
                 </div>
                 <div>
                     <label class="block text-sm font-semibold text-gray-700 mb-1">RTO Term</label>
-                    <select id="rto_term" onchange="updateMonthlyCalc()"
-                        class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-secondary focus:border-transparent outline-none">
-                        <option value="36 months">36 Months</option>
-                        <option value="48 months">48 Months</option>
-                        <option value="60 months">60 Months</option>
-                    </select>
+                    <input type="text" id="rto_term" value="60 months" readonly
+                        class="w-full px-4 py-3 rounded-lg border border-gray-300 bg-gray-100 text-gray-600 outline-none cursor-not-allowed">
                 </div>
             </div>
 
@@ -216,16 +212,11 @@
             }
         });
 
-        // RTO divisors by term
-        var rtoDivisors = { '36 months': 31.2, '48 months': 41.6, '60 months': 52.0 };
-
         function updateMonthlyCalc() {
             var price = parseInt(document.getElementById('cash_price').value);
-            var term = document.getElementById('rto_term').value;
-            var divisor = rtoDivisors[term] || 31.2;
             if (price > 0) {
-                var monthly = Math.ceil((price / divisor) * 1.07);
-                document.getElementById('monthly-calc').textContent = 'Monthly: ~$' + monthly + '/mo (' + term + ')';
+                var monthly = Math.ceil((price / 31.2) * 1.07);
+                document.getElementById('monthly-calc').textContent = 'Monthly: ~$' + monthly + '/mo (60 months)';
             } else {
                 document.getElementById('monthly-calc').textContent = 'Monthly: calculated on save';
             }

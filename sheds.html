@@ -78,7 +78,7 @@
                 <span class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-accent"></i> No Credit Check</span>
                 <span class="flex items-center gap-2"><i class="fa-solid fa-truck text-accent"></i> Free Delivery</span>
                 <span class="flex items-center gap-2"><i class="fa-solid fa-tools text-accent"></i> Free Setup</span>
-                <span class="flex items-center gap-2"><i class="fa-solid fa-calendar-check text-accent"></i> 36, 48 &amp; 60-Month Terms</span>
+                <span class="flex items-center gap-2"><i class="fa-solid fa-calendar-check text-accent"></i> 60-Month Terms</span>
             </div>
         </div>
     </section>
@@ -229,21 +229,13 @@
 
                         <!-- Pricing -->
                         <div class="bg-gray-50 rounded-xl p-4 mb-6">
-                            <div class="mb-3">
-                                <label class="block text-xs font-semibold text-gray-500 mb-1">Rental Term</label>
-                                <select id="term-select" onchange="updateModalTerm()" class="w-full px-3 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-secondary focus:border-transparent text-sm font-semibold">
-                                    <option value="36">36 Months</option>
-                                    <option value="48">48 Months</option>
-                                    <option value="60">60 Months</option>
-                                </select>
-                            </div>
                             <div class="flex items-end gap-2 mb-1">
                                 <span class="text-3xl font-bold text-secondary" id="modal-monthly"></span>
                                 <span class="text-gray-500 text-sm">/month</span>
                             </div>
                             <p class="text-sm text-gray-500">Cash price: <span id="modal-cash" class="font-semibold text-gray-700"></span></p>
                             <p class="text-xs text-green-600 font-semibold mt-1"><i class="fa-solid fa-check-circle mr-1"></i>Sales tax included in monthly price</p>
-                            <p class="text-xs text-gray-400 mt-1" id="modal-term"></p>
+                            <p class="text-xs text-gray-400 mt-1">Rent-to-own over 60 months · No credit check</p>
                         </div>
 
                         <button onclick="scrollToForm()" class="w-full bg-secondary hover:bg-blue-700 text-white py-3 rounded-lg font-bold text-lg transition shadow-lg">
@@ -349,13 +341,9 @@
     </div>
 
     <script>
-        // RTO divisor by term length
-        var rtoDivisors = { 36: 31.2, 48: 41.6, 60: 52.0 };
-
-        // Auto-calculate monthly RTO: ceil((cashPrice / divisor) * 1.07)
-        function calcMonthly(price, months) {
-            var divisor = rtoDivisors[months] || rtoDivisors[36];
-            return Math.ceil((price / divisor) * 1.07);
+        // Auto-calculate monthly RTO: ceil((cashPrice / 31.2) * 1.07) — 60 month term
+        function calcMonthly(price) {
+            return Math.ceil((price / 31.2) * 1.07);
         }
 
         // Shed inventory - loaded from CMS-managed JSON
@@ -366,7 +354,7 @@
             .then(function(data) {
                 var sheds = data.sheds;
                 sheds.forEach(function(shed) {
-                    shed.monthlyRTO = calcMonthly(shed.cashPrice, 36);
+                    shed.monthlyRTO = calcMonthly(shed.cashPrice);
                 });
                 availableSheds = sheds.filter(function(s) { return s.available; });
                 renderSheds();
@@ -437,18 +425,6 @@
             });
         }
 
-        // Track current modal shed
-        var currentModalShed = null;
-
-        function updateModalTerm() {
-            if (!currentModalShed) return;
-            var months = parseInt(document.getElementById('term-select').value);
-            var monthly = calcMonthly(currentModalShed.cashPrice, months);
-            document.getElementById('modal-monthly').textContent = '$' + monthly;
-            document.getElementById('modal-term').textContent = 'Rent-to-own over ' + months + ' months · No credit check';
-            document.getElementById('form-shed-price').value = '$' + monthly + '/month (' + months + ' months)';
-            document.getElementById('form-display-price').textContent = '$' + monthly + '/mo';
-        }
 
         // Modal functions
         function openModal(index) {
@@ -467,11 +443,8 @@
             document.getElementById('modal-size').textContent = shed.size;
             document.getElementById('modal-style').textContent = shed.style;
             document.getElementById('modal-description').innerHTML = shed.description.replace(/\n/g, '<br>');
+            document.getElementById('modal-monthly').textContent = '$' + shed.monthlyRTO;
             document.getElementById('modal-cash').textContent = '$' + shed.cashPrice.toLocaleString();
-
-            // Reset term selector to 36 months and calculate
-            document.getElementById('term-select').value = '36';
-            updateModalTerm();
 
             var featuresEl = document.getElementById('modal-features');
             featuresEl.innerHTML = shed.features.map(function(f) {
@@ -480,6 +453,9 @@
 
             // Pre-fill form
             document.getElementById('form-shed-name').value = shed.name;
+            document.getElementById('form-shed-price').value = '$' + shed.monthlyRTO + '/month (60 months)';
+            document.getElementById('form-display-shed').textContent = shed.name;
+            document.getElementById('form-display-price').textContent = '$' + shed.monthlyRTO + '/mo';
 
             document.getElementById('shed-modal').classList.remove('hidden');
             document.body.style.overflow = 'hidden';
