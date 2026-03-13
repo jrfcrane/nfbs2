@@ -107,6 +107,7 @@
                                     <option value="12">12'</option>
                                     <option value="18">18'</option>
                                     <option value="20">20'</option>
+                                    <option value="22">22'</option>
                                     <option value="24" selected>24'</option>
                                     <option value="26">26'</option>
                                     <option value="28">28'</option>
@@ -119,6 +120,7 @@
                                     <option value="42">42'</option>
                                     <option value="44">44'</option>
                                     <option value="46">46'</option>
+                                    <option value="48">48'</option>
                                     <option value="50">50'</option>
                                     <option value="52">52'</option>
                                     <option value="54">54'</option>
@@ -135,15 +137,25 @@
                                     <option value="30" selected>30'</option>
                                     <option value="35">35'</option>
                                     <option value="40">40'</option>
+                                    <option value="45">45'</option>
                                     <option value="50">50'</option>
+                                    <option value="55">55'</option>
                                     <option value="60">60'</option>
+                                    <option value="65">65'</option>
+                                    <option value="70">70'</option>
+                                    <option value="75">75'</option>
                                     <option value="80">80'</option>
+                                    <option value="85">85'</option>
+                                    <option value="90">90'</option>
+                                    <option value="95">95'</option>
                                     <option value="100">100'</option>
                                 </select>
                             </div>
                             <div>
                                 <label class="block text-sm font-semibold text-gray-700 mb-1">Height (Leg)</label>
                                 <select id="cfg-height" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-secondary focus:border-transparent outline-none">
+                                    <option value="6">6'</option>
+                                    <option value="7">7'</option>
                                     <option value="8">8'</option>
                                     <option value="9">9'</option>
                                     <option value="10" selected>10'</option>
@@ -151,15 +163,13 @@
                                     <option value="12">12'</option>
                                     <option value="13">13'</option>
                                     <option value="14">14'</option>
-                                    <option value="15">15'</option>
-                                    <option value="16">16'</option>
                                 </select>
                             </div>
                             <div>
                                 <label class="block text-sm font-semibold text-gray-700 mb-1">Enclosure</label>
                                 <select id="cfg-enclosure" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-secondary focus:border-transparent outline-none">
                                     <option value="open">Open (No Walls)</option>
-                                    <option value="partial">Partially Enclosed</option>
+                                    <option value="sides">Both Sides Closed</option>
                                     <option value="full" selected>Fully Enclosed</option>
                                 </select>
                             </div>
@@ -184,10 +194,32 @@
                                         <option value="6x7">6' x 7'</option>
                                         <option value="8x8">8' x 8'</option>
                                         <option value="9x8">9' x 8'</option>
+                                        <option value="10x8">10' x 8'</option>
                                         <option value="10x10" selected>10' x 10'</option>
                                         <option value="12x12">12' x 12'</option>
                                         <option value="14x14">14' x 14'</option>
                                     </select>
+                                </div>
+                                <div class="flex items-center gap-3 mt-2">
+                                    <select id="cfg-gdoor-side" class="flex-1 px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-secondary outline-none text-sm">
+                                        <option value="width" selected>Doors on End Wall (Width)</option>
+                                        <option value="length">Doors on Side Wall (Length)</option>
+                                    </select>
+                                    <div id="door-side-visual" class="flex-shrink-0">
+                                        <svg width="80" height="56" viewBox="0 0 80 56">
+                                            <rect x="10" y="8" width="56" height="34" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5" rx="2"/>
+                                            <!-- Labels on walls -->
+                                            <text x="38" y="29" text-anchor="middle" font-size="9" fill="#94a3b8" font-weight="600">L</text>
+                                            <text x="4" y="29" text-anchor="middle" font-size="9" fill="#94a3b8" font-weight="600">W</text>
+                                            <!-- Width/end wall highlight (left side) -->
+                                            <line id="door-vis-width" x1="10" y1="8" x2="10" y2="42" stroke="#2563EB" stroke-width="4" stroke-linecap="round"/>
+                                            <!-- Length/side wall highlight (top side) - hidden by default -->
+                                            <line id="door-vis-length" x1="10" y1="8" x2="66" y2="8" stroke="#2563EB" stroke-width="4" stroke-linecap="round" class="hidden"/>
+                                            <!-- Small door icon on highlighted wall -->
+                                            <rect id="door-icon-w" x="7" y="19" width="6" height="10" fill="#2563EB" rx="1" opacity="0.6"/>
+                                            <rect id="door-icon-l" x="30" y="5" width="16" height="6" fill="#2563EB" rx="1" opacity="0.6" class="hidden"/>
+                                        </svg>
+                                    </div>
                                 </div>
                             </div>
                             <div>
@@ -222,13 +254,13 @@
                                 </label>
                             </div>
                             <div class="md:col-span-2">
-                                <label class="flex items-center gap-3 cursor-pointer">
-                                    <input type="checkbox" id="cfg-cert" class="w-5 h-5 rounded border-gray-300 text-secondary focus:ring-secondary">
+                                <div class="flex items-center gap-3 bg-green-50 border border-green-200 rounded-lg px-4 py-3">
+                                    <i class="fa-solid fa-shield-halved text-green-600 text-xl"></i>
                                     <div>
-                                        <span class="font-semibold text-gray-700">Florida Certified</span>
-                                        <span class="text-sm text-gray-500 block">All buildings are Florida certified &mdash; 140 MPH wind rated</span>
+                                        <span class="font-semibold text-green-800">Florida Certified &mdash; Included</span>
+                                        <span class="text-sm text-green-600 block">All Vertical Roof buildings include FL certification, 12GA framing &amp; 150 MPH wind rating</span>
                                     </div>
-                                </label>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -353,8 +385,8 @@
                     <div class="lg:sticky lg:top-24">
                         <div id="price-summary" class="bg-white rounded-2xl shadow-lg border-2 border-secondary/20 overflow-hidden">
                             <div class="bg-secondary text-white p-6 text-center">
-                                <span class="text-sm uppercase tracking-wide block mb-1">Your Estimated Price</span>
-                                <div id="price-range" class="text-3xl font-extrabold">$0 &ndash; $0</div>
+                                <span class="text-sm uppercase tracking-wide block mb-1">Your Price</span>
+                                <div id="price-range" class="text-3xl font-extrabold">$0</div>
                             </div>
                             <div class="p-6 space-y-4">
                                 <div class="flex justify-between items-center">
@@ -371,7 +403,6 @@
                                     <div class="flex justify-between"><span>Doors</span><span id="sum-doors" class="font-medium">1x 10x10, 1 walk-in</span></div>
                                     <div class="flex justify-between"><span>Windows</span><span id="sum-windows" class="font-medium">0</span></div>
                                     <div class="flex justify-between"><span>Concrete</span><span id="sum-concrete" class="font-medium">None</span></div>
-                                    <div class="flex justify-between"><span>Certified</span><span id="sum-cert" class="font-medium">No</span></div>
                                     <div class="flex justify-between"><span>Color</span><span id="sum-color" class="font-medium text-red-400">Not selected</span></div>
                                 </div>
                                 <hr>
@@ -531,45 +562,193 @@
     }
 
     (function() {
-        // ---- PRICING CONSTANTS (easy to adjust) ----
-        var BASE_RATE = { 'carport': 7, 'garage': 11, 'barn': 12, 'rv-cover': 8, 'workshop': 13 };
+        // ===== LOOKUP TABLE PRICING FROM DEALER SHEETS =====
         var TYPE_LABEL = { 'carport': 'Carport', 'garage': 'Garage', 'barn': 'Barn', 'rv-cover': 'RV / Boat Cover', 'workshop': 'Workshop' };
-        var ROOF_MULT = { 'regular': 1.0, 'a-frame': 1.08, 'vertical': 1.15 };
-        var ROOF_LABEL = { 'regular': 'Regular', 'a-frame': 'A-Frame', 'vertical': 'Vertical' };
-        var ENC_MULT = { 'open': 1.0, 'partial': 1.15, 'full': 1.35 };
-        var ENC_LABEL = { 'open': 'Open', 'partial': 'Partially Enclosed', 'full': 'Fully Enclosed' };
-        var GDOOR_COST = { '6x7': 600, '8x8': 800, '9x8': 900, '10x10': 1100, '12x12': 1500, '14x14': 2000 };
-        var WALKIN_COST = 350;
-        var WINDOW_COST = 250;
+        var ENC_LABEL = { 'open': 'Open', 'sides': 'Both Sides Closed', 'full': 'Fully Enclosed' };
         var CONCRETE_RATE = 8.50;
         var CONCRETE_LABEL = { false: 'None', true: '4" Slab w/ Footer' };
-        var CERT_COST = 1200;
-        var HEIGHT_BASE = 10;
-        var HEIGHT_EXTRA_PER_FT = 0.50;
-        var FINANCE_MONTHS = 48;
-        var FINANCE_APR = 0.07;
-        var RANGE_LOW = 0.95;
-        var RANGE_HIGH = 1.15;
 
-        // ---- DOM refs ----
-        var ids = ['type','roof','width','length','height','enclosure','gdoor-qty','gdoor-size','walkin','windows','concrete','cert'];
+        // -- Base Prices: Vertical Roof at standard height (6' for tier1/2, 8' for tier3) --
+        var BASE = {
+            '12_21':1780,'12_26':2090,'12_31':2720,'12_36':3140,'12_41':3620,
+            '18_21':1940,'18_26':2460,'18_31':2880,'18_36':3300,'18_41':3880,
+            '20_21':2360,'20_26':2780,'20_31':3300,'20_36':3830,'20_41':4400,
+            '22_21':2460,'22_26':3140,'22_31':3670,'22_36':4250,'22_41':4880,
+            '24_21':2780,'24_26':3410,'24_31':3930,'24_36':4770,'24_41':5400,
+            '26_21':3300,'26_26':4090,'26_31':4880,'26_36':5660,'26_41':6660,
+            '28_21':3410,'28_26':4190,'28_31':4980,'28_36':5870,'28_41':6920,
+            '30_21':3560,'30_26':4460,'30_31':5350,'30_36':6240,'30_41':7190,
+            '32_21':6315,'32_26':7465,'32_31':8615,'32_36':9765,'32_41':10915,'32_46':12185,'32_51':13565,
+            '34_21':6695,'34_26':7875,'34_31':9045,'34_36':10225,'34_41':11405,'34_46':13045,'34_51':14575,
+            '36_21':7065,'36_26':8275,'36_31':9485,'36_36':10685,'36_41':12245,'36_46':13905,'36_51':15465,
+            '38_21':7465,'38_26':8705,'38_31':10055,'38_36':11635,'38_41':13215,'38_46':15145,'38_51':16845,
+            '40_21':7985,'40_26':9135,'40_31':10635,'40_36':12245,'40_41':13855,'40_46':15805,'40_51':17535,
+            '42_21':8835,'42_26':9955,'42_31':11915,'42_36':12905,'42_41':14025,'42_46':16435,'42_51':18195,
+            '44_21':9515,'44_26':10665,'44_31':12555,'44_36':13545,'44_41':14705,'44_46':17065,'44_51':18855,
+            '46_21':10185,'46_26':11375,'46_31':13195,'46_36':14195,'46_41':15385,'46_46':17685,'46_51':19915,
+            '48_21':10865,'48_26':12085,'48_31':13835,'48_36':14835,'48_41':16055,'48_46':18315,'48_51':20175,
+            '50_21':11545,'50_26':12785,'50_31':14475,'50_36':15475,'50_41':16735,'50_46':18945,'50_51':20835,
+            '52_21':12225,'52_26':13495,'52_31':15115,'52_36':16125,'52_41':17415,'52_46':19965,'52_51':21495,
+            '54_21':12905,'54_26':14205,'54_31':15745,'54_36':16765,'54_41':18095,'54_46':20195,'54_51':22165,
+            '56_21':13585,'56_26':14905,'56_31':16385,'56_36':17415,'56_41':18775,'56_46':20825,'56_51':22825,
+            '58_21':14265,'58_26':15615,'58_31':17025,'58_36':18055,'58_41':19455,'58_46':21215,'58_51':23485,
+            '60_21':14935,'60_26':16325,'60_31':17665,'60_36':18695,'60_41':20135,'60_46':22075,'60_51':24145
+        };
+
+        // -- Side Height Upgrade (cost to raise legs above standard) --
+        // Tier 1: widths 12-24, standard=6', heights 7-14
+        var SIDE_H1 = {
+            '21_7':70,'21_8':140,'21_9':220,'21_10':290,'21_11':360,'21_12':430,'21_13':620,'21_14':700,
+            '26_7':90,'26_8':220,'26_9':310,'26_10':400,'26_11':490,'26_12':580,'26_13':820,'26_14':910,
+            '31_7':110,'31_8':280,'31_9':380,'31_10':490,'31_11':600,'31_12':710,'31_13':1000,'31_14':1100,
+            '36_7':130,'36_8':340,'36_9':460,'36_10':590,'36_11':710,'36_12':840,'36_13':1180,'36_14':1300,
+            '41_7':140,'41_8':400,'41_9':540,'41_10':680,'41_11':830,'41_12':970,'41_13':1360,'41_14':1500
+        };
+        // Tier 2: widths 26-30, standard=6', heights 7-14
+        var SIDE_H2 = {
+            '21_7':110,'21_8':220,'21_9':320,'21_10':430,'21_11':540,'21_12':650,'21_13':1160,'21_14':1270,
+            '26_7':130,'26_8':260,'26_9':400,'26_10':530,'26_11':660,'26_12':790,'26_13':1420,'26_14':1550,
+            '31_7':150,'31_8':300,'31_9':450,'31_10':600,'31_11':750,'31_12':900,'31_13':1670,'31_14':1820,
+            '36_7':180,'36_8':360,'36_9':540,'36_10':720,'36_11':900,'36_12':1080,'36_13':1920,'36_14':2100,
+            '41_7':200,'41_8':410,'41_9':610,'41_10':820,'41_11':1020,'41_12':1220,'41_13':2180,'41_14':2390
+        };
+        // Tier 3: widths 32-60, standard=8', heights 9-20 (keyed by roof length)
+        var SIDE_H3 = {
+            '21_9':380,'21_10':505,'21_11':760,'21_12':1015,'21_13':1265,'21_14':1520,'21_15':1940,'21_16':2360,'21_17':2785,'21_18':3205,'21_19':3485,'21_20':3750,
+            '26_9':465,'26_10':570,'26_11':855,'26_12':1145,'26_13':1430,'26_14':1720,'26_15':2195,'26_16':2680,'26_17':3180,'26_18':3685,'26_19':4025,'26_20':4360,
+            '31_9':530,'31_10':645,'31_11':955,'31_12':1280,'31_13':1605,'31_14':1925,'31_15':2455,'31_16':2990,'31_17':3580,'31_18':4170,'31_19':4560,'31_20':4955,
+            '36_9':630,'36_10':780,'36_11':1170,'36_12':1545,'36_13':1935,'36_14':2335,'36_15':2980,'36_16':3620,'36_17':4380,'36_18':5140,'36_19':5640,'36_20':6105,
+            '41_9':720,'41_10':850,'41_11':1265,'41_12':1680,'41_13':2105,'41_14':2535,'41_15':3240,'41_16':3940,'41_17':4780,'41_18':5625,'41_19':6180,'41_20':6745
+        };
+
+        // -- Both Sides Closed --
+        // Tier 1: widths 12-24
+        var SIDES1 = {
+            '21_6':430,'21_7':540,'21_8':650,'21_9':700,'21_10':760,'21_11':860,'21_12':920,'21_13':970,'21_14':1080,
+            '26_6':530,'26_7':660,'26_8':790,'26_9':860,'26_10':920,'26_11':1060,'26_12':1120,'26_13':1190,'26_14':1320,
+            '31_6':620,'31_7':780,'31_8':940,'31_9':1010,'31_10':1090,'31_11':1250,'31_12':1330,'31_13':1400,'31_14':1560,
+            '36_6':700,'36_7':870,'36_8':1040,'36_9':1130,'36_10':1220,'36_11':1390,'36_12':1480,'36_13':1570,'36_14':1740,
+            '41_6':860,'41_7':1080,'41_8':1290,'41_9':1400,'41_10':1510,'41_11':1730,'41_12':1840,'41_13':1940,'41_14':2160
+        };
+        // Tier 2: widths 26-30
+        var SIDES2 = {
+            '21_6':440,'21_7':520,'21_8':590,'21_9':670,'21_10':760,'21_11':840,'21_12':930,'21_13':1020,'21_14':1120,
+            '26_6':550,'26_7':640,'26_8':740,'26_9':850,'26_10':950,'26_11':1060,'26_12':1180,'26_13':1290,'26_14':1410,
+            '31_6':660,'31_7':780,'31_8':910,'31_9':1030,'31_10':1160,'31_11':1300,'31_12':1430,'31_13':1570,'31_14':1720,
+            '36_6':790,'36_7':930,'36_8':1080,'36_9':1230,'36_10':1390,'36_11':1540,'36_12':1700,'36_13':1870,'36_14':2030,
+            '41_6':920,'41_7':1090,'41_8':1270,'41_9':1440,'41_10':1620,'41_11':1800,'41_12':1990,'41_13':2170,'41_14':2360
+        };
+        // Tier 3: widths 32-60 (keyed by roof length)
+        var SIDES3 = {
+            '21_8':995,'21_9':1095,'21_10':1130,'21_11':1190,'21_12':1265,'21_13':1345,'21_14':1420,'21_15':1760,'21_16':1970,'21_17':2180,'21_18':2390,'21_19':2600,'21_20':2805,
+            '26_8':1230,'26_9':1330,'26_10':1405,'26_11':1465,'26_12':1545,'26_13':1625,'26_14':1705,'26_15':2190,'26_16':2455,'26_17':2725,'26_18':2985,'26_19':3250,'26_20':3510,
+            '31_8':1465,'31_9':1565,'31_10':1620,'31_11':1700,'31_12':1775,'31_13':1860,'31_14':1935,'31_15':2630,'31_16':2950,'31_17':3280,'31_18':3585,'31_19':3905,'31_20':4210,
+            '36_8':1715,'36_9':1815,'36_10':1895,'36_11':2005,'36_12':2130,'36_13':2250,'36_14':2370,'36_15':3060,'36_16':3440,'36_17':3820,'36_18':4175,'36_19':4555,'36_20':4910,
+            '41_8':1965,'41_9':2065,'41_10':2160,'41_11':2520,'41_12':2695,'41_13':2860,'41_14':3025,'41_15':3510,'41_16':3935,'41_17':4365,'41_18':4775,'41_19':5195,'41_20':5615
+        };
+
+        // -- Each End Closed (price per end) --
+        // Tier 1: widths 12-24
+        var END1 = {
+            '12_6':540,'12_7':640,'12_8':680,'12_9':740,'12_10':830,'12_11':910,'12_12':1010,'12_13':1150,'12_14':1370,
+            '18_6':720,'18_7':780,'18_8':820,'18_9':890,'18_10':980,'18_11':1100,'18_12':1200,'18_13':1370,'18_14':1630,
+            '20_6':780,'20_7':860,'20_8':940,'20_9':1030,'20_10':1130,'20_11':1400,'20_12':1490,'20_13':1580,'20_14':1890,
+            '22_6':860,'22_7':960,'22_8':1070,'22_9':1180,'22_10':1280,'22_11':1590,'22_12':1700,'22_13':1800,'22_14':2150,
+            '24_6':1180,'24_7':1260,'24_8':1350,'24_9':1400,'24_10':1550,'24_11':1670,'24_12':1790,'24_13':2020,'24_14':2410
+        };
+        // Tier 2: widths 26-30
+        var END2 = {
+            '26_6':1250,'26_7':1360,'26_8':1450,'26_9':1560,'26_10':1660,'26_11':1760,'26_12':1870,'26_13':1930,'26_14':1970,
+            '28_6':1390,'28_7':1500,'28_8':1620,'28_9':1720,'28_10':1840,'28_11':1930,'28_12':2040,'28_13':2150,'28_14':2270,
+            '30_6':1530,'30_7':1640,'30_8':1760,'30_9':1870,'30_10':1990,'30_11':2100,'30_12':2220,'30_13':2330,'30_14':2440
+        };
+        // Tier 3: widths 32-60
+        var END3 = {
+            '32_8':2670,'32_9':2750,'32_10':2980,'32_11':3055,'32_12':3135,'32_13':3210,'32_14':3285,'32_15':3365,'32_16':3440,'32_17':3520,'32_18':3595,'32_19':3675,'32_20':3750,
+            '34_8':2785,'34_9':2860,'34_10':3090,'34_11':3170,'34_12':3245,'34_13':3325,'34_14':3400,'34_15':3475,'34_16':3555,'34_17':3630,'34_18':3710,'34_19':3780,'34_20':3860,
+            '36_8':2935,'36_9':3015,'36_10':3245,'36_11':3325,'36_12':3400,'36_13':3475,'36_14':3555,'36_15':3630,'36_16':3710,'36_17':3785,'36_18':3860,'36_19':3940,'36_20':4015,
+            '38_8':3055,'38_9':3135,'38_10':3365,'38_11':3440,'38_12':3520,'38_13':3595,'38_14':3675,'38_15':3750,'38_16':3825,'38_17':3905,'38_18':3980,'38_19':4060,'38_20':4135,
+            '40_8':3170,'40_9':3245,'40_10':3475,'40_11':3555,'40_12':3630,'40_13':3710,'40_14':3785,'40_15':3860,'40_16':3990,'40_17':4015,'40_18':4095,'40_19':4170,'40_20':4250,
+            '42_8':3280,'42_9':3360,'42_10':3590,'42_11':3665,'42_12':3745,'42_13':3820,'42_14':3900,'42_15':3975,'42_16':4050,'42_17':4130,'42_18':4205,'42_19':4285,'42_20':4360,
+            '44_8':3395,'44_9':3470,'44_10':3700,'44_11':3780,'44_12':3855,'44_13':3935,'44_14':4010,'44_15':4090,'44_16':4165,'44_17':4240,'44_18':4320,'44_19':4395,'44_20':4475,
+            '46_8':3505,'46_9':3585,'46_10':3815,'46_11':3890,'46_12':3970,'46_13':4045,'46_14':4125,'46_15':4200,'46_16':4275,'46_17':4355,'46_18':4430,'46_19':4510,'46_20':4585,
+            '48_8':3620,'48_9':3695,'48_10':3925,'48_11':4005,'48_12':4080,'48_13':4160,'48_14':4235,'48_15':4315,'48_16':4390,'48_17':4465,'48_18':4545,'48_19':4620,'48_20':4700,
+            '50_8':3730,'50_9':3810,'50_10':4040,'50_11':4115,'50_12':4195,'50_13':4270,'50_14':4350,'50_15':4425,'50_16':4505,'50_17':4580,'50_18':4655,'50_19':4735,'50_20':4810,
+            '52_8':3845,'52_9':3920,'52_10':4155,'52_11':4230,'52_12':4305,'52_13':4385,'52_14':4460,'52_15':4540,'52_16':4615,'52_17':4690,'52_18':4770,'52_19':4845,'52_20':4925,
+            '54_8':3955,'54_9':4035,'54_10':4263,'54_11':4340,'54_12':4420,'54_13':4495,'54_14':4575,'54_15':4650,'54_16':4730,'54_17':4805,'54_18':4880,'54_19':4960,'54_20':5035,
+            '56_8':4070,'56_9':4140,'56_10':4380,'56_11':4455,'56_12':4530,'56_13':4610,'56_14':4685,'56_15':4765,'56_16':4840,'56_17':4915,'56_18':4995,'56_19':5070,'56_20':5150,
+            '58_8':4175,'58_9':4255,'58_10':4485,'58_11':4560,'58_12':4645,'58_13':4715,'58_14':4800,'58_15':4900,'58_16':4955,'58_17':5030,'58_18':5105,'58_19':5185,'58_20':5260,
+            '60_8':4290,'60_9':4365,'60_10':4600,'60_11':4675,'60_12':4750,'60_13':4830,'60_14':4905,'60_15':4990,'60_16':5060,'60_17':5145,'60_18':5220,'60_19':5290,'60_20':5375
+        };
+
+        // -- Accessory Prices --
+        var GDOOR = { '6x7':770,'8x8':840,'9x8':910,'10x8':980,'10x10':1050,'12x12':2170,'14x14':3430 };
+        var WALKIN = 350;
+        var WINDOW = 200;
+        var FRAMEOUT_GDOOR = 135, FRAMEOUT_WALKIN = 100, FRAMEOUT_WINDOW = 80;
+
+        // ===== HELPERS =====
+        function getTier(w) { return w <= 24 ? 1 : w <= 30 ? 2 : 3; }
+        function getStdH(w) { return w >= 32 ? 8 : 6; }
+        function getSideH(tier) { return tier === 1 ? SIDE_H1 : tier === 2 ? SIDE_H2 : SIDE_H3; }
+        function getSides(tier) { return tier === 1 ? SIDES1 : tier === 2 ? SIDES2 : SIDES3; }
+        function getEnds(tier) { return tier === 1 ? END1 : tier === 2 ? END2 : END3; }
+
+        // ===== DOM REFS =====
+        var ids = ['type','roof','width','length','height','enclosure','gdoor-qty','gdoor-size','gdoor-side','walkin','windows','concrete'];
         var els = {};
         ids.forEach(function(k) { els[k] = document.getElementById('cfg-' + k); });
-
         function val(id) { return els[id].value; }
         function num(id) { return parseInt(els[id].value) || 0; }
         function fmt(n) { return '$' + n.toLocaleString('en-US'); }
 
-        // ---- Enforce minimum leg height based on garage door size ----
+        // ===== DYNAMIC DROPDOWNS =====
+        // Map display length to roof length for pricing lookup
+        function roofLen(displayLen) { return displayLen + 1; }
+
+        function updateLengthOptions() {
+            // All lengths always visible — sizes without pricing show "Call for Quote"
+        }
+
+        function updateHeightOptions() {
+            var w = num('width');
+            var tier = getTier(w);
+            var heightEl = els['height'];
+            var curH = parseInt(heightEl.value) || 10;
+            var heights = tier === 3 ? [8,9,10,11,12,13,14,15,16,17,18,19,20] : [6,7,8,9,10,11,12,13,14];
+            heightEl.innerHTML = '';
+            heights.forEach(function(h) {
+                var opt = document.createElement('option');
+                opt.value = h; opt.textContent = h + "'";
+                if (h === curH) opt.selected = true;
+                heightEl.appendChild(opt);
+            });
+            // If current height is out of range, default to standard
+            if (heights.indexOf(curH) === -1) {
+                heightEl.value = tier === 3 ? '10' : '10';
+            }
+        }
+
+        els['width'].addEventListener('change', function() {
+            updateLengthOptions();
+            updateHeightOptions();
+            enforceMinHeight();
+            calculate();
+        });
+        updateLengthOptions();
+        updateHeightOptions();
+
+        // ===== ENFORCE MIN HEIGHT (garage doors) =====
         function getDoorHeight(sizeStr) {
             var parts = sizeStr.split('x');
             return parseInt(parts[1]) || 0;
         }
-
         function enforceMinHeight() {
             var gdoorQty = num('gdoor-qty');
             var doorH = gdoorQty > 0 ? getDoorHeight(val('gdoor-size')) : 0;
-            var minHeight = doorH > 0 ? doorH + 2 : 0;
+            var doorSide = val('gdoor-side');
+            var clearance = doorSide === 'length' ? 2 : 1; // side wall needs +2', end wall needs +1'
+            var minHeight = doorH > 0 ? doorH + clearance : 0;
             var heightEl = els['height'];
             var opts = heightEl.options;
             for (var i = 0; i < opts.length; i++) {
@@ -577,68 +756,111 @@
             }
             if (parseInt(heightEl.value) < minHeight) {
                 for (var j = 0; j < opts.length; j++) {
-                    if (parseInt(opts[j].value) >= minHeight) {
-                        heightEl.value = opts[j].value;
-                        break;
-                    }
+                    if (parseInt(opts[j].value) >= minHeight) { heightEl.value = opts[j].value; break; }
                 }
             }
         }
-
         els['gdoor-size'].addEventListener('change', function() { enforceMinHeight(); calculate(); });
         els['gdoor-qty'].addEventListener('change', function() { enforceMinHeight(); calculate(); });
+        els['gdoor-side'].addEventListener('change', function() {
+            var wLine = document.getElementById('door-vis-width');
+            var lLine = document.getElementById('door-vis-length');
+            var wIcon = document.getElementById('door-icon-w');
+            var lIcon = document.getElementById('door-icon-l');
+            if (this.value === 'length') {
+                wLine.classList.add('hidden'); lLine.classList.remove('hidden');
+                wIcon.classList.add('hidden'); lIcon.classList.remove('hidden');
+            } else {
+                wLine.classList.remove('hidden'); lLine.classList.add('hidden');
+                wIcon.classList.remove('hidden'); lIcon.classList.add('hidden');
+            }
+            enforceMinHeight(); calculate();
+        });
         enforceMinHeight();
 
+        // ===== CALCULATE =====
         function calculate() {
-            var type = val('type');
             var w = num('width'), l = num('length'), h = num('height');
-            var sqft = w * l;
+            var rl = roofLen(l); // convert display length to roof length for lookups
+            var enc = val('enclosure');
+            var tier = getTier(w);
+            var stdH = getStdH(w);
 
-            var base = sqft * BASE_RATE[type];
-            base *= ROOF_MULT[val('roof')];
-            if (h > HEIGHT_BASE) base += sqft * HEIGHT_EXTRA_PER_FT * (h - HEIGHT_BASE);
-            base *= ENC_MULT[val('enclosure')];
+            // 1. Base price (keyed by roof length)
+            var baseKey = w + '_' + rl;
+            var price = BASE[baseKey];
+            if (price === undefined) {
+                document.getElementById('price-range').textContent = 'Call for Quote';
+                document.getElementById('price-monthly').textContent = '-';
+                document.getElementById('deposit-btn-amount').textContent = '-';
+                window._bldEst = { total: 0, deposit: 0 };
+                return;
+            }
 
-            var addons = 0;
+            // 2. Side height upgrade (keyed by roof length)
+            if (h > stdH) {
+                var hCost = getSideH(tier)[rl + '_' + h];
+                if (hCost !== undefined) price += hCost;
+            }
+
+            // 3. Enclosure (sides keyed by roof length, ends keyed by width)
+            if (enc === 'sides' || enc === 'full') {
+                var sCost = getSides(tier)[rl + '_' + (h < stdH ? stdH : h)];
+                if (sCost !== undefined) price += sCost;
+            }
+            if (enc === 'full') {
+                var eCost = getEnds(tier)[w + '_' + (h < stdH ? stdH : h)];
+                if (eCost !== undefined) price += eCost * 2;
+            }
+
+            // 4. Garage doors
             var gdoorQty = num('gdoor-qty'), gdoorSize = val('gdoor-size');
-            addons += gdoorQty * GDOOR_COST[gdoorSize];
-            addons += num('walkin') * WALKIN_COST;
-            addons += num('windows') * WINDOW_COST;
-            addons += els['concrete'].checked ? CONCRETE_RATE * sqft : 0;
-            if (els['cert'].checked) addons += CERT_COST;
+            price += gdoorQty * (GDOOR[gdoorSize] || 0);
+            if (gdoorQty >= 2) price += 250;
 
-            var total = Math.round(base + addons);
-            var low = Math.round(total - 500);
-            var high = Math.round(total + 500);
+            // 5. Walk-in doors
+            var walkinQty = num('walkin');
+            price += walkinQty * WALKIN;
 
-            var mr = FINANCE_APR / 12;
-            var monthly = Math.round(total * mr / (1 - Math.pow(1 + mr, -FINANCE_MONTHS)));
+            // 6. Windows
+            var windowQty = num('windows');
+            price += windowQty * WINDOW;
 
-            var avgPrice = Math.round((low + high) / 2);
-            var deposit = Math.round(avgPrice * 0.11);
+            // 7. Frameouts (assume end wall placement when fully enclosed)
+            if (enc === 'full') {
+                price += gdoorQty * FRAMEOUT_GDOOR;
+                price += walkinQty * FRAMEOUT_WALKIN;
+                price += windowQty * FRAMEOUT_WINDOW;
+            }
 
-            document.getElementById('price-range').textContent = fmt(low) + ' \u2013 ' + fmt(high);
+            // 8. Concrete slab
+            if (els['concrete'].checked) price += Math.round(CONCRETE_RATE * w * l);
+
+            price = Math.round(price);
+            var deposit = Math.round(price * 0.11);
+            var monthly = Math.round(price * (0.07/12) / (1 - Math.pow(1 + 0.07/12, -48)));
+
+            // Update display
+            document.getElementById('price-range').textContent = fmt(price);
             document.getElementById('price-monthly').textContent = '~' + fmt(monthly) + '/mo';
-            document.getElementById('sum-type').textContent = TYPE_LABEL[type];
+            document.getElementById('sum-type').textContent = TYPE_LABEL[val('type')] || val('type');
             document.getElementById('sum-size').textContent = w + "' x " + l + "'";
             document.getElementById('sum-height').textContent = h + "'";
-            document.getElementById('sum-roof').textContent = ROOF_LABEL[val('roof')];
-            document.getElementById('sum-enc').textContent = ENC_LABEL[val('enclosure')];
+            document.getElementById('sum-roof').textContent = 'Vertical';
+            document.getElementById('sum-enc').textContent = ENC_LABEL[enc] || enc;
 
             var doorParts = [];
             if (gdoorQty > 0) doorParts.push(gdoorQty + 'x ' + gdoorSize);
-            var wk = num('walkin');
-            if (wk > 0) doorParts.push(wk + ' walk-in');
+            if (walkinQty > 0) doorParts.push(walkinQty + ' walk-in');
             document.getElementById('sum-doors').textContent = doorParts.length ? doorParts.join(', ') : 'None';
-            document.getElementById('sum-windows').textContent = num('windows') || '0';
+            document.getElementById('sum-windows').textContent = windowQty || '0';
             document.getElementById('sum-concrete').textContent = CONCRETE_LABEL[els['concrete'].checked];
-            document.getElementById('sum-cert').textContent = els['cert'].checked ? 'Yes' : 'No';
 
             document.getElementById('sidebar-deposit-amount').textContent = fmt(deposit);
             document.getElementById('sidebar-deposit-label').textContent = '11% deposit to lock in your price';
             document.getElementById('deposit-btn-amount').textContent = fmt(deposit);
 
-            window._bldEst = { total: total, low: low, high: high, deposit: deposit, monthly: monthly };
+            window._bldEst = { total: price, deposit: deposit, monthly: monthly };
         }
 
         ids.forEach(function(k) {
@@ -647,42 +869,35 @@
         });
         calculate();
 
-        // ---- Quote Submit ----
+        // ===== QUOTE SUBMIT =====
         document.getElementById('btn-submit-quote').addEventListener('click', function() {
             var name = document.getElementById('cfg-name').value.trim();
             var email = document.getElementById('cfg-email').value.trim();
             var phone = document.getElementById('cfg-phone').value.trim();
             var zip = document.getElementById('cfg-zip').value.trim();
 
-            // Validate all required fields
             var errors = [];
             if (!name) errors.push('Full Name');
             if (!email) errors.push('Email');
             if (!phone) errors.push('Phone');
             if (!zip) errors.push('Zip Code');
-            if (!selectedColor) {
-                errors.push('Color');
-                document.getElementById('color-error').classList.remove('hidden');
-            }
-            if (errors.length > 0) {
-                alert('Please fill in all required fields: ' + errors.join(', '));
-                return;
-            }
+            if (!selectedColor) { errors.push('Color'); document.getElementById('color-error').classList.remove('hidden'); }
+            if (errors.length > 0) { alert('Please fill in all required fields: ' + errors.join(', ')); return; }
 
             var est = window._bldEst;
-            var doorDesc = num('gdoor-qty') > 0 ? num('gdoor-qty') + 'x ' + val('gdoor-size') : 'None';
+            var doorSideLabel = val('gdoor-side') === 'length' ? 'Side Wall' : 'End Wall';
+            var doorDesc = num('gdoor-qty') > 0 ? num('gdoor-qty') + 'x ' + val('gdoor-size') + ' (' + doorSideLabel + ')' : 'None';
             var notes = 'Steel Building Quote' +
-                ' | Type: ' + TYPE_LABEL[val('type')] +
+                ' | Type: ' + (TYPE_LABEL[val('type')] || val('type')) +
                 ' | Size: ' + num('width') + "' x " + num('length') + "' x " + num('height') + "'" +
-                ' | Roof: ' + ROOF_LABEL[val('roof')] +
-                ' | Enclosure: ' + ENC_LABEL[val('enclosure')] +
+                ' | Roof: Vertical' +
+                ' | Enclosure: ' + (ENC_LABEL[val('enclosure')] || val('enclosure')) +
                 ' | Color: ' + selectedColor +
                 ' | Garage Doors: ' + doorDesc +
                 ' | Walk-in Doors: ' + num('walkin') +
                 ' | Windows: ' + num('windows') +
                 ' | Concrete: ' + CONCRETE_LABEL[els['concrete'].checked] +
-                ' | Certified: ' + (els['cert'].checked ? 'Yes' : 'No') +
-                ' | Est: ' + fmt(est.low) + ' - ' + fmt(est.high) +
+                ' | Price: ' + fmt(est.total) +
                 ' | Deposit (11%): ' + fmt(est.deposit);
 
             var btn = this;
@@ -693,22 +908,18 @@
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
-                    type: 'quote',
-                    name: name,
-                    email: email,
-                    phone: phone,
-                    zip: zip,
-                    building_type: TYPE_LABEL[val('type')],
+                    type: 'quote', name: name, email: email, phone: phone, zip: zip,
+                    building_type: TYPE_LABEL[val('type')] || val('type'),
                     building_size: num('width') + "' x " + num('length') + "' x " + num('height') + "'",
                     building_color: selectedColor,
-                    building_roof: ROOF_LABEL[val('roof')],
-                    building_enclosure: ENC_LABEL[val('enclosure')],
+                    building_roof: 'Vertical',
+                    building_enclosure: ENC_LABEL[val('enclosure')] || val('enclosure'),
                     building_doors: doorDesc,
                     building_walkin: num('walkin') + '',
                     building_windows: num('windows') + '',
                     building_concrete: CONCRETE_LABEL[els['concrete'].checked],
-                    building_certified: els['cert'].checked ? 'Yes' : 'No',
-                    building_estimate: fmt(est.low) + ' - ' + fmt(est.high),
+                    building_certified: 'Yes (Included)',
+                    building_estimate: fmt(est.total),
                     building_deposit: fmt(est.deposit),
                     notes: notes
                 })
@@ -717,7 +928,6 @@
                 btn.innerHTML = '<i class="fa-solid fa-check mr-2"></i>Quote Submitted!';
                 btn.classList.remove('bg-secondary', 'hover:bg-blue-700');
                 btn.classList.add('bg-green-600');
-                // Pre-fill deposit form from quote form
                 document.getElementById('dep-name').value = name;
                 document.getElementById('dep-email').value = email;
                 document.getElementById('dep-phone').value = phone;
@@ -730,7 +940,7 @@
             });
         });
 
-        // ---- Deposit Section Show/Hide ----
+        // ===== DEPOSIT SECTION SHOW/HIDE =====
         window.showDepositSection = showDepositSection;
         window.hideDepositSection = hideDepositSection;
         function showDepositSection() {
@@ -741,18 +951,16 @@
                 document.getElementById('sidebar-deposit').scrollIntoView({ behavior: 'smooth', block: 'center' });
             }
         }
-
         function hideDepositSection() {
             document.getElementById('sidebar-deposit').classList.add('hidden');
             document.getElementById('deposit-btn').classList.remove('hidden');
         }
 
-        // ---- PayPal Deposit ----
+        // ===== PAYPAL DEPOSIT =====
         function loadPayPalButtons() {
             var container = document.getElementById('paypal-button-container');
             if (!container || container.dataset.loaded) return;
             container.dataset.loaded = '1';
-
             var clientId = window._paypalClientId || 'sb';
             var script = document.createElement('script');
             script.src = 'https://www.paypal.com/sdk/js?client-id=' + clientId + '&currency=USD';
@@ -764,30 +972,16 @@
                         var email = document.getElementById('dep-email').value.trim();
                         var phone = document.getElementById('dep-phone').value.trim();
                         var zip = document.getElementById('dep-zip').value.trim();
-
-                        if (!name || !email || !phone) {
-                            alert('Please fill in your name, email, and phone before paying.');
-                            return Promise.reject('Missing info');
-                        }
-
-                        if (!selectedColor) {
-                            alert('Please select a color before paying.');
-                            document.getElementById('color-error').classList.remove('hidden');
-                            return Promise.reject('No color selected');
-                        }
-
+                        if (!name || !email || !phone) { alert('Please fill in your name, email, and phone before paying.'); return Promise.reject('Missing info'); }
+                        if (!selectedColor) { alert('Please select a color before paying.'); document.getElementById('color-error').classList.remove('hidden'); return Promise.reject('No color'); }
                         var est = window._bldEst;
-                        var config = TYPE_LABEL[val('type')] + ' ' + num('width') + 'x' + num('length') + 'x' + num('height') + ' ' + ROOF_LABEL[val('roof')] + ' ' + ENC_LABEL[val('enclosure')] + ' | Color: ' + selectedColor;
-
+                        var config = (TYPE_LABEL[val('type')] || val('type')) + ' ' + num('width') + 'x' + num('length') + 'x' + num('height') + ' Vertical ' + (ENC_LABEL[val('enclosure')] || '') + ' | Color: ' + selectedColor;
                         return fetch('/api/create-paypal-order', {
                             method: 'POST',
                             headers: { 'Content-Type': 'application/json' },
                             body: JSON.stringify({ amount: est.deposit, total: est.total, config: config, name: name, email: email, phone: phone, zip: zip, color: selectedColor })
                         }).then(function(r) { return r.json(); })
-                        .then(function(data) {
-                            if (data.id) return data.id;
-                            throw new Error(data.error || 'Could not create order');
-                        });
+                        .then(function(data) { if (data.id) return data.id; throw new Error(data.error || 'Could not create order'); });
                     },
                     onApprove: function(data) {
                         return fetch('/api/capture-paypal-order', {
@@ -796,22 +990,15 @@
                             body: JSON.stringify({ orderId: data.orderID })
                         }).then(function(r) { return r.json(); })
                         .then(function(result) {
-                            if (result.success) {
-                                window.location.href = '/deposit-success.html';
-                            } else {
-                                alert('Payment could not be completed. Please try again or call (386) 350-1047.');
-                            }
+                            if (result.success) { window.location.href = '/deposit-success.html'; }
+                            else { alert('Payment could not be completed. Please try again or call (386) 350-1047.'); }
                         });
                     },
-                    onError: function() {
-                        alert('Something went wrong with PayPal. Please try again or call (386) 350-1047.');
-                    }
+                    onError: function() { alert('Something went wrong with PayPal. Please try again or call (386) 350-1047.'); }
                 }).render('#paypal-button-container');
             };
             document.head.appendChild(script);
         }
-
-        // Load PayPal client ID from env, then render buttons when deposit section is shown
         fetch('/api/paypal-client-id').then(function(r) { return r.json(); }).then(function(d) {
             if (d.clientId) window._paypalClientId = d.clientId;
         }).catch(function() {});
