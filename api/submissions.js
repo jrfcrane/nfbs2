@@ -68,6 +68,16 @@ module.exports = async function handler(req, res) {
         address: body.address || null,
         building_type: body.building_type || null,
         building_size: body.building_size || null,
+        building_color: body.building_color || null,
+        building_roof: body.building_roof || null,
+        building_enclosure: body.building_enclosure || null,
+        building_doors: body.building_doors || null,
+        building_walkin: body.building_walkin || null,
+        building_windows: body.building_windows || null,
+        building_concrete: body.building_concrete || null,
+        building_certified: body.building_certified || null,
+        building_estimate: body.building_estimate || null,
+        building_deposit: body.building_deposit || null,
         notes: body.notes || ''
       };
 
@@ -122,7 +132,17 @@ module.exports = async function handler(req, res) {
       }
       if (body.type === 'quote') {
         emailPayload['Building Type'] = body.building_type || '';
-        emailPayload['Approximate Size'] = body.building_size || '';
+        emailPayload['Size'] = body.building_size || '';
+        emailPayload['Color'] = body.building_color || '';
+        emailPayload['Roof Style'] = body.building_roof || '';
+        emailPayload['Enclosure'] = body.building_enclosure || '';
+        emailPayload['Garage Doors'] = body.building_doors || 'None';
+        emailPayload['Walk-in Doors'] = body.building_walkin || '0';
+        emailPayload['Windows'] = body.building_windows || '0';
+        emailPayload['Concrete'] = body.building_concrete || 'None';
+        emailPayload['FL Certified'] = body.building_certified || 'No';
+        emailPayload['Price Estimate'] = body.building_estimate || '';
+        emailPayload['Deposit (11%)'] = body.building_deposit || '';
       }
       if (body.type === 'promo') {
         emailPayload['Source'] = 'Landing Page Popup';

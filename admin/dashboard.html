@@ -448,9 +448,14 @@
                     if (s.shed_price) details += ' (' + s.shed_price + ')';
                 } else if (s.type === 'quote') {
                     var parts = [];
-                    if (s.building_type) parts.push(s.building_type);
+                    if (s.building_type) parts.push('<strong>' + s.building_type + '</strong>');
                     if (s.building_size) parts.push(s.building_size);
-                    details = parts.length ? parts.join(' ') : '-';
+                    if (s.building_color) parts.push('<span class="inline-block bg-gray-100 text-gray-700 text-xs px-1.5 py-0.5 rounded">' + s.building_color + '</span>');
+                    if (s.building_enclosure) parts.push(s.building_enclosure);
+                    if (s.building_doors && s.building_doors !== 'None') parts.push('Doors: ' + s.building_doors);
+                    if (s.building_estimate) parts.push('<span class="font-semibold text-green-700">' + s.building_estimate + '</span>');
+                    if (s.building_deposit) parts.push('Dep: ' + s.building_deposit);
+                    details = parts.length ? parts.join(' &middot; ') : '-';
                 } else if (s.type === 'promo') {
                     details = 'Promo Signup';
                 }

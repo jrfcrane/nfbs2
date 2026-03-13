@@ -236,81 +236,83 @@
                     <!-- Color Chart -->
                     <div class="bg-white rounded-2xl shadow-lg p-6">
                         <h2 class="text-xl font-bold mb-5 flex items-center gap-2"><i class="fa-solid fa-palette text-secondary"></i> Available Colors</h2>
-                        <p class="text-sm text-gray-500 mb-4">Available in 26 and 28 gauge Sherwin-Williams coil coatings. Colors shown are approximate &mdash; request a color card for exact match.</p>
-                        <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-3">
-                            <div class="text-center">
-                                <div class="w-full aspect-square rounded-lg border border-gray-200 mb-1" style="background:#C8C5BE;background-image:url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%224%22 height=%224%22><rect width=%224%22 height=%224%22 fill=%22%23C8C5BE%22/><rect width=%221%22 height=%221%22 fill=%22%23B8B5AE%22/></svg>');"></div>
+                        <p class="text-sm text-gray-500 mb-2">Available in 26 and 28 gauge Sherwin-Williams coil coatings. Click to select your color. <span class="text-red-500">*</span></p>
+                        <div id="color-error" class="hidden text-red-500 text-sm mb-2"><i class="fa-solid fa-exclamation-circle mr-1"></i>Please select a color.</div>
+                        <div id="color-grid" class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-3">
+                            <div class="color-swatch text-center cursor-pointer" data-color="Galvalume" onclick="selectColor(this)">
+                                <div class="swatch-box w-full aspect-square rounded-lg border-2 border-gray-200 mb-1 transition-all" style="background:#C8C5BE;"></div>
                                 <span class="text-xs font-medium text-gray-700">Galvalume</span>
                             </div>
-                            <div class="text-center">
-                                <div class="w-full aspect-square rounded-lg border border-gray-200 mb-1" style="background:#C2A96E;"></div>
+                            <div class="color-swatch text-center cursor-pointer" data-color="Clay" onclick="selectColor(this)">
+                                <div class="swatch-box w-full aspect-square rounded-lg border-2 border-gray-200 mb-1 transition-all" style="background:#C2A96E;"></div>
                                 <span class="text-xs font-medium text-gray-700">Clay</span>
                             </div>
-                            <div class="text-center">
-                                <div class="w-full aspect-square rounded-lg border border-gray-200 mb-1" style="background:#2D5A3D;"></div>
+                            <div class="color-swatch text-center cursor-pointer" data-color="Green" onclick="selectColor(this)">
+                                <div class="swatch-box w-full aspect-square rounded-lg border-2 border-gray-200 mb-1 transition-all" style="background:#2D5A3D;"></div>
                                 <span class="text-xs font-medium text-gray-700">Green</span>
                             </div>
-                            <div class="text-center">
-                                <div class="w-full aspect-square rounded-lg border border-gray-200 mb-1" style="background:#E8E6E0;"></div>
+                            <div class="color-swatch text-center cursor-pointer" data-color="Bright White" onclick="selectColor(this)">
+                                <div class="swatch-box w-full aspect-square rounded-lg border-2 border-gray-200 mb-1 transition-all" style="background:#E8E6E0;"></div>
                                 <span class="text-xs font-medium text-gray-700">Bright White</span>
                             </div>
-                            <div class="text-center">
-                                <div class="w-full aspect-square rounded-lg border border-gray-200 mb-1" style="background:#C4BFB6;"></div>
+                            <div class="color-swatch text-center cursor-pointer" data-color="Ash Gray" onclick="selectColor(this)">
+                                <div class="swatch-box w-full aspect-square rounded-lg border-2 border-gray-200 mb-1 transition-all" style="background:#C4BFB6;"></div>
                                 <span class="text-xs font-medium text-gray-700">Ash Gray</span>
                             </div>
-                            <div class="text-center">
-                                <div class="w-full aspect-square rounded-lg border border-gray-200 mb-1" style="background:#D42426;"></div>
+                            <div class="color-swatch text-center cursor-pointer" data-color="Bright Red" onclick="selectColor(this)">
+                                <div class="swatch-box w-full aspect-square rounded-lg border-2 border-gray-200 mb-1 transition-all" style="background:#D42426;"></div>
                                 <span class="text-xs font-medium text-gray-700">Bright Red</span>
                             </div>
-                            <div class="text-center">
-                                <div class="w-full aspect-square rounded-lg border border-gray-200 mb-1" style="background:#EDE4C8;"></div>
+                            <div class="color-swatch text-center cursor-pointer" data-color="Ivory" onclick="selectColor(this)">
+                                <div class="swatch-box w-full aspect-square rounded-lg border-2 border-gray-200 mb-1 transition-all" style="background:#EDE4C8;"></div>
                                 <span class="text-xs font-medium text-gray-700">Ivory</span>
                             </div>
-                            <div class="text-center">
-                                <div class="w-full aspect-square rounded-lg border border-gray-200 mb-1" style="background:#8A8680;"></div>
+                            <div class="color-swatch text-center cursor-pointer" data-color="Pewter Gray" onclick="selectColor(this)">
+                                <div class="swatch-box w-full aspect-square rounded-lg border-2 border-gray-200 mb-1 transition-all" style="background:#8A8680;"></div>
                                 <span class="text-xs font-medium text-gray-700">Pewter Gray</span>
                             </div>
-                            <div class="text-center">
-                                <div class="w-full aspect-square rounded-lg border border-gray-200 mb-1" style="background:#8B3A2A;"></div>
+                            <div class="color-swatch text-center cursor-pointer" data-color="Country Red" onclick="selectColor(this)">
+                                <div class="swatch-box w-full aspect-square rounded-lg border-2 border-gray-200 mb-1 transition-all" style="background:#8B3A2A;"></div>
                                 <span class="text-xs font-medium text-gray-700">Country Red</span>
                             </div>
-                            <div class="text-center">
-                                <div class="w-full aspect-square rounded-lg border border-gray-200 mb-1" style="background:#C9B97E;"></div>
+                            <div class="color-swatch text-center cursor-pointer" data-color="Light Stone" onclick="selectColor(this)">
+                                <div class="swatch-box w-full aspect-square rounded-lg border-2 border-gray-200 mb-1 transition-all" style="background:#C9B97E;"></div>
                                 <span class="text-xs font-medium text-gray-700">Light Stone</span>
                             </div>
-                            <div class="text-center">
-                                <div class="w-full aspect-square rounded-lg border border-gray-200 mb-1" style="background:#52524E;"></div>
+                            <div class="color-swatch text-center cursor-pointer" data-color="Charcoal Gray" onclick="selectColor(this)">
+                                <div class="swatch-box w-full aspect-square rounded-lg border-2 border-gray-200 mb-1 transition-all" style="background:#52524E;"></div>
                                 <span class="text-xs font-medium text-gray-700">Charcoal Gray</span>
                             </div>
-                            <div class="text-center">
-                                <div class="w-full aspect-square rounded-lg border border-gray-200 mb-1" style="background:#5B7B8A;"></div>
+                            <div class="color-swatch text-center cursor-pointer" data-color="Hawaiian Blue" onclick="selectColor(this)">
+                                <div class="swatch-box w-full aspect-square rounded-lg border-2 border-gray-200 mb-1 transition-all" style="background:#5B7B8A;"></div>
                                 <span class="text-xs font-medium text-gray-700">Hawaiian Blue</span>
                             </div>
-                            <div class="text-center">
-                                <div class="w-full aspect-square rounded-lg border border-gray-200 mb-1" style="background:#BEA97A;"></div>
+                            <div class="color-swatch text-center cursor-pointer" data-color="Sahara Tan" onclick="selectColor(this)">
+                                <div class="swatch-box w-full aspect-square rounded-lg border-2 border-gray-200 mb-1 transition-all" style="background:#BEA97A;"></div>
                                 <span class="text-xs font-medium text-gray-700">Sahara Tan</span>
                             </div>
-                            <div class="text-center">
-                                <div class="w-full aspect-square rounded-lg border border-gray-200 mb-1" style="background:#5C5B4F;"></div>
+                            <div class="color-swatch text-center cursor-pointer" data-color="Burnished Slate" onclick="selectColor(this)">
+                                <div class="swatch-box w-full aspect-square rounded-lg border-2 border-gray-200 mb-1 transition-all" style="background:#5C5B4F;"></div>
                                 <span class="text-xs font-medium text-gray-700">Burnished Slate</span>
                             </div>
-                            <div class="text-center">
-                                <div class="w-full aspect-square rounded-lg border border-gray-200 mb-1" style="background:#4A5A6A;"></div>
+                            <div class="color-swatch text-center cursor-pointer" data-color="Gallery Blue" onclick="selectColor(this)">
+                                <div class="swatch-box w-full aspect-square rounded-lg border-2 border-gray-200 mb-1 transition-all" style="background:#4A5A6A;"></div>
                                 <span class="text-xs font-medium text-gray-700">Gallery Blue</span>
                             </div>
-                            <div class="text-center">
-                                <div class="w-full aspect-square rounded-lg border border-gray-200 mb-1" style="background:#5C4A3A;"></div>
+                            <div class="color-swatch text-center cursor-pointer" data-color="Brown" onclick="selectColor(this)">
+                                <div class="swatch-box w-full aspect-square rounded-lg border-2 border-gray-200 mb-1 transition-all" style="background:#5C4A3A;"></div>
                                 <span class="text-xs font-medium text-gray-700">Brown</span>
                             </div>
-                            <div class="text-center">
-                                <div class="w-full aspect-square rounded-lg border border-gray-200 mb-1" style="background:#1A1A1A;"></div>
+                            <div class="color-swatch text-center cursor-pointer" data-color="Black" onclick="selectColor(this)">
+                                <div class="swatch-box w-full aspect-square rounded-lg border-2 border-gray-200 mb-1 transition-all" style="background:#1A1A1A;"></div>
                                 <span class="text-xs font-medium text-gray-700">Black</span>
                             </div>
-                            <div class="text-center">
-                                <div class="w-full aspect-square rounded-lg border border-gray-200 mb-1" style="background:#5C2D3E;"></div>
+                            <div class="color-swatch text-center cursor-pointer" data-color="Burgundy" onclick="selectColor(this)">
+                                <div class="swatch-box w-full aspect-square rounded-lg border-2 border-gray-200 mb-1 transition-all" style="background:#5C2D3E;"></div>
                                 <span class="text-xs font-medium text-gray-700">Burgundy</span>
                             </div>
                         </div>
+                        <p class="text-xs text-gray-400 mt-3">Colors shown are approximate. Please refer to a color card or paint swatches for exact accuracy.</p>
                     </div>
 
                     <!-- Contact Info -->
@@ -370,6 +372,7 @@
                                     <div class="flex justify-between"><span>Windows</span><span id="sum-windows" class="font-medium">0</span></div>
                                     <div class="flex justify-between"><span>Concrete</span><span id="sum-concrete" class="font-medium">None</span></div>
                                     <div class="flex justify-between"><span>Certified</span><span id="sum-cert" class="font-medium">No</span></div>
+                                    <div class="flex justify-between"><span>Color</span><span id="sum-color" class="font-medium text-red-400">Not selected</span></div>
                                 </div>
                                 <hr>
                                 <p class="text-xs text-gray-400">Final price depends on site conditions, color choices, and local requirements. We'll confirm all details after you submit.</p>
@@ -498,6 +501,35 @@
 
     <!-- ========== PRICE CALCULATOR ========== -->
     <script>
+    // ---- Color Selection (global scope for onclick) ----
+    var selectedColor = '';
+    function selectColor(el) {
+        // Remove selection from all swatches
+        document.querySelectorAll('.color-swatch .swatch-box').forEach(function(box) {
+            box.classList.remove('border-secondary', 'ring-2', 'ring-secondary', 'ring-offset-2', 'scale-105');
+            box.classList.add('border-gray-200');
+        });
+        document.querySelectorAll('.color-swatch span').forEach(function(label) {
+            label.classList.remove('text-secondary', 'font-bold');
+            label.classList.add('text-gray-700', 'font-medium');
+        });
+        // Highlight selected
+        var box = el.querySelector('.swatch-box');
+        box.classList.remove('border-gray-200');
+        box.classList.add('border-secondary', 'ring-2', 'ring-secondary', 'ring-offset-2', 'scale-105');
+        var label = el.querySelector('span');
+        label.classList.remove('text-gray-700', 'font-medium');
+        label.classList.add('text-secondary', 'font-bold');
+        selectedColor = el.getAttribute('data-color');
+        // Update sidebar
+        var sumColor = document.getElementById('sum-color');
+        sumColor.textContent = selectedColor;
+        sumColor.classList.remove('text-red-400');
+        sumColor.classList.add('text-primary');
+        // Hide error
+        document.getElementById('color-error').classList.add('hidden');
+    }
+
     (function() {
         // ---- PRICING CONSTANTS (easy to adjust) ----
         var BASE_RATE = { 'carport': 7, 'garage': 11, 'barn': 12, 'rv-cover': 8, 'workshop': 13 };
@@ -621,15 +653,37 @@
             var email = document.getElementById('cfg-email').value.trim();
             var phone = document.getElementById('cfg-phone').value.trim();
             var zip = document.getElementById('cfg-zip').value.trim();
-            if (!name || !email || !phone || !zip) { alert('Please fill in all contact fields.'); return; }
+
+            // Validate all required fields
+            var errors = [];
+            if (!name) errors.push('Full Name');
+            if (!email) errors.push('Email');
+            if (!phone) errors.push('Phone');
+            if (!zip) errors.push('Zip Code');
+            if (!selectedColor) {
+                errors.push('Color');
+                document.getElementById('color-error').classList.remove('hidden');
+            }
+            if (errors.length > 0) {
+                alert('Please fill in all required fields: ' + errors.join(', '));
+                return;
+            }
 
             var est = window._bldEst;
-            var notes = 'Steel Building Quote | ' + TYPE_LABEL[val('type')] + ' ' + num('width') + "x" + num('length') + "x" + num('height') +
-                ' | Roof: ' + ROOF_LABEL[val('roof')] + ' | ' + ENC_LABEL[val('enclosure')] +
-                ' | Garage Doors: ' + (num('gdoor-qty') > 0 ? num('gdoor-qty') + 'x ' + val('gdoor-size') : 'None') +
-                ' | Walk-in: ' + num('walkin') + ' | Windows: ' + num('windows') +
-                ' | Concrete: ' + CONCRETE_LABEL[els['concrete'].checked] + ' | Certified: ' + (els['cert'].checked ? 'Yes' : 'No') +
-                ' | Est: ' + fmt(est.low) + '-' + fmt(est.high);
+            var doorDesc = num('gdoor-qty') > 0 ? num('gdoor-qty') + 'x ' + val('gdoor-size') : 'None';
+            var notes = 'Steel Building Quote' +
+                ' | Type: ' + TYPE_LABEL[val('type')] +
+                ' | Size: ' + num('width') + "' x " + num('length') + "' x " + num('height') + "'" +
+                ' | Roof: ' + ROOF_LABEL[val('roof')] +
+                ' | Enclosure: ' + ENC_LABEL[val('enclosure')] +
+                ' | Color: ' + selectedColor +
+                ' | Garage Doors: ' + doorDesc +
+                ' | Walk-in Doors: ' + num('walkin') +
+                ' | Windows: ' + num('windows') +
+                ' | Concrete: ' + CONCRETE_LABEL[els['concrete'].checked] +
+                ' | Certified: ' + (els['cert'].checked ? 'Yes' : 'No') +
+                ' | Est: ' + fmt(est.low) + ' - ' + fmt(est.high) +
+                ' | Deposit (11%): ' + fmt(est.deposit);
 
             var btn = this;
             btn.disabled = true;
@@ -638,22 +692,36 @@
             fetch('/api/submissions', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ type: 'quote', name: name, email: email, phone: phone, zip: zip,
-                    building_type: TYPE_LABEL[val('type')], building_size: num('width') + "' x " + num('length') + "'", notes: notes })
+                body: JSON.stringify({
+                    type: 'quote',
+                    name: name,
+                    email: email,
+                    phone: phone,
+                    zip: zip,
+                    building_type: TYPE_LABEL[val('type')],
+                    building_size: num('width') + "' x " + num('length') + "' x " + num('height') + "'",
+                    building_color: selectedColor,
+                    building_roof: ROOF_LABEL[val('roof')],
+                    building_enclosure: ENC_LABEL[val('enclosure')],
+                    building_doors: doorDesc,
+                    building_walkin: num('walkin') + '',
+                    building_windows: num('windows') + '',
+                    building_concrete: CONCRETE_LABEL[els['concrete'].checked],
+                    building_certified: els['cert'].checked ? 'Yes' : 'No',
+                    building_estimate: fmt(est.low) + ' - ' + fmt(est.high),
+                    building_deposit: fmt(est.deposit),
+                    notes: notes
+                })
             }).then(function(r) { return r.json(); })
             .then(function() {
                 btn.innerHTML = '<i class="fa-solid fa-check mr-2"></i>Quote Submitted!';
                 btn.classList.remove('bg-secondary', 'hover:bg-blue-700');
                 btn.classList.add('bg-green-600');
-                // Pre-fill deposit form from quote form if available
-                var cfgName = document.getElementById('cfg-name');
-                if (cfgName && cfgName.value) document.getElementById('dep-name').value = cfgName.value;
-                var cfgEmail = document.getElementById('cfg-email');
-                if (cfgEmail && cfgEmail.value) document.getElementById('dep-email').value = cfgEmail.value;
-                var cfgPhone = document.getElementById('cfg-phone');
-                if (cfgPhone && cfgPhone.value) document.getElementById('dep-phone').value = cfgPhone.value;
-                var cfgZip = document.getElementById('cfg-zip');
-                if (cfgZip && cfgZip.value) document.getElementById('dep-zip').value = cfgZip.value;
+                // Pre-fill deposit form from quote form
+                document.getElementById('dep-name').value = name;
+                document.getElementById('dep-email').value = email;
+                document.getElementById('dep-phone').value = phone;
+                document.getElementById('dep-zip').value = zip;
             })
             .catch(function() {
                 btn.disabled = false;
@@ -702,13 +770,19 @@
                             return Promise.reject('Missing info');
                         }
 
+                        if (!selectedColor) {
+                            alert('Please select a color before paying.');
+                            document.getElementById('color-error').classList.remove('hidden');
+                            return Promise.reject('No color selected');
+                        }
+
                         var est = window._bldEst;
-                        var config = TYPE_LABEL[val('type')] + ' ' + num('width') + 'x' + num('length') + 'x' + num('height') + ' ' + ROOF_LABEL[val('roof')] + ' ' + ENC_LABEL[val('enclosure')];
+                        var config = TYPE_LABEL[val('type')] + ' ' + num('width') + 'x' + num('length') + 'x' + num('height') + ' ' + ROOF_LABEL[val('roof')] + ' ' + ENC_LABEL[val('enclosure')] + ' | Color: ' + selectedColor;
 
                         return fetch('/api/create-paypal-order', {
                             method: 'POST',
                             headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify({ amount: est.deposit, total: est.total, config: config, name: name, email: email, phone: phone, zip: zip })
+                            body: JSON.stringify({ amount: est.deposit, total: est.total, config: config, name: name, email: email, phone: phone, zip: zip, color: selectedColor })
                         }).then(function(r) { return r.json(); })
                         .then(function(data) {
                             if (data.id) return data.id;
