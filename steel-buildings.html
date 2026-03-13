@@ -429,7 +429,8 @@
 
     function calcConcrete(w, l) {
         var sqft = parseInt(w) * parseInt(l);
-        return Math.floor(sqft / 5) * 5; // round down to nearest 5
+        var price = sqft * 8.50;
+        return Math.floor(price / 5) * 5; // round down to nearest 5
     }
 
     function fmt(n) { return '$' + n.toLocaleString('en-US'); }
