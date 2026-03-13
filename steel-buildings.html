@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="favicon.png">
-    <title>Steel Building Estimator | Custom Metal Buildings | North Florida Building Solutions</title>
-    <meta name="description" content="Design your custom steel building and get an instant price estimate. Carports, garages, barns, workshops. Free delivery and installation throughout North Florida.">
+    <title>Steel Buildings | Metal Carports, Garages & Barns | North Florida Building Solutions</title>
+    <meta name="description" content="Browse available metal buildings for sale — carports, garages, and barns. Free delivery and installation throughout North Florida. Call (386) 350-1047.">
     <link rel="canonical" href="https://nflbuildingsolutions.com/steel-buildings.html">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
@@ -66,393 +66,162 @@
     </nav>
 
     <!-- Hero -->
-    <section class="bg-primary text-white py-12">
-        <div class="container mx-auto px-6 text-center">
-            <h1 class="text-3xl md:text-4xl font-bold mb-3">Design Your Custom Steel Building</h1>
-            <p class="text-lg text-gray-300 max-w-2xl mx-auto">Configure your building below and get an instant price estimate. Free delivery &amp; installation throughout North Florida.</p>
+    <section class="bg-primary text-white py-16">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/2">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-4">Steel Buildings</h1>
+                    <p class="text-xl text-gray-300 mb-6">Custom metal carports, garages, and barns — built to last. Free delivery &amp; installation throughout North Florida.</p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-accent"></i>Vertical Roof with FL Certification</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-accent"></i>12GA Framing &amp; 150 MPH Wind Rating</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-accent"></i>Free Delivery &amp; Professional Installation</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-accent"></i>Multiple Sizes, Colors &amp; Configurations</li>
+                    </ul>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#inventory" class="bg-secondary hover:bg-blue-700 text-white px-8 py-4 rounded-xl font-bold shadow-xl transition">
+                            <i class="fa-solid fa-warehouse mr-2"></i>Browse Inventory
+                        </a>
+                        <a href="#quote-form" class="bg-white hover:bg-gray-100 text-primary px-8 py-4 rounded-xl font-bold shadow-xl transition">
+                            <i class="fa-solid fa-paper-plane mr-2"></i>Request a Quote
+                        </a>
+                        <a href="tel:+13863501047" class="border-2 border-white/30 hover:border-white text-white px-8 py-4 rounded-xl font-bold transition">
+                            <i class="fa-solid fa-phone mr-2"></i>(386) 350-1047
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <img src="images/building-1.jpg" alt="Steel Buildings" class="rounded-2xl shadow-2xl">
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Configurator -->
-    <section class="py-10 bg-gray-50">
+    <!-- Inventory Section -->
+    <section id="inventory" class="py-16 bg-gray-50">
         <div class="container mx-auto px-6">
-            <div class="grid lg:grid-cols-3 gap-8">
+            <h2 class="text-3xl font-bold text-center mb-4">Available Steel Buildings</h2>
+            <p class="text-gray-600 text-center mb-8">Pre-built and ready for delivery. Buy now with PayPal — free delivery &amp; installation included.</p>
 
-                <!-- LEFT: Configuration Form -->
-                <div class="lg:col-span-2 space-y-6">
+            <!-- Category Tabs -->
+            <div class="flex justify-center mb-10">
+                <div class="inline-flex bg-white rounded-xl shadow-md p-1 gap-1">
+                    <button onclick="switchTab('all')" id="tab-all" class="tab-btn px-6 py-3 rounded-lg font-semibold text-sm transition bg-secondary text-white">
+                        All Buildings
+                    </button>
+                    <button onclick="switchTab('carport')" id="tab-carport" class="tab-btn px-6 py-3 rounded-lg font-semibold text-sm transition text-gray-600 hover:bg-gray-100">
+                        <i class="fa-solid fa-car-side mr-1"></i>Carports
+                    </button>
+                    <button onclick="switchTab('garage')" id="tab-garage" class="tab-btn px-6 py-3 rounded-lg font-semibold text-sm transition text-gray-600 hover:bg-gray-100">
+                        <i class="fa-solid fa-warehouse mr-1"></i>Garages
+                    </button>
+                    <button onclick="switchTab('barn')" id="tab-barn" class="tab-btn px-6 py-3 rounded-lg font-semibold text-sm transition text-gray-600 hover:bg-gray-100">
+                        <i class="fa-solid fa-horse mr-1"></i>Barns
+                    </button>
+                </div>
+            </div>
 
-                    <!-- Building Specs -->
-                    <div class="bg-white rounded-2xl shadow-lg p-6">
-                        <h2 class="text-xl font-bold mb-5 flex items-center gap-2"><i class="fa-solid fa-sliders text-secondary"></i> Building Configuration</h2>
-                        <div class="grid md:grid-cols-2 gap-5">
-                            <div>
-                                <label class="block text-sm font-semibold text-gray-700 mb-1">Building Type</label>
-                                <select id="cfg-type" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-secondary focus:border-transparent outline-none">
-                                    <option value="carport">Carport</option>
-                                    <option value="garage" selected>Garage</option>
-                                    <option value="barn">Barn</option>
-                                </select>
-                            </div>
-                            <div>
-                                <label class="block text-sm font-semibold text-gray-700 mb-1">Roof Style</label>
-                                <select id="cfg-roof" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-secondary focus:border-transparent outline-none">
-                                    <option value="vertical" selected>Vertical Roof</option>
-                                </select>
-                            </div>
-                            <div>
-                                <label class="block text-sm font-semibold text-gray-700 mb-1">Width</label>
-                                <select id="cfg-width" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-secondary focus:border-transparent outline-none">
-                                    <option value="12">12'</option>
-                                    <option value="18">18'</option>
-                                    <option value="20">20'</option>
-                                    <option value="22">22'</option>
-                                    <option value="24" selected>24'</option>
-                                    <option value="26">26'</option>
-                                    <option value="28">28'</option>
-                                    <option value="30">30'</option>
-                                    <option value="32">32'</option>
-                                    <option value="34">34'</option>
-                                    <option value="36">36'</option>
-                                    <option value="38">38'</option>
-                                    <option value="40">40'</option>
-                                    <option value="42">42'</option>
-                                    <option value="44">44'</option>
-                                    <option value="46">46'</option>
-                                    <option value="48">48'</option>
-                                    <option value="50">50'</option>
-                                    <option value="52">52'</option>
-                                    <option value="54">54'</option>
-                                    <option value="56">56'</option>
-                                    <option value="58">58'</option>
-                                    <option value="60">60'</option>
-                                </select>
-                            </div>
-                            <div>
-                                <label class="block text-sm font-semibold text-gray-700 mb-1">Length</label>
-                                <select id="cfg-length" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-secondary focus:border-transparent outline-none">
-                                    <option value="20">20'</option>
-                                    <option value="25">25'</option>
-                                    <option value="30" selected>30'</option>
-                                    <option value="35">35'</option>
-                                    <option value="40">40'</option>
-                                    <option value="45">45'</option>
-                                    <option value="50">50'</option>
-                                    <option value="55">55'</option>
-                                    <option value="60">60'</option>
-                                    <option value="65">65'</option>
-                                    <option value="70">70'</option>
-                                    <option value="75">75'</option>
-                                    <option value="80">80'</option>
-                                    <option value="85">85'</option>
-                                    <option value="90">90'</option>
-                                    <option value="95">95'</option>
-                                    <option value="100">100'</option>
-                                </select>
-                            </div>
-                            <div>
-                                <label class="block text-sm font-semibold text-gray-700 mb-1">Height (Leg)</label>
-                                <select id="cfg-height" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-secondary focus:border-transparent outline-none">
-                                    <option value="6">6'</option>
-                                    <option value="7">7'</option>
-                                    <option value="8">8'</option>
-                                    <option value="9">9'</option>
-                                    <option value="10" selected>10'</option>
-                                    <option value="11">11'</option>
-                                    <option value="12">12'</option>
-                                    <option value="13">13'</option>
-                                    <option value="14">14'</option>
-                                </select>
-                            </div>
-                            <div>
-                                <label class="block text-sm font-semibold text-gray-700 mb-1">Enclosure</label>
-                                <select id="cfg-enclosure" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-secondary focus:border-transparent outline-none">
-                                    <option value="open">Open (No Walls)</option>
-                                    <option value="sides">Both Sides Closed</option>
-                                    <option value="full" selected>Fully Enclosed</option>
-                                </select>
-                            </div>
-                        </div>
+            <div id="inventory-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="col-span-full text-center py-12 text-gray-400">
+                    <i class="fa-solid fa-spinner fa-spin text-3xl mb-4"></i>
+                    <p>Loading inventory...</p>
+                </div>
+            </div>
+
+            <div id="inventory-empty" class="hidden text-center py-12 text-gray-400">
+                <i class="fa-solid fa-building text-4xl mb-4"></i>
+                <p class="text-lg mb-2">No buildings in this category right now.</p>
+                <p>Call us for availability or request a custom quote below.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Purchase Modal -->
+    <div id="purchase-modal" class="hidden fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto shadow-2xl">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 id="modal-title" class="text-xl font-bold text-primary">Purchase Building</h3>
+                    <button onclick="closeModal()" class="text-gray-400 hover:text-gray-600 text-2xl">&times;</button>
+                </div>
+                <div id="modal-summary" class="bg-gray-50 rounded-lg p-4 mb-4"></div>
+
+                <!-- Step 1: Contact Info -->
+                <div id="step1">
+                    <p class="text-sm text-gray-600 mb-4">Enter your contact info to proceed to payment.</p>
+                    <div class="space-y-3">
+                        <input type="text" id="buy-name" placeholder="Full Name *" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-secondary outline-none">
+                        <input type="email" id="buy-email" placeholder="Email *" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-secondary outline-none">
+                        <input type="tel" id="buy-phone" placeholder="Phone *" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-secondary outline-none">
+                        <input type="text" id="buy-zip" placeholder="Delivery Zip Code *" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-secondary outline-none">
                     </div>
-
-                    <!-- Add-Ons -->
-                    <div class="bg-white rounded-2xl shadow-lg p-6">
-                        <h2 class="text-xl font-bold mb-5 flex items-center gap-2"><i class="fa-solid fa-plus-circle text-secondary"></i> Doors, Windows &amp; Extras</h2>
-                        <div class="grid md:grid-cols-2 gap-5">
-                            <div>
-                                <label class="block text-sm font-semibold text-gray-700 mb-1">Garage Doors</label>
-                                <div class="flex gap-2">
-                                    <select id="cfg-gdoor-qty" class="w-20 px-3 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-secondary outline-none">
-                                        <option value="0">0</option>
-                                        <option value="1" selected>1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                    </select>
-                                    <select id="cfg-gdoor-size" class="flex-1 px-3 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-secondary outline-none">
-                                        <option value="6x7">6' x 7'</option>
-                                        <option value="8x8">8' x 8'</option>
-                                        <option value="9x8">9' x 8'</option>
-                                        <option value="10x8">10' x 8'</option>
-                                        <option value="10x10" selected>10' x 10'</option>
-                                        <option value="12x12">12' x 12'</option>
-                                        <option value="14x14">14' x 14'</option>
-                                    </select>
-                                </div>
-                                <div class="flex items-center gap-3 mt-2">
-                                    <select id="cfg-gdoor-side" class="flex-1 px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-secondary outline-none text-sm">
-                                        <option value="width" selected>Doors on End Wall (Width)</option>
-                                        <option value="length">Doors on Side Wall (Length)</option>
-                                    </select>
-                                    <div id="door-side-visual" class="flex-shrink-0">
-                                        <svg width="80" height="56" viewBox="0 0 80 56">
-                                            <rect x="10" y="8" width="56" height="34" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5" rx="2"/>
-                                            <!-- Labels on walls -->
-                                            <text x="38" y="29" text-anchor="middle" font-size="9" fill="#94a3b8" font-weight="600">L</text>
-                                            <text x="4" y="29" text-anchor="middle" font-size="9" fill="#94a3b8" font-weight="600">W</text>
-                                            <!-- Width/end wall highlight (left side) -->
-                                            <line id="door-vis-width" x1="10" y1="8" x2="10" y2="42" stroke="#2563EB" stroke-width="4" stroke-linecap="round"/>
-                                            <!-- Length/side wall highlight (top side) - hidden by default -->
-                                            <line id="door-vis-length" x1="10" y1="8" x2="66" y2="8" stroke="#2563EB" stroke-width="4" stroke-linecap="round" class="hidden"/>
-                                            <!-- Small door icon on highlighted wall -->
-                                            <rect id="door-icon-w" x="7" y="19" width="6" height="10" fill="#2563EB" rx="1" opacity="0.6"/>
-                                            <rect id="door-icon-l" x="30" y="5" width="16" height="6" fill="#2563EB" rx="1" opacity="0.6" class="hidden"/>
-                                        </svg>
-                                    </div>
-                                </div>
-                            </div>
-                            <div>
-                                <label class="block text-sm font-semibold text-gray-700 mb-1">Walk-In Doors</label>
-                                <select id="cfg-walkin" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-secondary focus:border-transparent outline-none">
-                                    <option value="0">0</option>
-                                    <option value="1" selected>1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                </select>
-                            </div>
-                            <div>
-                                <label class="block text-sm font-semibold text-gray-700 mb-1">Windows</label>
-                                <select id="cfg-windows" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-secondary focus:border-transparent outline-none">
-                                    <option value="0" selected>0</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="6">6</option>
-                                    <option value="8">8</option>
-                                </select>
-                            </div>
-                            <div>
-                                <label class="flex items-center gap-3 cursor-pointer">
-                                    <input type="checkbox" id="cfg-concrete" class="w-5 h-5 rounded border-gray-300 text-secondary focus:ring-secondary">
-                                    <div>
-                                        <span class="font-semibold text-gray-700">4" Concrete Slab with Footer</span>
-                                        <span class="text-sm text-gray-500 block">Poured foundation for maximum stability</span>
-                                    </div>
-                                </label>
-                            </div>
-                            <div class="md:col-span-2">
-                                <div class="flex items-center gap-3 bg-green-50 border border-green-200 rounded-lg px-4 py-3">
-                                    <i class="fa-solid fa-shield-halved text-green-600 text-xl"></i>
-                                    <div>
-                                        <span class="font-semibold text-green-800">Florida Certified &mdash; Included</span>
-                                        <span class="text-sm text-green-600 block">All Vertical Roof buildings include FL certification, 12GA framing &amp; 150 MPH wind rating</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Color Chart -->
-                    <div class="bg-white rounded-2xl shadow-lg p-6">
-                        <h2 class="text-xl font-bold mb-5 flex items-center gap-2"><i class="fa-solid fa-palette text-secondary"></i> Available Colors</h2>
-                        <p class="text-sm text-gray-500 mb-2">Available in 26 and 28 gauge Sherwin-Williams coil coatings. Click to select your color. <span class="text-red-500">*</span></p>
-                        <div id="color-error" class="hidden text-red-500 text-sm mb-2"><i class="fa-solid fa-exclamation-circle mr-1"></i>Please select a color.</div>
-                        <div id="color-grid" class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-3">
-                            <div class="color-swatch text-center cursor-pointer" data-color="Galvalume" onclick="selectColor(this)">
-                                <div class="swatch-box w-full aspect-square rounded-lg border-2 border-gray-200 mb-1 transition-all" style="background:#C8C5BE;"></div>
-                                <span class="text-xs font-medium text-gray-700">Galvalume</span>
-                            </div>
-                            <div class="color-swatch text-center cursor-pointer" data-color="Clay" onclick="selectColor(this)">
-                                <div class="swatch-box w-full aspect-square rounded-lg border-2 border-gray-200 mb-1 transition-all" style="background:#C2A96E;"></div>
-                                <span class="text-xs font-medium text-gray-700">Clay</span>
-                            </div>
-                            <div class="color-swatch text-center cursor-pointer" data-color="Green" onclick="selectColor(this)">
-                                <div class="swatch-box w-full aspect-square rounded-lg border-2 border-gray-200 mb-1 transition-all" style="background:#2D5A3D;"></div>
-                                <span class="text-xs font-medium text-gray-700">Green</span>
-                            </div>
-                            <div class="color-swatch text-center cursor-pointer" data-color="Bright White" onclick="selectColor(this)">
-                                <div class="swatch-box w-full aspect-square rounded-lg border-2 border-gray-200 mb-1 transition-all" style="background:#E8E6E0;"></div>
-                                <span class="text-xs font-medium text-gray-700">Bright White</span>
-                            </div>
-                            <div class="color-swatch text-center cursor-pointer" data-color="Ash Gray" onclick="selectColor(this)">
-                                <div class="swatch-box w-full aspect-square rounded-lg border-2 border-gray-200 mb-1 transition-all" style="background:#C4BFB6;"></div>
-                                <span class="text-xs font-medium text-gray-700">Ash Gray</span>
-                            </div>
-                            <div class="color-swatch text-center cursor-pointer" data-color="Bright Red" onclick="selectColor(this)">
-                                <div class="swatch-box w-full aspect-square rounded-lg border-2 border-gray-200 mb-1 transition-all" style="background:#D42426;"></div>
-                                <span class="text-xs font-medium text-gray-700">Bright Red</span>
-                            </div>
-                            <div class="color-swatch text-center cursor-pointer" data-color="Ivory" onclick="selectColor(this)">
-                                <div class="swatch-box w-full aspect-square rounded-lg border-2 border-gray-200 mb-1 transition-all" style="background:#EDE4C8;"></div>
-                                <span class="text-xs font-medium text-gray-700">Ivory</span>
-                            </div>
-                            <div class="color-swatch text-center cursor-pointer" data-color="Pewter Gray" onclick="selectColor(this)">
-                                <div class="swatch-box w-full aspect-square rounded-lg border-2 border-gray-200 mb-1 transition-all" style="background:#8A8680;"></div>
-                                <span class="text-xs font-medium text-gray-700">Pewter Gray</span>
-                            </div>
-                            <div class="color-swatch text-center cursor-pointer" data-color="Country Red" onclick="selectColor(this)">
-                                <div class="swatch-box w-full aspect-square rounded-lg border-2 border-gray-200 mb-1 transition-all" style="background:#8B3A2A;"></div>
-                                <span class="text-xs font-medium text-gray-700">Country Red</span>
-                            </div>
-                            <div class="color-swatch text-center cursor-pointer" data-color="Light Stone" onclick="selectColor(this)">
-                                <div class="swatch-box w-full aspect-square rounded-lg border-2 border-gray-200 mb-1 transition-all" style="background:#C9B97E;"></div>
-                                <span class="text-xs font-medium text-gray-700">Light Stone</span>
-                            </div>
-                            <div class="color-swatch text-center cursor-pointer" data-color="Charcoal Gray" onclick="selectColor(this)">
-                                <div class="swatch-box w-full aspect-square rounded-lg border-2 border-gray-200 mb-1 transition-all" style="background:#52524E;"></div>
-                                <span class="text-xs font-medium text-gray-700">Charcoal Gray</span>
-                            </div>
-                            <div class="color-swatch text-center cursor-pointer" data-color="Hawaiian Blue" onclick="selectColor(this)">
-                                <div class="swatch-box w-full aspect-square rounded-lg border-2 border-gray-200 mb-1 transition-all" style="background:#5B7B8A;"></div>
-                                <span class="text-xs font-medium text-gray-700">Hawaiian Blue</span>
-                            </div>
-                            <div class="color-swatch text-center cursor-pointer" data-color="Sahara Tan" onclick="selectColor(this)">
-                                <div class="swatch-box w-full aspect-square rounded-lg border-2 border-gray-200 mb-1 transition-all" style="background:#BEA97A;"></div>
-                                <span class="text-xs font-medium text-gray-700">Sahara Tan</span>
-                            </div>
-                            <div class="color-swatch text-center cursor-pointer" data-color="Burnished Slate" onclick="selectColor(this)">
-                                <div class="swatch-box w-full aspect-square rounded-lg border-2 border-gray-200 mb-1 transition-all" style="background:#5C5B4F;"></div>
-                                <span class="text-xs font-medium text-gray-700">Burnished Slate</span>
-                            </div>
-                            <div class="color-swatch text-center cursor-pointer" data-color="Gallery Blue" onclick="selectColor(this)">
-                                <div class="swatch-box w-full aspect-square rounded-lg border-2 border-gray-200 mb-1 transition-all" style="background:#4A5A6A;"></div>
-                                <span class="text-xs font-medium text-gray-700">Gallery Blue</span>
-                            </div>
-                            <div class="color-swatch text-center cursor-pointer" data-color="Brown" onclick="selectColor(this)">
-                                <div class="swatch-box w-full aspect-square rounded-lg border-2 border-gray-200 mb-1 transition-all" style="background:#5C4A3A;"></div>
-                                <span class="text-xs font-medium text-gray-700">Brown</span>
-                            </div>
-                            <div class="color-swatch text-center cursor-pointer" data-color="Black" onclick="selectColor(this)">
-                                <div class="swatch-box w-full aspect-square rounded-lg border-2 border-gray-200 mb-1 transition-all" style="background:#1A1A1A;"></div>
-                                <span class="text-xs font-medium text-gray-700">Black</span>
-                            </div>
-                            <div class="color-swatch text-center cursor-pointer" data-color="Burgundy" onclick="selectColor(this)">
-                                <div class="swatch-box w-full aspect-square rounded-lg border-2 border-gray-200 mb-1 transition-all" style="background:#5C2D3E;"></div>
-                                <span class="text-xs font-medium text-gray-700">Burgundy</span>
-                            </div>
-                        </div>
-                        <p class="text-xs text-gray-400 mt-3">Colors shown are approximate. Please refer to a color card or paint swatches for exact accuracy.</p>
-                    </div>
-
-                    <!-- Contact Info -->
-                    <div class="bg-white rounded-2xl shadow-lg p-6">
-                        <h2 class="text-xl font-bold mb-5 flex items-center gap-2"><i class="fa-solid fa-user text-secondary"></i> Your Information</h2>
-                        <p class="text-sm text-gray-500 mb-4">Fill in your details to submit your quote or pay a deposit to lock in pricing.</p>
-                        <div class="grid md:grid-cols-2 gap-5">
-                            <div>
-                                <label class="block text-sm font-semibold text-gray-700 mb-1">Full Name *</label>
-                                <input type="text" id="cfg-name" required placeholder="John Smith" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-secondary focus:border-transparent outline-none">
-                            </div>
-                            <div>
-                                <label class="block text-sm font-semibold text-gray-700 mb-1">Email *</label>
-                                <input type="email" id="cfg-email" required placeholder="john@example.com" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-secondary focus:border-transparent outline-none">
-                            </div>
-                            <div>
-                                <label class="block text-sm font-semibold text-gray-700 mb-1">Phone *</label>
-                                <input type="tel" id="cfg-phone" required placeholder="(904) 555-1234" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-secondary focus:border-transparent outline-none">
-                            </div>
-                            <div>
-                                <label class="block text-sm font-semibold text-gray-700 mb-1">Zip Code *</label>
-                                <input type="text" id="cfg-zip" required placeholder="32148" maxlength="5" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-secondary focus:border-transparent outline-none">
-                            </div>
-                        </div>
-                        <div class="mt-5 flex flex-col sm:flex-row gap-3">
-                            <button type="button" id="btn-submit-quote" class="flex-1 bg-secondary hover:bg-blue-700 text-white py-3 rounded-xl font-bold text-base shadow-lg transition">
-                                <i class="fa-solid fa-paper-plane mr-2"></i>Submit Quote Request
-                            </button>
-                            <a href="tel:+13863501047" class="flex-1 text-center bg-white border-2 border-secondary text-secondary py-3 rounded-xl font-bold text-base hover:bg-blue-50 transition">
-                                <i class="fa-solid fa-phone mr-1"></i>Prefer to call? (386) 350-1047
-                            </a>
-                        </div>
-                    </div>
+                    <button onclick="goToStep2()" class="w-full bg-secondary hover:bg-blue-700 text-white py-3 rounded-lg font-bold mt-4 transition">
+                        Continue to Payment <i class="fa-solid fa-arrow-right ml-2"></i>
+                    </button>
                 </div>
 
-                <!-- RIGHT: Price Sidebar -->
-                <div class="lg:col-span-1">
-                    <div class="lg:sticky lg:top-24">
-                        <div id="price-summary" class="bg-white rounded-2xl shadow-lg border-2 border-secondary/20 overflow-hidden">
-                            <div class="bg-secondary text-white p-6 text-center">
-                                <span class="text-sm uppercase tracking-wide block mb-1">Your Price</span>
-                                <div id="price-range" class="text-3xl font-extrabold">$0</div>
-                            </div>
-                            <div class="p-6 space-y-4">
-                                <div class="flex justify-between items-center">
-                                    <span class="text-gray-500 text-sm">Monthly Payment</span>
-                                    <span id="price-monthly" class="font-bold text-lg">~$0/mo</span>
-                                </div>
-                                <hr>
-                                <div class="text-sm text-gray-600 space-y-2" id="price-breakdown">
-                                    <div class="flex justify-between"><span>Type</span><span id="sum-type" class="font-medium">Garage</span></div>
-                                    <div class="flex justify-between"><span>Size</span><span id="sum-size" class="font-medium">24' x 30'</span></div>
-                                    <div class="flex justify-between"><span>Height</span><span id="sum-height" class="font-medium">10'</span></div>
-                                    <div class="flex justify-between"><span>Roof</span><span id="sum-roof" class="font-medium">Vertical</span></div>
-                                    <div class="flex justify-between"><span>Enclosure</span><span id="sum-enc" class="font-medium">Fully Enclosed</span></div>
-                                    <div class="flex justify-between"><span>Doors</span><span id="sum-doors" class="font-medium">1x 10x10, 1 walk-in</span></div>
-                                    <div class="flex justify-between"><span>Windows</span><span id="sum-windows" class="font-medium">0</span></div>
-                                    <div class="flex justify-between"><span>Concrete</span><span id="sum-concrete" class="font-medium">None</span></div>
-                                    <div class="flex justify-between"><span>Color</span><span id="sum-color" class="font-medium text-red-400">Not selected</span></div>
-                                </div>
-                                <hr>
-                                <p class="text-xs text-gray-400">Final price depends on site conditions, color choices, and local requirements. We'll confirm all details after you submit.</p>
-
-                                <!-- Pay Deposit Button (always visible) -->
-                                <button id="deposit-btn" onclick="showDepositSection()" class="w-full bg-green-600 hover:bg-green-700 text-white py-3 rounded-xl font-bold text-lg transition shadow-lg">
-                                    <i class="fa-solid fa-lock mr-2"></i>Pay Deposit <span id="deposit-btn-amount">$0</span>
-                                </button>
-                                <p class="text-xs text-gray-400 text-center mt-1">11% deposit to lock in your price</p>
-
-                                <!-- Deposit payment section (hidden until button clicked) -->
-                                <div id="sidebar-deposit" class="hidden">
-                                    <hr>
-                                    <div class="bg-green-50 border border-green-200 rounded-xl p-4 text-center">
-                                        <div class="text-xs uppercase tracking-wide text-green-700 font-semibold mb-1">Start Your Order Today</div>
-                                        <div class="text-2xl font-extrabold text-primary" id="sidebar-deposit-amount">$0</div>
-                                        <div class="text-xs text-gray-500 mb-3" id="sidebar-deposit-label">11% deposit to lock in your price</div>
-
-                                        <!-- Contact info for deposit -->
-                                        <div id="deposit-info-form" class="text-left space-y-2 mb-4">
-                                            <input type="text" id="dep-name" placeholder="Full Name *" required class="w-full px-3 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-500 focus:border-transparent text-sm">
-                                            <input type="email" id="dep-email" placeholder="Email *" required class="w-full px-3 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-500 focus:border-transparent text-sm">
-                                            <input type="tel" id="dep-phone" placeholder="Phone *" required class="w-full px-3 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-500 focus:border-transparent text-sm">
-                                            <input type="text" id="dep-zip" placeholder="ZIP Code *" required class="w-full px-3 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-500 focus:border-transparent text-sm">
-                                        </div>
-
-                                        <div id="paypal-button-container"></div>
-                                        <div class="flex items-center justify-center gap-2 mt-2">
-                                            <i class="fa-solid fa-shield-halved text-gray-400 text-xs"></i>
-                                            <span class="text-xs text-gray-400">Secure checkout via PayPal</span>
-                                        </div>
-                                    </div>
-                                    <ul class="text-xs text-gray-500 space-y-1 mt-3">
-                                        <li><i class="fa-solid fa-check text-green-500 mr-1"></i>Locks in today's pricing</li>
-                                        <li><i class="fa-solid fa-check text-green-500 mr-1"></i>Priority build queue</li>
-                                        <li><i class="fa-solid fa-check text-green-500 mr-1"></i>Balance due at installation</li>
-                                    </ul>
-                                    <button onclick="hideDepositSection()" class="w-full mt-3 text-gray-500 hover:text-gray-700 text-sm font-medium transition">
-                                        <i class="fa-solid fa-arrow-left mr-1"></i> Back
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mt-4 text-center">
-                            <a href="tel:+13863501047" class="text-secondary font-semibold hover:underline">
-                                <i class="fa-solid fa-phone mr-1"></i>Questions? Call (386) 350-1047
-                            </a>
-                        </div>
-                    </div>
+                <!-- Step 2: PayPal -->
+                <div id="step2" class="hidden">
+                    <p class="text-sm text-gray-600 mb-4">Complete your purchase with PayPal.</p>
+                    <div id="paypal-button-container"></div>
+                    <button onclick="backToStep1()" class="w-full text-gray-500 hover:text-gray-700 py-2 mt-2 text-sm transition">
+                        <i class="fa-solid fa-arrow-left mr-1"></i> Back
+                    </button>
                 </div>
 
+                <!-- Step 3: Success -->
+                <div id="step3" class="hidden text-center py-6">
+                    <i class="fa-solid fa-circle-check text-green-500 text-5xl mb-4"></i>
+                    <h3 class="text-xl font-bold text-primary mb-2">Payment Successful!</h3>
+                    <p class="text-gray-600">We'll contact you within 24 hours to schedule delivery.</p>
+                </div>
+
+                <div id="modal-error" class="hidden bg-red-50 text-red-700 rounded-lg p-3 mt-3 text-sm"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quote Form -->
+    <section id="quote-form" class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="max-w-2xl mx-auto">
+                <h2 class="text-3xl font-bold text-center mb-4">Request a Free Quote</h2>
+                <p class="text-gray-600 text-center mb-8">Tell us what you're looking for and we'll get back to you with pricing.</p>
+
+                <div class="bg-gray-50 rounded-2xl shadow-lg p-8">
+                    <div class="grid md:grid-cols-2 gap-5 mb-5">
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-1">Full Name *</label>
+                            <input type="text" id="q-name" required placeholder="John Smith" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-secondary focus:border-transparent outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-1">Email *</label>
+                            <input type="email" id="q-email" required placeholder="john@example.com" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-secondary focus:border-transparent outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-1">Phone *</label>
+                            <input type="tel" id="q-phone" required placeholder="(904) 555-1234" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-secondary focus:border-transparent outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-1">Zip Code *</label>
+                            <input type="text" id="q-zip" required placeholder="32148" maxlength="5" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-secondary focus:border-transparent outline-none">
+                        </div>
+                    </div>
+                    <div class="mb-5">
+                        <label class="block text-sm font-semibold text-gray-700 mb-1">What are you looking for?</label>
+                        <textarea id="q-notes" rows="4" placeholder="Describe the building you need — type, size, features, etc." class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-secondary focus:border-transparent outline-none resize-none"></textarea>
+                    </div>
+                    <!-- Honeypot -->
+                    <input type="text" name="_honey" id="q-honey" style="display:none" tabindex="-1" autocomplete="off">
+                    <div class="flex flex-col sm:flex-row gap-3">
+                        <button type="button" id="btn-submit-quote" class="flex-1 bg-secondary hover:bg-blue-700 text-white py-3 rounded-xl font-bold text-base shadow-lg transition">
+                            <i class="fa-solid fa-paper-plane mr-2"></i>Submit Quote Request
+                        </button>
+                        <a href="tel:+13863501047" class="flex-1 text-center bg-white border-2 border-secondary text-secondary py-3 rounded-xl font-bold text-base hover:bg-blue-50 transition">
+                            <i class="fa-solid fa-phone mr-1"></i>(386) 350-1047
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -528,479 +297,254 @@
         </div>
     </footer>
 
-    <!-- ========== PRICE CALCULATOR ========== -->
     <script>
-    // ---- Color Selection (global scope for onclick) ----
-    var selectedColor = '';
-    function selectColor(el) {
-        // Remove selection from all swatches
-        document.querySelectorAll('.color-swatch .swatch-box').forEach(function(box) {
-            box.classList.remove('border-secondary', 'ring-2', 'ring-secondary', 'ring-offset-2', 'scale-105');
-            box.classList.add('border-gray-200');
+    // ===== INVENTORY =====
+    var allBuildings = [];
+    var currentTab = 'all';
+
+    function switchTab(cat) {
+        currentTab = cat;
+        document.querySelectorAll('.tab-btn').forEach(function(btn) {
+            btn.classList.remove('bg-secondary', 'text-white');
+            btn.classList.add('text-gray-600', 'hover:bg-gray-100');
         });
-        document.querySelectorAll('.color-swatch span').forEach(function(label) {
-            label.classList.remove('text-secondary', 'font-bold');
-            label.classList.add('text-gray-700', 'font-medium');
-        });
-        // Highlight selected
-        var box = el.querySelector('.swatch-box');
-        box.classList.remove('border-gray-200');
-        box.classList.add('border-secondary', 'ring-2', 'ring-secondary', 'ring-offset-2', 'scale-105');
-        var label = el.querySelector('span');
-        label.classList.remove('text-gray-700', 'font-medium');
-        label.classList.add('text-secondary', 'font-bold');
-        selectedColor = el.getAttribute('data-color');
-        // Update sidebar
-        var sumColor = document.getElementById('sum-color');
-        sumColor.textContent = selectedColor;
-        sumColor.classList.remove('text-red-400');
-        sumColor.classList.add('text-primary');
-        // Hide error
-        document.getElementById('color-error').classList.add('hidden');
+        var active = document.getElementById('tab-' + cat);
+        active.classList.add('bg-secondary', 'text-white');
+        active.classList.remove('text-gray-600', 'hover:bg-gray-100');
+        renderInventory();
     }
 
-    (function() {
-        // ===== LOOKUP TABLE PRICING FROM DEALER SHEETS =====
-        var TYPE_LABEL = { 'carport': 'Carport', 'garage': 'Garage', 'barn': 'Barn' };
-        var ENC_LABEL = { 'open': 'Open', 'sides': 'Both Sides Closed', 'full': 'Fully Enclosed' };
-        var CONCRETE_RATE = 8.50;
-        var CONCRETE_LABEL = { false: 'None', true: '4" Slab w/ Footer' };
+    function renderInventory() {
+        var grid = document.getElementById('inventory-grid');
+        var empty = document.getElementById('inventory-empty');
+        var filtered = currentTab === 'all' ? allBuildings : allBuildings.filter(function(b) { return b.category === currentTab; });
 
-        // -- Base Prices: Vertical Roof at standard height (6' for tier1/2, 8' for tier3) --
-        var BASE = {
-            '12_21':1780,'12_26':2090,'12_31':2720,'12_36':3140,'12_41':3620,
-            '18_21':1940,'18_26':2460,'18_31':2880,'18_36':3300,'18_41':3880,
-            '20_21':2360,'20_26':2780,'20_31':3300,'20_36':3830,'20_41':4400,
-            '22_21':2460,'22_26':3140,'22_31':3670,'22_36':4250,'22_41':4880,
-            '24_21':2780,'24_26':3410,'24_31':3930,'24_36':4770,'24_41':5400,
-            '26_21':3300,'26_26':4090,'26_31':4880,'26_36':5660,'26_41':6660,
-            '28_21':3410,'28_26':4190,'28_31':4980,'28_36':5870,'28_41':6920,
-            '30_21':3560,'30_26':4460,'30_31':5350,'30_36':6240,'30_41':7190,
-            '32_21':6315,'32_26':7465,'32_31':8615,'32_36':9765,'32_41':10915,'32_46':12185,'32_51':13565,
-            '34_21':6695,'34_26':7875,'34_31':9045,'34_36':10225,'34_41':11405,'34_46':13045,'34_51':14575,
-            '36_21':7065,'36_26':8275,'36_31':9485,'36_36':10685,'36_41':12245,'36_46':13905,'36_51':15465,
-            '38_21':7465,'38_26':8705,'38_31':10055,'38_36':11635,'38_41':13215,'38_46':15145,'38_51':16845,
-            '40_21':7985,'40_26':9135,'40_31':10635,'40_36':12245,'40_41':13855,'40_46':15805,'40_51':17535,
-            '42_21':8835,'42_26':9955,'42_31':11915,'42_36':12905,'42_41':14025,'42_46':16435,'42_51':18195,
-            '44_21':9515,'44_26':10665,'44_31':12555,'44_36':13545,'44_41':14705,'44_46':17065,'44_51':18855,
-            '46_21':10185,'46_26':11375,'46_31':13195,'46_36':14195,'46_41':15385,'46_46':17685,'46_51':19915,
-            '48_21':10865,'48_26':12085,'48_31':13835,'48_36':14835,'48_41':16055,'48_46':18315,'48_51':20175,
-            '50_21':11545,'50_26':12785,'50_31':14475,'50_36':15475,'50_41':16735,'50_46':18945,'50_51':20835,
-            '52_21':12225,'52_26':13495,'52_31':15115,'52_36':16125,'52_41':17415,'52_46':19965,'52_51':21495,
-            '54_21':12905,'54_26':14205,'54_31':15745,'54_36':16765,'54_41':18095,'54_46':20195,'54_51':22165,
-            '56_21':13585,'56_26':14905,'56_31':16385,'56_36':17415,'56_41':18775,'56_46':20825,'56_51':22825,
-            '58_21':14265,'58_26':15615,'58_31':17025,'58_36':18055,'58_41':19455,'58_46':21215,'58_51':23485,
-            '60_21':14935,'60_26':16325,'60_31':17665,'60_36':18695,'60_41':20135,'60_46':22075,'60_51':24145
-        };
-
-        // -- Side Height Upgrade (cost to raise legs above standard) --
-        // Tier 1: widths 12-24, standard=6', heights 7-14
-        var SIDE_H1 = {
-            '21_7':70,'21_8':140,'21_9':220,'21_10':290,'21_11':360,'21_12':430,'21_13':620,'21_14':700,
-            '26_7':90,'26_8':220,'26_9':310,'26_10':400,'26_11':490,'26_12':580,'26_13':820,'26_14':910,
-            '31_7':110,'31_8':280,'31_9':380,'31_10':490,'31_11':600,'31_12':710,'31_13':1000,'31_14':1100,
-            '36_7':130,'36_8':340,'36_9':460,'36_10':590,'36_11':710,'36_12':840,'36_13':1180,'36_14':1300,
-            '41_7':140,'41_8':400,'41_9':540,'41_10':680,'41_11':830,'41_12':970,'41_13':1360,'41_14':1500
-        };
-        // Tier 2: widths 26-30, standard=6', heights 7-14
-        var SIDE_H2 = {
-            '21_7':110,'21_8':220,'21_9':320,'21_10':430,'21_11':540,'21_12':650,'21_13':1160,'21_14':1270,
-            '26_7':130,'26_8':260,'26_9':400,'26_10':530,'26_11':660,'26_12':790,'26_13':1420,'26_14':1550,
-            '31_7':150,'31_8':300,'31_9':450,'31_10':600,'31_11':750,'31_12':900,'31_13':1670,'31_14':1820,
-            '36_7':180,'36_8':360,'36_9':540,'36_10':720,'36_11':900,'36_12':1080,'36_13':1920,'36_14':2100,
-            '41_7':200,'41_8':410,'41_9':610,'41_10':820,'41_11':1020,'41_12':1220,'41_13':2180,'41_14':2390
-        };
-        // Tier 3: widths 32-60, standard=8', heights 9-20 (keyed by roof length)
-        var SIDE_H3 = {
-            '21_9':380,'21_10':505,'21_11':760,'21_12':1015,'21_13':1265,'21_14':1520,'21_15':1940,'21_16':2360,'21_17':2785,'21_18':3205,'21_19':3485,'21_20':3750,
-            '26_9':465,'26_10':570,'26_11':855,'26_12':1145,'26_13':1430,'26_14':1720,'26_15':2195,'26_16':2680,'26_17':3180,'26_18':3685,'26_19':4025,'26_20':4360,
-            '31_9':530,'31_10':645,'31_11':955,'31_12':1280,'31_13':1605,'31_14':1925,'31_15':2455,'31_16':2990,'31_17':3580,'31_18':4170,'31_19':4560,'31_20':4955,
-            '36_9':630,'36_10':780,'36_11':1170,'36_12':1545,'36_13':1935,'36_14':2335,'36_15':2980,'36_16':3620,'36_17':4380,'36_18':5140,'36_19':5640,'36_20':6105,
-            '41_9':720,'41_10':850,'41_11':1265,'41_12':1680,'41_13':2105,'41_14':2535,'41_15':3240,'41_16':3940,'41_17':4780,'41_18':5625,'41_19':6180,'41_20':6745
-        };
-
-        // -- Both Sides Closed --
-        // Tier 1: widths 12-24
-        var SIDES1 = {
-            '21_6':430,'21_7':540,'21_8':650,'21_9':700,'21_10':760,'21_11':860,'21_12':920,'21_13':970,'21_14':1080,
-            '26_6':530,'26_7':660,'26_8':790,'26_9':860,'26_10':920,'26_11':1060,'26_12':1120,'26_13':1190,'26_14':1320,
-            '31_6':620,'31_7':780,'31_8':940,'31_9':1010,'31_10':1090,'31_11':1250,'31_12':1330,'31_13':1400,'31_14':1560,
-            '36_6':700,'36_7':870,'36_8':1040,'36_9':1130,'36_10':1220,'36_11':1390,'36_12':1480,'36_13':1570,'36_14':1740,
-            '41_6':860,'41_7':1080,'41_8':1290,'41_9':1400,'41_10':1510,'41_11':1730,'41_12':1840,'41_13':1940,'41_14':2160
-        };
-        // Tier 2: widths 26-30
-        var SIDES2 = {
-            '21_6':440,'21_7':520,'21_8':590,'21_9':670,'21_10':760,'21_11':840,'21_12':930,'21_13':1020,'21_14':1120,
-            '26_6':550,'26_7':640,'26_8':740,'26_9':850,'26_10':950,'26_11':1060,'26_12':1180,'26_13':1290,'26_14':1410,
-            '31_6':660,'31_7':780,'31_8':910,'31_9':1030,'31_10':1160,'31_11':1300,'31_12':1430,'31_13':1570,'31_14':1720,
-            '36_6':790,'36_7':930,'36_8':1080,'36_9':1230,'36_10':1390,'36_11':1540,'36_12':1700,'36_13':1870,'36_14':2030,
-            '41_6':920,'41_7':1090,'41_8':1270,'41_9':1440,'41_10':1620,'41_11':1800,'41_12':1990,'41_13':2170,'41_14':2360
-        };
-        // Tier 3: widths 32-60 (keyed by roof length)
-        var SIDES3 = {
-            '21_8':995,'21_9':1095,'21_10':1130,'21_11':1190,'21_12':1265,'21_13':1345,'21_14':1420,'21_15':1760,'21_16':1970,'21_17':2180,'21_18':2390,'21_19':2600,'21_20':2805,
-            '26_8':1230,'26_9':1330,'26_10':1405,'26_11':1465,'26_12':1545,'26_13':1625,'26_14':1705,'26_15':2190,'26_16':2455,'26_17':2725,'26_18':2985,'26_19':3250,'26_20':3510,
-            '31_8':1465,'31_9':1565,'31_10':1620,'31_11':1700,'31_12':1775,'31_13':1860,'31_14':1935,'31_15':2630,'31_16':2950,'31_17':3280,'31_18':3585,'31_19':3905,'31_20':4210,
-            '36_8':1715,'36_9':1815,'36_10':1895,'36_11':2005,'36_12':2130,'36_13':2250,'36_14':2370,'36_15':3060,'36_16':3440,'36_17':3820,'36_18':4175,'36_19':4555,'36_20':4910,
-            '41_8':1965,'41_9':2065,'41_10':2160,'41_11':2520,'41_12':2695,'41_13':2860,'41_14':3025,'41_15':3510,'41_16':3935,'41_17':4365,'41_18':4775,'41_19':5195,'41_20':5615
-        };
-
-        // -- Each End Closed (price per end) --
-        // Tier 1: widths 12-24
-        var END1 = {
-            '12_6':540,'12_7':640,'12_8':680,'12_9':740,'12_10':830,'12_11':910,'12_12':1010,'12_13':1150,'12_14':1370,
-            '18_6':720,'18_7':780,'18_8':820,'18_9':890,'18_10':980,'18_11':1100,'18_12':1200,'18_13':1370,'18_14':1630,
-            '20_6':780,'20_7':860,'20_8':940,'20_9':1030,'20_10':1130,'20_11':1400,'20_12':1490,'20_13':1580,'20_14':1890,
-            '22_6':860,'22_7':960,'22_8':1070,'22_9':1180,'22_10':1280,'22_11':1590,'22_12':1700,'22_13':1800,'22_14':2150,
-            '24_6':1180,'24_7':1260,'24_8':1350,'24_9':1400,'24_10':1550,'24_11':1670,'24_12':1790,'24_13':2020,'24_14':2410
-        };
-        // Tier 2: widths 26-30
-        var END2 = {
-            '26_6':1250,'26_7':1360,'26_8':1450,'26_9':1560,'26_10':1660,'26_11':1760,'26_12':1870,'26_13':1930,'26_14':1970,
-            '28_6':1390,'28_7':1500,'28_8':1620,'28_9':1720,'28_10':1840,'28_11':1930,'28_12':2040,'28_13':2150,'28_14':2270,
-            '30_6':1530,'30_7':1640,'30_8':1760,'30_9':1870,'30_10':1990,'30_11':2100,'30_12':2220,'30_13':2330,'30_14':2440
-        };
-        // Tier 3: widths 32-60
-        var END3 = {
-            '32_8':2670,'32_9':2750,'32_10':2980,'32_11':3055,'32_12':3135,'32_13':3210,'32_14':3285,'32_15':3365,'32_16':3440,'32_17':3520,'32_18':3595,'32_19':3675,'32_20':3750,
-            '34_8':2785,'34_9':2860,'34_10':3090,'34_11':3170,'34_12':3245,'34_13':3325,'34_14':3400,'34_15':3475,'34_16':3555,'34_17':3630,'34_18':3710,'34_19':3780,'34_20':3860,
-            '36_8':2935,'36_9':3015,'36_10':3245,'36_11':3325,'36_12':3400,'36_13':3475,'36_14':3555,'36_15':3630,'36_16':3710,'36_17':3785,'36_18':3860,'36_19':3940,'36_20':4015,
-            '38_8':3055,'38_9':3135,'38_10':3365,'38_11':3440,'38_12':3520,'38_13':3595,'38_14':3675,'38_15':3750,'38_16':3825,'38_17':3905,'38_18':3980,'38_19':4060,'38_20':4135,
-            '40_8':3170,'40_9':3245,'40_10':3475,'40_11':3555,'40_12':3630,'40_13':3710,'40_14':3785,'40_15':3860,'40_16':3990,'40_17':4015,'40_18':4095,'40_19':4170,'40_20':4250,
-            '42_8':3280,'42_9':3360,'42_10':3590,'42_11':3665,'42_12':3745,'42_13':3820,'42_14':3900,'42_15':3975,'42_16':4050,'42_17':4130,'42_18':4205,'42_19':4285,'42_20':4360,
-            '44_8':3395,'44_9':3470,'44_10':3700,'44_11':3780,'44_12':3855,'44_13':3935,'44_14':4010,'44_15':4090,'44_16':4165,'44_17':4240,'44_18':4320,'44_19':4395,'44_20':4475,
-            '46_8':3505,'46_9':3585,'46_10':3815,'46_11':3890,'46_12':3970,'46_13':4045,'46_14':4125,'46_15':4200,'46_16':4275,'46_17':4355,'46_18':4430,'46_19':4510,'46_20':4585,
-            '48_8':3620,'48_9':3695,'48_10':3925,'48_11':4005,'48_12':4080,'48_13':4160,'48_14':4235,'48_15':4315,'48_16':4390,'48_17':4465,'48_18':4545,'48_19':4620,'48_20':4700,
-            '50_8':3730,'50_9':3810,'50_10':4040,'50_11':4115,'50_12':4195,'50_13':4270,'50_14':4350,'50_15':4425,'50_16':4505,'50_17':4580,'50_18':4655,'50_19':4735,'50_20':4810,
-            '52_8':3845,'52_9':3920,'52_10':4155,'52_11':4230,'52_12':4305,'52_13':4385,'52_14':4460,'52_15':4540,'52_16':4615,'52_17':4690,'52_18':4770,'52_19':4845,'52_20':4925,
-            '54_8':3955,'54_9':4035,'54_10':4263,'54_11':4340,'54_12':4420,'54_13':4495,'54_14':4575,'54_15':4650,'54_16':4730,'54_17':4805,'54_18':4880,'54_19':4960,'54_20':5035,
-            '56_8':4070,'56_9':4140,'56_10':4380,'56_11':4455,'56_12':4530,'56_13':4610,'56_14':4685,'56_15':4765,'56_16':4840,'56_17':4915,'56_18':4995,'56_19':5070,'56_20':5150,
-            '58_8':4175,'58_9':4255,'58_10':4485,'58_11':4560,'58_12':4645,'58_13':4715,'58_14':4800,'58_15':4900,'58_16':4955,'58_17':5030,'58_18':5105,'58_19':5185,'58_20':5260,
-            '60_8':4290,'60_9':4365,'60_10':4600,'60_11':4675,'60_12':4750,'60_13':4830,'60_14':4905,'60_15':4990,'60_16':5060,'60_17':5145,'60_18':5220,'60_19':5290,'60_20':5375
-        };
-
-        // -- Accessory Prices --
-        var GDOOR = { '6x7':770,'8x8':840,'9x8':910,'10x8':980,'10x10':1050,'12x12':2170,'14x14':3430 };
-        var WALKIN = 350;
-        var WINDOW = 200;
-        var FRAMEOUT_GDOOR = 135, FRAMEOUT_WALKIN = 100, FRAMEOUT_WINDOW = 80;
-
-        // ===== HELPERS =====
-        function getTier(w) { return w <= 24 ? 1 : w <= 30 ? 2 : 3; }
-        function getStdH(w) { return w >= 32 ? 8 : 6; }
-        function getSideH(tier) { return tier === 1 ? SIDE_H1 : tier === 2 ? SIDE_H2 : SIDE_H3; }
-        function getSides(tier) { return tier === 1 ? SIDES1 : tier === 2 ? SIDES2 : SIDES3; }
-        function getEnds(tier) { return tier === 1 ? END1 : tier === 2 ? END2 : END3; }
-
-        // ===== DOM REFS =====
-        var ids = ['type','roof','width','length','height','enclosure','gdoor-qty','gdoor-size','gdoor-side','walkin','windows','concrete'];
-        var els = {};
-        ids.forEach(function(k) { els[k] = document.getElementById('cfg-' + k); });
-        function val(id) { return els[id].value; }
-        function num(id) { return parseInt(els[id].value) || 0; }
-        function fmt(n) { return '$' + n.toLocaleString('en-US'); }
-
-        // ===== DYNAMIC DROPDOWNS =====
-        // Map display length to roof length for pricing lookup
-        function roofLen(displayLen) { return displayLen + 1; }
-
-        function updateLengthOptions() {
-            // All lengths always visible — sizes without pricing show "Call for Quote"
+        if (filtered.length === 0) {
+            grid.classList.add('hidden');
+            empty.classList.remove('hidden');
+            return;
         }
+        grid.classList.remove('hidden');
+        empty.classList.add('hidden');
 
-        function updateHeightOptions() {
-            var w = num('width');
-            var tier = getTier(w);
-            var heightEl = els['height'];
-            var curH = parseInt(heightEl.value) || 10;
-            var heights = tier === 3 ? [8,9,10,11,12,13,14,15,16,17,18,19,20] : [6,7,8,9,10,11,12,13,14];
-            heightEl.innerHTML = '';
-            heights.forEach(function(h) {
-                var opt = document.createElement('option');
-                opt.value = h; opt.textContent = h + "'";
-                if (h === curH) opt.selected = true;
-                heightEl.appendChild(opt);
-            });
-            // If current height is out of range, default to standard
-            if (heights.indexOf(curH) === -1) {
-                heightEl.value = tier === 3 ? '10' : '10';
-            }
-        }
+        grid.innerHTML = filtered.map(function(b) {
+            var idx = allBuildings.indexOf(b);
+            var imgSrc = (b.images && b.images[0]) || b.image || '';
+            var imgTag = imgSrc
+                ? '<img src="' + imgSrc + '" alt="' + b.name + '" class="w-full h-48 object-cover">'
+                : '<div class="w-full h-48 bg-gray-200 flex items-center justify-center text-gray-400"><i class="fa-solid fa-image text-4xl"></i></div>';
 
-        els['width'].addEventListener('change', function() {
-            updateLengthOptions();
-            updateHeightOptions();
-            enforceMinHeight();
-            calculate();
-        });
-        updateLengthOptions();
-        updateHeightOptions();
+            var roofLabels = { regular: 'Regular', 'a-frame': 'A-Frame', vertical: 'Vertical' };
+            var encLabels = { open: 'Open', partial: 'Partial', full: 'Fully Enclosed' };
+            var catLabels = { carport: 'Carport', garage: 'Garage', barn: 'Barn' };
 
-        // ===== ENFORCE MIN HEIGHT (garage doors) =====
-        function getDoorHeight(sizeStr) {
-            var parts = sizeStr.split('x');
-            return parseInt(parts[1]) || 0;
-        }
-        function enforceMinHeight() {
-            var gdoorQty = num('gdoor-qty');
-            var doorH = gdoorQty > 0 ? getDoorHeight(val('gdoor-size')) : 0;
-            var doorSide = val('gdoor-side');
-            var clearance = doorSide === 'length' ? 2 : 1; // side wall needs +2', end wall needs +1'
-            var minHeight = doorH > 0 ? doorH + clearance : 0;
-            var heightEl = els['height'];
-            var opts = heightEl.options;
-            for (var i = 0; i < opts.length; i++) {
-                opts[i].disabled = parseInt(opts[i].value) < minHeight;
-            }
-            if (parseInt(heightEl.value) < minHeight) {
-                for (var j = 0; j < opts.length; j++) {
-                    if (parseInt(opts[j].value) >= minHeight) { heightEl.value = opts[j].value; break; }
+            var catBadge = '<span class="absolute top-3 left-3 bg-secondary text-white text-xs font-bold px-2 py-1 rounded-full">' + (catLabels[b.category] || b.category) + '</span>';
+
+            var specs = '<div class="grid grid-cols-2 gap-2 text-xs text-gray-500 mb-3">';
+            specs += '<span><i class="fa-solid fa-ruler-combined text-secondary mr-1"></i>' + b.width + "' x " + b.length + "' x " + b.height + "'</span>";
+            specs += '<span><i class="fa-solid fa-house text-secondary mr-1"></i>' + (roofLabels[b.roof_style] || b.roof_style) + '</span>';
+            specs += '<span><i class="fa-solid fa-door-open text-secondary mr-1"></i>' + (encLabels[b.enclosure] || b.enclosure) + '</span>';
+            if (b.garage_doors) specs += '<span><i class="fa-solid fa-warehouse text-secondary mr-1"></i>' + b.garage_doors + '</span>';
+            if (b.windows) specs += '<span><i class="fa-solid fa-window-maximize text-secondary mr-1"></i>' + b.windows + '</span>';
+            if (b.walkin_doors) specs += '<span><i class="fa-solid fa-door-closed text-secondary mr-1"></i>' + b.walkin_doors + '</span>';
+            specs += '</div>';
+
+            var badges = '';
+            if (b.certified) badges += '<span class="bg-green-100 text-green-700 text-xs font-semibold px-2 py-0.5 rounded-full">Certified</span> ';
+            if (b.concrete) badges += '<span class="bg-blue-100 text-blue-700 text-xs font-semibold px-2 py-0.5 rounded-full">Concrete</span>';
+
+            return '<div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition">' +
+                '<div class="relative">' + imgTag + catBadge + '</div>' +
+                '<div class="p-5">' +
+                    '<h3 class="font-bold text-lg mb-1">' + b.name + '</h3>' +
+                    (badges ? '<div class="mb-2">' + badges + '</div>' : '') +
+                    specs +
+                    (b.description ? '<p class="text-sm text-gray-600 mb-3">' + b.description + '</p>' : '') +
+                    '<div class="flex items-center justify-between">' +
+                        '<div class="text-2xl font-bold text-primary">$' + (b.price ? b.price.toLocaleString() : '-') + '</div>' +
+                        '<button onclick="openPurchase(' + idx + ')" class="bg-secondary hover:bg-blue-700 text-white px-5 py-2 rounded-lg font-semibold transition">' +
+                            '<i class="fa-solid fa-cart-shopping mr-1"></i> Buy Now' +
+                        '</button>' +
+                    '</div>' +
+                '</div>' +
+            '</div>';
+        }).join('');
+    }
+
+    function loadInventory() {
+        fetch('/api/buildings-for-sale')
+            .then(function(r) { return r.json(); })
+            .then(function(data) {
+                if (!data.buildings || data.buildings.length === 0) {
+                    document.getElementById('inventory-grid').classList.add('hidden');
+                    document.getElementById('inventory-empty').classList.remove('hidden');
+                    return;
                 }
-            }
-        }
-        els['gdoor-size'].addEventListener('change', function() { enforceMinHeight(); calculate(); });
-        els['gdoor-qty'].addEventListener('change', function() { enforceMinHeight(); calculate(); });
-        els['gdoor-side'].addEventListener('change', function() {
-            var wLine = document.getElementById('door-vis-width');
-            var lLine = document.getElementById('door-vis-length');
-            var wIcon = document.getElementById('door-icon-w');
-            var lIcon = document.getElementById('door-icon-l');
-            if (this.value === 'length') {
-                wLine.classList.add('hidden'); lLine.classList.remove('hidden');
-                wIcon.classList.add('hidden'); lIcon.classList.remove('hidden');
-            } else {
-                wLine.classList.remove('hidden'); lLine.classList.add('hidden');
-                wIcon.classList.remove('hidden'); lIcon.classList.add('hidden');
-            }
-            enforceMinHeight(); calculate();
-        });
-        enforceMinHeight();
-
-        // ===== CALCULATE =====
-        function calculate() {
-            var w = num('width'), l = num('length'), h = num('height');
-            var rl = roofLen(l); // convert display length to roof length for lookups
-            var enc = val('enclosure');
-            var tier = getTier(w);
-            var stdH = getStdH(w);
-
-            // 1. Base price (keyed by roof length)
-            var baseKey = w + '_' + rl;
-            var price = BASE[baseKey];
-            if (price === undefined) {
-                document.getElementById('price-range').textContent = 'Call for Quote';
-                document.getElementById('price-monthly').textContent = '-';
-                document.getElementById('deposit-btn-amount').textContent = '-';
-                window._bldEst = { total: 0, deposit: 0 };
-                return;
-            }
-
-            // 2. Side height upgrade (keyed by roof length)
-            if (h > stdH) {
-                var hCost = getSideH(tier)[rl + '_' + h];
-                if (hCost !== undefined) price += hCost;
-            }
-
-            // 3. Enclosure (sides keyed by roof length, ends keyed by width)
-            if (enc === 'sides' || enc === 'full') {
-                var sCost = getSides(tier)[rl + '_' + (h < stdH ? stdH : h)];
-                if (sCost !== undefined) price += sCost;
-            }
-            if (enc === 'full') {
-                var eCost = getEnds(tier)[w + '_' + (h < stdH ? stdH : h)];
-                if (eCost !== undefined) price += eCost * 2;
-            }
-
-            // 4. Garage doors
-            var gdoorQty = num('gdoor-qty'), gdoorSize = val('gdoor-size');
-            price += gdoorQty * (GDOOR[gdoorSize] || 0);
-            if (gdoorQty >= 2) price += 250;
-
-            // 5. Walk-in doors
-            var walkinQty = num('walkin');
-            price += walkinQty * WALKIN;
-
-            // 6. Windows
-            var windowQty = num('windows');
-            price += windowQty * WINDOW;
-
-            // 7. Frameouts (assume end wall placement when fully enclosed)
-            if (enc === 'full') {
-                price += gdoorQty * FRAMEOUT_GDOOR;
-                price += walkinQty * FRAMEOUT_WALKIN;
-                price += windowQty * FRAMEOUT_WINDOW;
-            }
-
-            // 8. Concrete slab
-            if (els['concrete'].checked) price += Math.round(CONCRETE_RATE * w * l);
-
-            price = Math.round(price);
-            var deposit = Math.round(price * 0.11);
-            var monthly = Math.round(price * (0.07/12) / (1 - Math.pow(1 + 0.07/12, -48)));
-
-            // Update display
-            document.getElementById('price-range').textContent = fmt(price);
-            document.getElementById('price-monthly').textContent = '~' + fmt(monthly) + '/mo';
-            document.getElementById('sum-type').textContent = TYPE_LABEL[val('type')] || val('type');
-            document.getElementById('sum-size').textContent = w + "' x " + l + "'";
-            document.getElementById('sum-height').textContent = h + "'";
-            document.getElementById('sum-roof').textContent = 'Vertical';
-            document.getElementById('sum-enc').textContent = ENC_LABEL[enc] || enc;
-
-            var doorParts = [];
-            if (gdoorQty > 0) doorParts.push(gdoorQty + 'x ' + gdoorSize);
-            if (walkinQty > 0) doorParts.push(walkinQty + ' walk-in');
-            document.getElementById('sum-doors').textContent = doorParts.length ? doorParts.join(', ') : 'None';
-            document.getElementById('sum-windows').textContent = windowQty || '0';
-            document.getElementById('sum-concrete').textContent = CONCRETE_LABEL[els['concrete'].checked];
-
-            document.getElementById('sidebar-deposit-amount').textContent = fmt(deposit);
-            document.getElementById('sidebar-deposit-label').textContent = '11% deposit to lock in your price';
-            document.getElementById('deposit-btn-amount').textContent = fmt(deposit);
-
-            window._bldEst = { total: price, deposit: deposit, monthly: monthly };
-        }
-
-        ids.forEach(function(k) {
-            els[k].addEventListener('change', calculate);
-            if (els[k].type === 'checkbox') els[k].addEventListener('click', calculate);
-        });
-        calculate();
-
-        // ===== QUOTE SUBMIT =====
-        document.getElementById('btn-submit-quote').addEventListener('click', function() {
-            var name = document.getElementById('cfg-name').value.trim();
-            var email = document.getElementById('cfg-email').value.trim();
-            var phone = document.getElementById('cfg-phone').value.trim();
-            var zip = document.getElementById('cfg-zip').value.trim();
-
-            var errors = [];
-            if (!name) errors.push('Full Name');
-            if (!email) errors.push('Email');
-            if (!phone) errors.push('Phone');
-            if (!zip) errors.push('Zip Code');
-            if (!selectedColor) { errors.push('Color'); document.getElementById('color-error').classList.remove('hidden'); }
-            if (errors.length > 0) { alert('Please fill in all required fields: ' + errors.join(', ')); return; }
-
-            var est = window._bldEst;
-            var doorSideLabel = val('gdoor-side') === 'length' ? 'Side Wall' : 'End Wall';
-            var doorDesc = num('gdoor-qty') > 0 ? num('gdoor-qty') + 'x ' + val('gdoor-size') + ' (' + doorSideLabel + ')' : 'None';
-            var notes = 'Steel Building Quote' +
-                ' | Type: ' + (TYPE_LABEL[val('type')] || val('type')) +
-                ' | Size: ' + num('width') + "' x " + num('length') + "' x " + num('height') + "'" +
-                ' | Roof: Vertical' +
-                ' | Enclosure: ' + (ENC_LABEL[val('enclosure')] || val('enclosure')) +
-                ' | Color: ' + selectedColor +
-                ' | Garage Doors: ' + doorDesc +
-                ' | Walk-in Doors: ' + num('walkin') +
-                ' | Windows: ' + num('windows') +
-                ' | Concrete: ' + CONCRETE_LABEL[els['concrete'].checked] +
-                ' | Price: ' + fmt(est.total) +
-                ' | Deposit (11%): ' + fmt(est.deposit);
-
-            var btn = this;
-            btn.disabled = true;
-            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-2"></i>Submitting...';
-
-            fetch('/api/submissions', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    type: 'quote', name: name, email: email, phone: phone, zip: zip,
-                    building_type: TYPE_LABEL[val('type')] || val('type'),
-                    building_size: num('width') + "' x " + num('length') + "' x " + num('height') + "'",
-                    building_color: selectedColor,
-                    building_roof: 'Vertical',
-                    building_enclosure: ENC_LABEL[val('enclosure')] || val('enclosure'),
-                    building_doors: doorDesc,
-                    building_walkin: num('walkin') + '',
-                    building_windows: num('windows') + '',
-                    building_concrete: CONCRETE_LABEL[els['concrete'].checked],
-                    building_certified: 'Yes (Included)',
-                    building_estimate: fmt(est.total),
-                    building_deposit: fmt(est.deposit),
-                    notes: notes
-                })
-            }).then(function(r) { return r.json(); })
-            .then(function() {
-                btn.innerHTML = '<i class="fa-solid fa-check mr-2"></i>Quote Submitted!';
-                btn.classList.remove('bg-secondary', 'hover:bg-blue-700');
-                btn.classList.add('bg-green-600');
-                document.getElementById('dep-name').value = name;
-                document.getElementById('dep-email').value = email;
-                document.getElementById('dep-phone').value = phone;
-                document.getElementById('dep-zip').value = zip;
+                allBuildings = data.buildings;
+                renderInventory();
             })
             .catch(function() {
-                btn.disabled = false;
-                btn.innerHTML = '<i class="fa-solid fa-paper-plane mr-2"></i>Submit Quote Request';
-                alert('Something went wrong. Please try again or call us.');
+                document.getElementById('inventory-grid').innerHTML = '<div class="col-span-full text-center py-12 text-red-400"><p>Failed to load inventory. Please refresh.</p></div>';
             });
-        });
+    }
 
-        // ===== DEPOSIT SECTION SHOW/HIDE =====
-        window.showDepositSection = showDepositSection;
-        window.hideDepositSection = hideDepositSection;
-        function showDepositSection() {
-            document.getElementById('sidebar-deposit').classList.remove('hidden');
-            document.getElementById('deposit-btn').classList.add('hidden');
-            loadPayPalButtons();
-            if (window.innerWidth < 1024) {
-                document.getElementById('sidebar-deposit').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    // ===== PURCHASE MODAL =====
+    var selectedBuilding = null;
+    var paypalLoaded = false;
+
+    function openPurchase(idx) {
+        var building = allBuildings[idx];
+        selectedBuilding = building;
+        document.getElementById('modal-title').textContent = 'Purchase: ' + building.name;
+        document.getElementById('modal-summary').innerHTML =
+            '<div class="flex justify-between items-center">' +
+                '<div><strong>' + building.name + '</strong><br><span class="text-sm text-gray-500">' + building.width + "' x " + building.length + "' x " + building.height + "'</span></div>" +
+                '<div class="text-xl font-bold text-primary">$' + (building.price ? building.price.toLocaleString() : '-') + '</div>' +
+            '</div>';
+
+        document.getElementById('step1').classList.remove('hidden');
+        document.getElementById('step2').classList.add('hidden');
+        document.getElementById('step3').classList.add('hidden');
+        document.getElementById('modal-error').classList.add('hidden');
+        document.getElementById('purchase-modal').classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+        document.getElementById('purchase-modal').classList.add('hidden');
+        document.body.style.overflow = '';
+    }
+
+    function goToStep2() {
+        var name = document.getElementById('buy-name').value.trim();
+        var email = document.getElementById('buy-email').value.trim();
+        var phone = document.getElementById('buy-phone').value.trim();
+        var zip = document.getElementById('buy-zip').value.trim();
+        if (!name || !email || !phone || !zip) {
+            showModalError('Please fill in all fields.');
+            return;
+        }
+        document.getElementById('modal-error').classList.add('hidden');
+        document.getElementById('step1').classList.add('hidden');
+        document.getElementById('step2').classList.remove('hidden');
+
+        if (!paypalLoaded) {
+            loadPayPalSDK();
+        } else {
+            renderPayPalButtons();
+        }
+    }
+
+    function backToStep1() {
+        document.getElementById('step2').classList.add('hidden');
+        document.getElementById('step1').classList.remove('hidden');
+    }
+
+    function loadPayPalSDK() {
+        fetch('/api/paypal-client-id')
+            .then(function(r) { return r.json(); })
+            .then(function(data) {
+                if (!data.clientId) { showModalError('Payment not configured.'); return; }
+                var script = document.createElement('script');
+                script.src = 'https://www.paypal.com/sdk/js?client-id=' + data.clientId + '&currency=USD';
+                script.onload = function() { paypalLoaded = true; renderPayPalButtons(); };
+                document.head.appendChild(script);
+            });
+    }
+
+    function renderPayPalButtons() {
+        var container = document.getElementById('paypal-button-container');
+        container.innerHTML = '';
+
+        paypal.Buttons({
+            createOrder: function() {
+                return fetch('/api/create-paypal-order', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        amount: selectedBuilding.price,
+                        description: selectedBuilding.name + ' (' + selectedBuilding.width + "x" + selectedBuilding.length + "x" + selectedBuilding.height + ')',
+                        name: document.getElementById('buy-name').value,
+                        email: document.getElementById('buy-email').value,
+                        phone: document.getElementById('buy-phone').value,
+                        zip: document.getElementById('buy-zip').value,
+                        type: 'purchase',
+                        building_name: selectedBuilding.name,
+                        building_price: '$' + selectedBuilding.price.toLocaleString()
+                    })
+                }).then(function(r) { return r.json(); }).then(function(d) { return d.id; });
+            },
+            onApprove: function(data) {
+                return fetch('/api/capture-paypal-order', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ orderID: data.orderID })
+                }).then(function(r) { return r.json(); }).then(function(d) {
+                    if (d.status === 'COMPLETED') {
+                        document.getElementById('step2').classList.add('hidden');
+                        document.getElementById('step3').classList.remove('hidden');
+                    } else {
+                        showModalError('Payment could not be completed.');
+                    }
+                });
+            },
+            onError: function() {
+                showModalError('Payment error. Please try again.');
             }
-        }
-        function hideDepositSection() {
-            document.getElementById('sidebar-deposit').classList.add('hidden');
-            document.getElementById('deposit-btn').classList.remove('hidden');
+        }).render('#paypal-button-container');
+    }
+
+    function showModalError(msg) {
+        var el = document.getElementById('modal-error');
+        el.textContent = msg;
+        el.classList.remove('hidden');
+    }
+
+    // ===== QUOTE FORM =====
+    document.getElementById('btn-submit-quote').addEventListener('click', function() {
+        var name = document.getElementById('q-name').value.trim();
+        var email = document.getElementById('q-email').value.trim();
+        var phone = document.getElementById('q-phone').value.trim();
+        var zip = document.getElementById('q-zip').value.trim();
+        var notes = document.getElementById('q-notes').value.trim();
+        var honey = document.getElementById('q-honey').value;
+
+        if (!name || !email || !phone || !zip) {
+            alert('Please fill in all required fields.');
+            return;
         }
 
-        // ===== PAYPAL DEPOSIT =====
-        function loadPayPalButtons() {
-            var container = document.getElementById('paypal-button-container');
-            if (!container || container.dataset.loaded) return;
-            container.dataset.loaded = '1';
-            var clientId = window._paypalClientId || 'sb';
-            var script = document.createElement('script');
-            script.src = 'https://www.paypal.com/sdk/js?client-id=' + clientId + '&currency=USD';
-            script.onload = function() {
-                paypal.Buttons({
-                    style: { layout: 'vertical', color: 'gold', shape: 'rect', label: 'pay', height: 45 },
-                    createOrder: function() {
-                        var name = document.getElementById('dep-name').value.trim();
-                        var email = document.getElementById('dep-email').value.trim();
-                        var phone = document.getElementById('dep-phone').value.trim();
-                        var zip = document.getElementById('dep-zip').value.trim();
-                        if (!name || !email || !phone) { alert('Please fill in your name, email, and phone before paying.'); return Promise.reject('Missing info'); }
-                        if (!selectedColor) { alert('Please select a color before paying.'); document.getElementById('color-error').classList.remove('hidden'); return Promise.reject('No color'); }
-                        var est = window._bldEst;
-                        var config = (TYPE_LABEL[val('type')] || val('type')) + ' ' + num('width') + 'x' + num('length') + 'x' + num('height') + ' Vertical ' + (ENC_LABEL[val('enclosure')] || '') + ' | Color: ' + selectedColor;
-                        return fetch('/api/create-paypal-order', {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify({ amount: est.deposit, total: est.total, config: config, name: name, email: email, phone: phone, zip: zip, color: selectedColor })
-                        }).then(function(r) { return r.json(); })
-                        .then(function(data) { if (data.id) return data.id; throw new Error(data.error || 'Could not create order'); });
-                    },
-                    onApprove: function(data) {
-                        return fetch('/api/capture-paypal-order', {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify({ orderId: data.orderID })
-                        }).then(function(r) { return r.json(); })
-                        .then(function(result) {
-                            if (result.success) { window.location.href = '/deposit-success.html'; }
-                            else { alert('Payment could not be completed. Please try again or call (386) 350-1047.'); }
-                        });
-                    },
-                    onError: function() { alert('Something went wrong with PayPal. Please try again or call (386) 350-1047.'); }
-                }).render('#paypal-button-container');
-            };
-            document.head.appendChild(script);
-        }
-        fetch('/api/paypal-client-id').then(function(r) { return r.json(); }).then(function(d) {
-            if (d.clientId) window._paypalClientId = d.clientId;
-        }).catch(function() {});
-    })();
+        var btn = this;
+        btn.disabled = true;
+        btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-2"></i>Submitting...';
+
+        fetch('/api/submissions', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                type: 'quote',
+                name: name,
+                email: email,
+                phone: phone,
+                zip: zip,
+                notes: 'Steel Building Quote Request: ' + (notes || 'No details provided'),
+                _honey: honey
+            })
+        }).then(function(r) { return r.json(); })
+        .then(function() {
+            btn.innerHTML = '<i class="fa-solid fa-check mr-2"></i>Quote Submitted!';
+            btn.classList.remove('bg-secondary', 'hover:bg-blue-700');
+            btn.classList.add('bg-green-600');
+        })
+        .catch(function() {
+            btn.disabled = false;
+            btn.innerHTML = '<i class="fa-solid fa-paper-plane mr-2"></i>Submit Quote Request';
+            alert('Something went wrong. Please try again or call us.');
+        });
+    });
+
+    // Init
+    loadInventory();
     </script>
 </body>
 </html>
