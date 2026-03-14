@@ -3,7 +3,7 @@ const { createSubmission } = require('../lib/kv');
 async function getPayPalAccessToken() {
   var clientId = process.env.PAYPAL_CLIENT_ID;
   var secret = process.env.PAYPAL_CLIENT_SECRET;
-  var base = process.env.PAYPAL_API_BASE || 'https://api-m.sandbox.paypal.com';
+  var base = process.env.PAYPAL_API_BASE || 'https://api-m.paypal.com';
 
   var res = await fetch(base + '/v1/oauth2/token', {
     method: 'POST',
