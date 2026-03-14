@@ -1,3 +1,5 @@
+const fetch = require('node-fetch');
+
 async function getPayPalAccessToken() {
   var clientId = process.env.PAYPAL_CLIENT_ID;
   var secret = process.env.PAYPAL_CLIENT_SECRET;

@@ -1,3 +1,4 @@
+const fetch = require('node-fetch');
 const { createSubmission } = require('../lib/kv');
 
 async function getPayPalAccessToken() {
