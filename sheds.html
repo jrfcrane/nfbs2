@@ -651,6 +651,7 @@
                     }).then(function(r) { return r.json(); })
                     .then(function(d) {
                         if (d.id) return d.id;
+                        console.error('PayPal API error details:', d);
                         throw new Error(d.error || 'Could not create order');
                     });
                 },

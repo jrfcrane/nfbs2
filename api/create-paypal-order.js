@@ -14,6 +14,9 @@ async function getPayPalAccessToken() {
     body: 'grant_type=client_credentials',
   });
   var data = await res.json();
+  if (!data.access_token) {
+    throw new Error('PayPal auth failed: ' + JSON.stringify(data) + ' | base: ' + base + ' | clientId starts with: ' + (clientId || '').substring(0, 8));
+  }
   return data.access_token;
 }
 
@@ -68,7 +71,7 @@ module.exports = async function handler(req, res) {
 
     if (!order.id) {
       console.error('PayPal order error:', JSON.stringify(order));
-      return res.status(500).json({ error: 'Could not create PayPal order.' });
+      return res.status(500).json({ error: 'PayPal order failed: ' + JSON.stringify(order) });
     }
 
     // Save submission to Redis (non-blocking — don't let this fail the payment)
@@ -89,6 +92,6 @@ module.exports = async function handler(req, res) {
     res.json({ id: order.id });
   } catch (err) {
     console.error('PayPal order error:', err.message, err.stack);
-    res.status(500).json({ error: 'Could not create PayPal order.' });
+    res.status(500).json({ error: 'PayPal error: ' + err.message });
   }
 };
