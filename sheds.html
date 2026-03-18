@@ -249,9 +249,14 @@
                             </div>
                         </div>
 
-                        <button onclick="scrollToForm()" class="w-full bg-secondary hover:bg-blue-700 text-white py-3 rounded-lg font-bold text-lg transition shadow-lg">
-                            <i class="fa-solid fa-file-signature mr-2"></i>Rent Now
-                        </button>
+                        <div class="flex gap-2">
+                            <button onclick="shareCurrentRtoShed()" class="flex-none w-12 h-12 bg-gray-100 hover:bg-gray-200 text-gray-600 rounded-lg flex items-center justify-center transition" title="Copy link">
+                                <i class="fa-solid fa-share-nodes text-lg"></i>
+                            </button>
+                            <button onclick="scrollToForm()" class="flex-1 bg-secondary hover:bg-blue-700 text-white py-3 rounded-lg font-bold text-lg transition shadow-lg">
+                                <i class="fa-solid fa-file-signature mr-2"></i>Rent Now
+                            </button>
+                        </div>
                     </div>
                 </div>
 
@@ -369,6 +374,11 @@
         </div>
     </div>
 
+    <!-- Copied Toast -->
+    <div id="copied-toast" class="hidden fixed bottom-6 left-1/2 -translate-x-1/2 bg-gray-800 text-white px-6 py-3 rounded-xl shadow-2xl z-[200] text-sm font-semibold">
+        <i class="fa-solid fa-check mr-2"></i>Link copied to clipboard!
+    </div>
+
     <!-- Success Toast -->
     <div id="success-toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 bg-green-600 text-white px-8 py-4 rounded-xl shadow-2xl z-[200] hidden">
         <i class="fa-solid fa-check-circle mr-2"></i> Application submitted! We'll be in touch within 24 hours.
@@ -423,9 +433,14 @@
                     '<span class="text-gray-500 text-sm">/mo</span>' +
                     '<span class="block text-xs text-green-600 font-medium">Tax included</span>' +
                     '</div>' +
+                    '<div class="flex items-center gap-2">' +
+                    '<button onclick="event.stopPropagation(); shareRtoShed(' + index + ')" class="w-10 h-10 bg-gray-100 hover:bg-gray-200 text-gray-600 rounded-lg flex items-center justify-center transition" title="Copy link">' +
+                    '<i class="fa-solid fa-share-nodes"></i>' +
+                    '</button>' +
                     '<button class="bg-secondary hover:bg-blue-700 text-white px-5 py-2 rounded-lg font-semibold text-sm transition shadow">' +
                     'Rent Now' +
                     '</button>' +
+                    '</div>' +
                     '</div>' +
                     '</div>';
                 grid.appendChild(card);
@@ -510,6 +525,26 @@
         function closeModal() {
             document.getElementById('shed-modal').classList.add('hidden');
             document.body.style.overflow = '';
+        }
+
+        function shareRtoShed(idx) {
+            var s = availableSheds[idx];
+            var shareUrl = 'https://www.northfloridabuildingsolutions.com/api/share/rto/' + s.slug;
+            navigator.clipboard.writeText(shareUrl).then(function() {
+                showCopiedToast();
+            });
+        }
+
+        function shareCurrentRtoShed() {
+            if (!currentModalShed) return;
+            var idx = availableSheds.indexOf(currentModalShed);
+            shareRtoShed(idx);
+        }
+
+        function showCopiedToast() {
+            var toast = document.getElementById('copied-toast');
+            toast.classList.remove('hidden');
+            setTimeout(function() { toast.classList.add('hidden'); }, 2000);
         }
 
         function scrollToForm() {
