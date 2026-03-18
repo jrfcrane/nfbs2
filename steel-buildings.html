@@ -399,13 +399,16 @@
                     specs +
                     (b.description ? '<p class="text-sm text-gray-600 mb-3">' + b.description + '</p>' : '') +
                     '<div class="flex items-center justify-between">' +
-                        '<div class="text-2xl font-bold text-primary">$' + (b.price ? b.price.toLocaleString() : '-') + '</div>' +
+                        '<div>' +
+                            '<div class="text-2xl font-bold text-primary">$' + (b.price ? b.price.toLocaleString() : '-') + '</div>' +
+                            '<div class="text-xs text-gray-500">+ $' + calcConcrete(b.width, b.length).toLocaleString() + ' concrete</div>' +
+                        '</div>' +
                         '<div class="flex items-center gap-2">' +
                             '<button onclick="event.stopPropagation(); shareBuilding(' + idx + ')" class="w-10 h-10 bg-blue-600 hover:bg-blue-700 text-white rounded-lg flex items-center justify-center transition" title="Share to Facebook">' +
                                 '<i class="fa-brands fa-facebook-f"></i>' +
                             '</button>' +
                             '<button onclick="openPurchase(' + idx + ')" class="bg-secondary hover:bg-blue-700 text-white px-5 py-2 rounded-lg font-semibold transition">' +
-                                '<i class="fa-solid fa-cart-shopping mr-1"></i> Buy Now' +
+                                '<i class="fa-solid fa-circle-info mr-1"></i> Details' +
                             '</button>' +
                         '</div>' +
                     '</div>' +
