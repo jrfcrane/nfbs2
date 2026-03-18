@@ -455,7 +455,7 @@
 
         function shareShed(idx) {
             var s = availableSheds[idx];
-            var shareUrl = 'https://www.northfloridabuildingsolutions.com/share/shed/' + s.slug;
+            var shareUrl = 'https://www.northfloridabuildingsolutions.com/api/share/shed/' + s.slug;
             var url = 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(shareUrl);
             window.open(url, 'facebook-share', 'width=580,height=600,scrollbars=yes');
         }
