@@ -131,6 +131,7 @@ function generateFooter(depth = 0) {
             <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
                 <img src="${prefix}logo.png" alt="${business.name}" class="w-[150px] h-[150px] object-contain brightness-0 invert">
                 <p class="text-sm">&copy; ${new Date().getFullYear()} ${business.name}. All rights reserved.</p>
+                <p class="text-sm mt-1">Built by <a href="https://www.ihelpbuild.com" target="_blank" rel="noopener" class="text-secondary hover:text-blue-300 transition">IhelpBuild</a></p>
             </div>
         </div>
     </footer>
