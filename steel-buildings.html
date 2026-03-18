@@ -143,8 +143,8 @@
                 <div class="flex justify-between items-center mb-4">
                     <h3 id="modal-title" class="text-xl font-bold text-primary">Purchase Building</h3>
                     <div class="flex items-center gap-2">
-                        <button onclick="shareCurrentBuilding()" class="w-9 h-9 bg-blue-600 hover:bg-blue-700 text-white rounded-lg flex items-center justify-center transition" title="Share to Facebook">
-                            <i class="fa-brands fa-facebook-f text-sm"></i>
+                        <button onclick="shareCurrentBuilding()" class="w-9 h-9 bg-gray-100 hover:bg-gray-200 text-gray-600 rounded-lg flex items-center justify-center transition" title="Copy link">
+                            <i class="fa-solid fa-share-nodes text-sm"></i>
                         </button>
                         <button onclick="closeModal()" class="text-gray-400 hover:text-gray-600 text-2xl">&times;</button>
                     </div>
@@ -335,6 +335,11 @@
         </div>
     </footer>
 
+    <!-- Copied Toast -->
+    <div id="copied-toast" class="hidden fixed bottom-6 left-1/2 -translate-x-1/2 bg-gray-800 text-white px-6 py-3 rounded-xl shadow-2xl z-[200] text-sm font-semibold">
+        <i class="fa-solid fa-check mr-2"></i>Link copied to clipboard!
+    </div>
+
     <script>
     // ===== INVENTORY =====
     var allBuildings = [];
@@ -404,8 +409,8 @@
                             '<div class="text-xs text-gray-500">+ $' + calcConcrete(b.width, b.length).toLocaleString() + ' concrete</div>' +
                         '</div>' +
                         '<div class="flex items-center gap-2">' +
-                            '<button onclick="event.stopPropagation(); shareBuilding(' + idx + ')" class="w-10 h-10 bg-blue-600 hover:bg-blue-700 text-white rounded-lg flex items-center justify-center transition" title="Share to Facebook">' +
-                                '<i class="fa-brands fa-facebook-f"></i>' +
+                            '<button onclick="event.stopPropagation(); shareBuilding(' + idx + ')" class="w-10 h-10 bg-gray-100 hover:bg-gray-200 text-gray-600 rounded-lg flex items-center justify-center transition" title="Copy link">' +
+                                '<i class="fa-solid fa-share-nodes"></i>' +
                             '</button>' +
                             '<button onclick="openPurchase(' + idx + ')" class="bg-secondary hover:bg-blue-700 text-white px-5 py-2 rounded-lg font-semibold transition">' +
                                 '<i class="fa-solid fa-circle-info mr-1"></i> Details' +
@@ -527,14 +532,21 @@
     function shareBuilding(idx) {
         var b = allBuildings[idx];
         var shareUrl = 'https://www.northfloridabuildingsolutions.com/api/share/building/' + (b.slug || b.id);
-        var url = 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(shareUrl);
-        window.open(url, 'facebook-share', 'width=580,height=600,scrollbars=yes');
+        navigator.clipboard.writeText(shareUrl).then(function() {
+            showCopiedToast();
+        });
     }
 
     function shareCurrentBuilding() {
         if (!selectedBuilding) return;
         var idx = allBuildings.indexOf(selectedBuilding);
         shareBuilding(idx);
+    }
+
+    function showCopiedToast() {
+        var toast = document.getElementById('copied-toast');
+        toast.classList.remove('hidden');
+        setTimeout(function() { toast.classList.add('hidden'); }, 2000);
     }
 
     function goToStep2() {
