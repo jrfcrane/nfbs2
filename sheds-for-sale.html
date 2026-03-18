@@ -348,6 +348,13 @@
             .then(function(data) {
                 availableSheds = data.sheds.filter(function(s) { return s.available; });
                 renderSheds();
+                // Auto-open shed from share link
+                var params = new URLSearchParams(window.location.search);
+                var shedSlug = params.get('shed');
+                if (shedSlug) {
+                    var idx = availableSheds.findIndex(function(s) { return s.slug === shedSlug; });
+                    if (idx >= 0) openModal(idx);
+                }
             })
             .catch(function() {
                 document.getElementById('shed-grid').classList.add('hidden');

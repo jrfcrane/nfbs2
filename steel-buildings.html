@@ -433,6 +433,13 @@
                 }
                 allBuildings = data.buildings;
                 renderInventory();
+                // Auto-open building from share link
+                var params = new URLSearchParams(window.location.search);
+                var buildingSlug = params.get('building');
+                if (buildingSlug) {
+                    var idx = allBuildings.findIndex(function(b) { return b.slug === buildingSlug; });
+                    if (idx >= 0) openPurchase(idx);
+                }
             })
             .catch(function() {
                 document.getElementById('inventory-grid').innerHTML = '<div class="col-span-full text-center py-12 text-red-400"><p>Failed to load inventory. Please refresh.</p></div>';

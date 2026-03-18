@@ -35,7 +35,7 @@ module.exports = async function handler(req, res) {
       (image ? '<meta name="twitter:image" content="' + esc(image) + '">\n' : '') +
       '<title>' + esc(title) + '</title>\n' +
       '</head>\n<body>\n' +
-      '<script>window.location.href="' + esc(pageUrl) + '";</script>\n' +
+      '<script>window.location.href="' + esc(pageUrl + '?shed=' + slug) + '";</script>\n' +
       '<p>Redirecting... <a href="' + esc(pageUrl) + '">Click here</a> if not redirected.</p>\n' +
       '</body>\n</html>';
 
