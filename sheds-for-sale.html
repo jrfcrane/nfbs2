@@ -236,9 +236,14 @@
                             <p class="text-xs text-gray-400 mt-1">Free delivery & setup included</p>
                         </div>
 
-                        <button onclick="scrollToForm()" class="w-full bg-secondary hover:bg-blue-700 text-white py-3 rounded-lg font-bold text-lg transition shadow-lg">
-                            <i class="fa-solid fa-cart-shopping mr-2"></i>Buy Now
-                        </button>
+                        <div class="flex gap-2">
+                            <button onclick="shareCurrentShed()" class="flex-none w-12 h-12 bg-blue-600 hover:bg-blue-700 text-white rounded-lg flex items-center justify-center transition" title="Share to Facebook">
+                                <i class="fa-brands fa-facebook-f text-lg"></i>
+                            </button>
+                            <button onclick="scrollToForm()" class="flex-1 bg-secondary hover:bg-blue-700 text-white py-3 rounded-lg font-bold text-lg transition shadow-lg">
+                                <i class="fa-solid fa-cart-shopping mr-2"></i>Buy Now
+                            </button>
+                        </div>
                     </div>
                 </div>
 
@@ -367,9 +372,14 @@
                     '<div>' +
                     '<span class="text-2xl font-bold text-secondary">$' + shed.salePrice.toLocaleString() + '</span>' +
                     '</div>' +
+                    '<div class="flex items-center gap-2">' +
+                    '<button onclick="event.stopPropagation(); shareShed(' + index + ')" class="w-10 h-10 bg-blue-600 hover:bg-blue-700 text-white rounded-lg flex items-center justify-center transition" title="Share to Facebook">' +
+                    '<i class="fa-brands fa-facebook-f"></i>' +
+                    '</button>' +
                     '<button class="bg-secondary hover:bg-blue-700 text-white px-5 py-2 rounded-lg font-semibold text-sm transition shadow">' +
                     'Buy Now' +
                     '</button>' +
+                    '</div>' +
                     '</div>' +
                     '</div>';
                 grid.appendChild(card);
@@ -441,6 +451,19 @@
         function closeModal() {
             document.getElementById('shed-modal').classList.add('hidden');
             document.body.style.overflow = '';
+        }
+
+        function shareShed(idx) {
+            var s = availableSheds[idx];
+            var text = s.name + ' - $' + s.salePrice.toLocaleString() + ' | ' + s.size + ' | Free Delivery & Setup! Check it out at North Florida Building Solutions.';
+            var url = 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent('https://www.northfloridabuildingsolutions.com/sheds-for-sale.html') + '&quote=' + encodeURIComponent(text);
+            window.open(url, 'facebook-share', 'width=580,height=600,scrollbars=yes');
+        }
+
+        function shareCurrentShed() {
+            if (!currentShedForPurchase) return;
+            var idx = availableSheds.indexOf(currentShedForPurchase);
+            shareShed(idx);
         }
 
         function scrollToForm() {
