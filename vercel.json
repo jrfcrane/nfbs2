@@ -1,5 +1,7 @@
 {
   "rewrites": [
+    { "source": "/share/building/:slug", "destination": "/api/share-page?type=building&slug=:slug" },
+    { "source": "/share/shed/:slug", "destination": "/api/share-page?type=shed&slug=:slug" },
     { "source": "/admin/sheds/:id/edit", "destination": "/admin/shed-form.html" },
     { "source": "/admin/sheds/new", "destination": "/admin/shed-form.html" },
     { "source": "/admin/buildings/:id/edit", "destination": "/admin/building-form.html" },
