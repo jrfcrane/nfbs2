@@ -234,6 +234,7 @@
                             <div class="flex items-end gap-2 mb-1">
                                 <span class="text-3xl font-bold text-secondary" id="modal-price"></span>
                             </div>
+                            <div class="text-sm text-gray-500 mt-1">+ <span id="modal-tax">$0</span> sales tax (7%)</div>
                             <p class="text-xs text-gray-400 mt-1">Free delivery & setup included</p>
                         </div>
 
@@ -384,6 +385,7 @@
                     '<div class="flex items-end justify-between">' +
                     '<div>' +
                     '<span class="text-2xl font-bold text-secondary">$' + shed.salePrice.toLocaleString() + '</span>' +
+                    '<span class="block text-xs text-gray-500">+ 7% sales tax</span>' +
                     '</div>' +
                     '<div class="flex items-center gap-2">' +
                     '<button onclick="event.stopPropagation(); shareShed(' + index + ')" class="w-10 h-10 bg-gray-100 hover:bg-gray-200 text-gray-600 rounded-lg flex items-center justify-center transition" title="Copy link">' +
@@ -445,6 +447,7 @@
             document.getElementById('modal-style').textContent = shed.style;
             document.getElementById('modal-description').textContent = shed.description;
             document.getElementById('modal-price').textContent = '$' + shed.salePrice.toLocaleString();
+            document.getElementById('modal-tax').textContent = '$' + Math.round(shed.salePrice * 0.07).toLocaleString();
 
             var featuresEl = document.getElementById('modal-features');
             featuresEl.innerHTML = shed.features.map(function(f) {
