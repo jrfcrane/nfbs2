@@ -270,6 +270,7 @@
                                 <div class="text-right">
                                     <p class="text-sm text-gray-500">Price</p>
                                     <p class="font-bold text-secondary" id="form-display-price"></p>
+                                    <p class="text-xs text-gray-500" id="form-display-tax"></p>
                                 </div>
                             </div>
 
@@ -459,6 +460,7 @@
             document.getElementById('form-shed-price').value = '$' + shed.salePrice.toLocaleString();
             document.getElementById('form-display-shed').textContent = shed.name;
             document.getElementById('form-display-price').textContent = '$' + shed.salePrice.toLocaleString();
+            document.getElementById('form-display-tax').textContent = '+ $' + Math.round(shed.salePrice * 0.07).toLocaleString() + ' sales tax (7%)';
 
             document.getElementById('shed-modal').classList.remove('hidden');
             document.body.style.overflow = 'hidden';
