@@ -512,8 +512,6 @@
         var totalBalance = buildingBalance + salesTax + (addConcrete ? concretePrice : 0);
 
         document.getElementById('mp-building').textContent = fmt(price);
-        document.getElementById('mp-tax').textContent = fmt(salesTax);
-        document.getElementById('mp-building-total').textContent = fmt(buildingTotal);
         document.getElementById('mp-dep-amount').textContent = fmt(selectedDeposit);
         document.getElementById('mp-building-balance').textContent = fmt(buildingBalance);
         document.getElementById('mp-tax-balance').textContent = fmt(salesTax);
