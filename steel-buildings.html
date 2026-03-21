@@ -137,7 +137,7 @@
     </section>
 
     <!-- Purchase Modal -->
-    <div id="purchase-modal" class="hidden fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4">
+    <div id="purchase-modal" class="hidden fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4" onclick="if(event.target===this)closeModal()">
         <div class="bg-white rounded-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto shadow-2xl">
             <div class="p-6">
                 <div class="flex justify-between items-center mb-4">
@@ -681,6 +681,11 @@
             btn.innerHTML = '<i class="fa-solid fa-paper-plane mr-2"></i>Submit Quote Request';
             alert('Something went wrong. Please try again or call us.');
         });
+    });
+
+    // Close modal on Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') closeModal();
     });
 
     // Init
