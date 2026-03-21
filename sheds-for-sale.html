@@ -314,7 +314,7 @@
                                 <p class="font-bold" id="pay-display-shed"></p>
                             </div>
                             <div class="text-right">
-                                <p class="text-sm text-gray-500">Total</p>
+                                <p class="text-sm text-gray-500">Total (incl. 7% tax)</p>
                                 <p class="font-bold text-secondary text-xl" id="pay-display-price"></p>
                             </div>
                         </div>
@@ -522,7 +522,9 @@
             document.getElementById('purchase-step-1').classList.add('hidden');
             document.getElementById('purchase-step-2').classList.remove('hidden');
             document.getElementById('pay-display-shed').textContent = buyerInfo.shed_name;
-            document.getElementById('pay-display-price').textContent = buyerInfo.shed_price;
+            var basePrice = currentShedForPurchase.salePrice;
+            var total = basePrice + Math.round(basePrice * 0.07);
+            document.getElementById('pay-display-price').textContent = '$' + total.toLocaleString();
             renderPayPalButtons();
         }
 
@@ -578,14 +580,16 @@
                     paypal.Buttons({
                         style: { layout: 'vertical', shape: 'rect', label: 'pay' },
                         createOrder: function() {
-                            var amount = currentShedForPurchase.salePrice;
+                            var basePrice = currentShedForPurchase.salePrice;
+                            var tax = Math.round(basePrice * 0.07);
+                            var amount = basePrice + tax;
                             return fetch('/api/create-paypal-order', {
                                 method: 'POST',
                                 headers: { 'Content-Type': 'application/json' },
                                 body: JSON.stringify({
                                     amount: amount,
                                     total: amount,
-                                    config: 'Shed Purchase: ' + buyerInfo.shed_name,
+                                    config: 'Shed Purchase: ' + buyerInfo.shed_name + ' ($' + basePrice.toLocaleString() + ' + $' + tax.toLocaleString() + ' tax)',
                                     name: buyerInfo.name,
                                     email: buyerInfo.email,
                                     phone: buyerInfo.phone,
