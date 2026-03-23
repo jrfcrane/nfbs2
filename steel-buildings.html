@@ -195,6 +195,9 @@
                     <button onclick="goToStep2()" class="w-full bg-green-600 hover:bg-green-700 text-white py-3 rounded-lg font-bold mt-4 transition">
                         <i class="fa-solid fa-lock mr-2"></i>Pay Deposit <span id="step1-dep-amount">$0</span> <i class="fa-solid fa-arrow-right ml-1"></i>
                     </button>
+                    <button id="btn-site-visit" onclick="submitSiteVisit()" class="w-full bg-secondary hover:bg-blue-700 text-white py-3 rounded-lg font-bold mt-2 transition">
+                        <i class="fa-solid fa-calendar-check mr-2"></i>Schedule Free Site Visit
+                    </button>
                 </div>
 
                 <!-- Step 2: PayPal -->
@@ -638,6 +641,46 @@
         var el = document.getElementById('modal-error');
         el.textContent = msg;
         el.classList.remove('hidden');
+    }
+
+    // ===== SITE VISIT =====
+    function submitSiteVisit() {
+        var name = document.getElementById('buy-name').value.trim();
+        var email = document.getElementById('buy-email').value.trim();
+        var phone = document.getElementById('buy-phone').value.trim();
+        var zip = document.getElementById('buy-zip').value.trim();
+        if (!name || !email || !phone || !zip) {
+            showModalError('Please fill in all fields.');
+            return;
+        }
+        var btn = document.getElementById('btn-site-visit');
+        btn.disabled = true;
+        btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-2"></i>Submitting...';
+
+        var buildingInfo = selectedBuilding ? selectedBuilding.name + ' (' + selectedBuilding.width + "x" + selectedBuilding.length + "x" + selectedBuilding.height + ') - $' + selectedBuilding.price.toLocaleString() : '';
+
+        fetch('/api/submissions', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                type: 'site-visit',
+                name: name,
+                email: email,
+                phone: phone,
+                zip: zip,
+                notes: 'Free Site Visit Request - Building: ' + buildingInfo
+            })
+        }).then(function(r) { return r.json(); })
+        .then(function() {
+            btn.innerHTML = '<i class="fa-solid fa-check mr-2"></i>Site Visit Requested!';
+            btn.classList.remove('bg-secondary', 'hover:bg-blue-700');
+            btn.classList.add('bg-green-600');
+        })
+        .catch(function() {
+            btn.disabled = false;
+            btn.innerHTML = '<i class="fa-solid fa-calendar-check mr-2"></i>Schedule Free Site Visit';
+            showModalError('Something went wrong. Please try again or call us.');
+        });
     }
 
     // ===== QUOTE FORM =====
