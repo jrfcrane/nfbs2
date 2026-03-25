@@ -44,10 +44,10 @@ module.exports = async function handler(req, res) {
       if (!body.name || !body.type) {
         return res.status(400).json({ error: 'Name and type are required.' });
       }
-      if (!['rto', 'purchase', 'quote', 'promo'].includes(body.type)) {
+      if (!['rto', 'purchase', 'quote', 'promo', 'site-visit'].includes(body.type)) {
         return res.status(400).json({ error: 'Invalid submission type.' });
       }
-      if (['rto', 'purchase', 'quote'].includes(body.type) && !body.phone) {
+      if (['rto', 'purchase', 'quote', 'site-visit'].includes(body.type) && !body.phone) {
         return res.status(400).json({ error: 'Phone is required for this submission type.' });
       }
 
@@ -104,7 +104,8 @@ module.exports = async function handler(req, res) {
         rto: 'New Shed Rent-To-Own Application',
         purchase: 'New Shed Purchase Inquiry',
         quote: 'New Quote Request',
-        promo: 'New Promo Signup'
+        promo: 'New Promo Signup',
+        'site-visit': 'New Site Visit Request - Steel Building'
       };
 
       var emailPayload = {
@@ -146,6 +147,9 @@ module.exports = async function handler(req, res) {
       }
       if (body.type === 'promo') {
         emailPayload['Source'] = 'Landing Page Popup';
+      }
+      if (body.type === 'site-visit') {
+        emailPayload['Source'] = 'Steel Buildings Page';
       }
       if (body.notes) {
         emailPayload['Notes'] = body.notes;

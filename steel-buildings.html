@@ -22,6 +22,26 @@
             }
         }
     </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Steel Buildings - Metal Carports, Garages & Barns",
+      "provider": {
+        "@type": "LocalBusiness",
+        "name": "North Florida Building Solutions",
+        "telephone": "+1-386-350-1047"
+      },
+      "description": "Custom metal carports, garages, and barns built to last. Free delivery and installation throughout North Florida.",
+      "areaServed": "North Florida",
+      "serviceType": "Metal Building Sales and Installation"
+    }
+    </script>
+    <meta property="og:title" content="Steel Buildings | Metal Carports, Garages &amp; Barns">
+    <meta property="og:description" content="Browse available metal buildings for sale — carports, garages, and barns. Free delivery and installation throughout North Florida.">
+    <meta property="og:image" content="https://www.northfloridabuildingsolutions.com/images/building-1.jpg">
+    <meta property="og:url" content="https://www.northfloridabuildingsolutions.com/steel-buildings.html">
+    <meta property="og:type" content="website">
 </head>
 
 <body class="font-sans antialiased text-gray-800 bg-gray-50">
@@ -670,7 +690,7 @@
                 zip: zip,
                 notes: 'Free Site Visit Request - Building: ' + buildingInfo
             })
-        }).then(function(r) { return r.json(); })
+        }).then(function(r) { if (!r.ok) throw new Error('Failed'); return r.json(); })
         .then(function() {
             btn.innerHTML = '<i class="fa-solid fa-check mr-2"></i>Site Visit Requested!';
             btn.classList.remove('bg-secondary', 'hover:bg-blue-700');

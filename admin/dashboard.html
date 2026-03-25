@@ -430,8 +430,8 @@
             document.getElementById('all-leads-table').classList.remove('hidden');
 
             var recent = allLeads.slice(0, 15);
-            var typeColors = { rto: 'bg-blue-100 text-blue-700', purchase: 'bg-purple-100 text-purple-700', quote: 'bg-green-100 text-green-700', promo: 'bg-orange-100 text-orange-700' };
-            var typeLabels = { rto: 'RTO', purchase: 'Purchase', quote: 'Quote', promo: 'Promo' };
+            var typeColors = { rto: 'bg-blue-100 text-blue-700', purchase: 'bg-purple-100 text-purple-700', quote: 'bg-green-100 text-green-700', promo: 'bg-orange-100 text-orange-700', 'site-visit': 'bg-teal-100 text-teal-700' };
+            var typeLabels = { rto: 'RTO', purchase: 'Purchase', quote: 'Quote', promo: 'Promo', 'site-visit': 'Site Visit' };
             var statusColors = { 'new': 'bg-yellow-100 text-yellow-700', 'contacted': 'bg-blue-100 text-blue-700', 'closed': 'bg-gray-100 text-gray-600' };
 
             tbody.innerHTML = recent.map(function(s) {
@@ -458,6 +458,8 @@
                     details = parts.length ? parts.join(' &middot; ') : '-';
                 } else if (s.type === 'promo') {
                     details = 'Promo Signup';
+                } else if (s.type === 'site-visit') {
+                    details = s.notes || 'Site Visit Request';
                 }
 
                 var phone = s.phone && s.phone !== 'N/A' ? '<a href="tel:' + s.phone + '" class="text-secondary hover:underline">' + s.phone + '</a>' : '-';
