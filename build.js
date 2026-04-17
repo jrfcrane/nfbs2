@@ -201,7 +201,7 @@ function generateCountyPage(county) {
                     </div>
                 </a>`).join('\n');
 
-  return `${generateHead(title, description, `https://nflbuildingsolutions.com/locations/${county.slug}.html`)}
+  return `${generateHead(title, description, `https://www.northfloridabuildingsolutions.com/locations/${county.slug}.html`)}
 ${generateNav(1)}
 
     <!-- Hero -->
@@ -282,7 +282,7 @@ function generateTownPage(county, town) {
   const nearbyLinks = nearbyTowns.map(t => `
                     <a href="${t.slug}.html" class="hover:text-secondary transition">${t.name}</a>`).join(' · ');
 
-  return `${generateHead(title, description, `https://nflbuildingsolutions.com/locations/${county.slug}/${town.slug}.html`)}
+  return `${generateHead(title, description, `https://www.northfloridabuildingsolutions.com/locations/${county.slug}/${town.slug}.html`)}
 ${generateNav(2)}
 
     <!-- Hero -->
@@ -646,7 +646,7 @@ ${countyLinks}
         </div>
     </section>`;
 
-  return `${generateHead(title, description, `https://nflbuildingsolutions.com/services/${service.slug}.html`)}
+  return `${generateHead(title, description, `https://www.northfloridabuildingsolutions.com/services/${service.slug}.html`)}
 ${generateNav(1)}
 
     <!-- Hero -->
@@ -697,7 +697,7 @@ function generateServiceCountyPage(service, county) {
   const townLinks = county.towns.map(town => `
                 <a href="../../../locations/${county.slug}/${town.slug}.html" class="text-secondary hover:text-blue-700 transition">${town.name}</a>`).join(' · ');
 
-  return `${generateHead(title, description, `https://nflbuildingsolutions.com/services/${service.slug}/${county.slug}.html`)}
+  return `${generateHead(title, description, `https://www.northfloridabuildingsolutions.com/services/${service.slug}/${county.slug}.html`)}
 ${generateNav(2)}
 
     <!-- Hero -->
@@ -769,7 +769,7 @@ function generateLocationsPage() {
                 </div>
             </a>`).join('\n');
 
-  return `${generateHead(title, description, 'https://nflbuildingsolutions.com/locations.html')}
+  return `${generateHead(title, description, 'https://www.northfloridabuildingsolutions.com/locations.html')}
 ${generateNav(0)}
 
     <!-- Hero -->
