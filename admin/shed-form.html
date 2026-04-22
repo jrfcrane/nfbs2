@@ -418,17 +418,7 @@
                     document.getElementById('list_rto').checked = !!shed.list_rto;
                     document.getElementById('list_buy').checked = !!shed.list_buy;
                     if (shed.cash_price) document.getElementById('cash_price').value = shed.cash_price;
-                    if (shed.rto_term) {
-                        var termSelect = document.getElementById('rto_term');
-                        // Match stored value to dropdown option
-                        for (var i = 0; i < termSelect.options.length; i++) {
-                            if (termSelect.options[i].value === shed.rto_term) {
-                                termSelect.value = shed.rto_term;
-                                break;
-                            }
-                        }
-                    }
-                    // sale_price uses same value as cash_price (single price field)
+                    // rto_term is a readonly input displaying "60 months" — nothing to sync
 
                     // Load existing images (normalize legacy relative paths)
                     if (shed.images && shed.images.length > 0) {
