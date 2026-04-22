@@ -231,6 +231,15 @@
         // Recalculate on price input
         document.getElementById('cash_price').addEventListener('input', updateMonthlyCalc);
 
+        // Normalize image URLs: absolute URLs and root-relative paths pass through;
+        // bare relative paths like "images/sheds/foo.jpg" get a leading slash so they
+        // resolve from the site root instead of the current admin URL.
+        function normalizeImageUrl(url) {
+            if (!url) return '';
+            if (/^(https?:)?\/\//.test(url) || url.startsWith('/') || url.startsWith('data:')) return url;
+            return '/' + url;
+        }
+
         // Photo upload state
         var uploadedImages = []; // array of URLs
 
@@ -421,11 +430,11 @@
                     }
                     // sale_price uses same value as cash_price (single price field)
 
-                    // Load existing images
+                    // Load existing images (normalize legacy relative paths)
                     if (shed.images && shed.images.length > 0) {
-                        uploadedImages = shed.images.slice();
+                        uploadedImages = shed.images.map(normalizeImageUrl).filter(Boolean);
                     } else if (shed.image) {
-                        uploadedImages = [shed.image];
+                        uploadedImages = [normalizeImageUrl(shed.image)].filter(Boolean);
                     }
                     renderPhotoPreviews();
 

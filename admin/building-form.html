@@ -307,6 +307,15 @@
             }
         });
 
+        // Normalize image URLs: absolute URLs and root-relative paths pass through;
+        // bare relative paths like "images/sheds/foo.jpg" get a leading slash so they
+        // resolve from the site root instead of the current admin URL.
+        function normalizeImageUrl(url) {
+            if (!url) return '';
+            if (/^(https?:)?\/\//.test(url) || url.startsWith('/') || url.startsWith('data:')) return url;
+            return '/' + url;
+        }
+
         // Photo upload state
         var uploadedImages = [];
 
@@ -463,9 +472,9 @@
                     document.getElementById('available').checked = !!b.available;
 
                     if (b.images && b.images.length > 0) {
-                        uploadedImages = b.images.slice();
+                        uploadedImages = b.images.map(normalizeImageUrl).filter(Boolean);
                     } else if (b.image) {
-                        uploadedImages = [b.image];
+                        uploadedImages = [normalizeImageUrl(b.image)].filter(Boolean);
                     }
                     renderPhotoPreviews();
                 });
