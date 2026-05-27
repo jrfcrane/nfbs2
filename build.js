@@ -75,7 +75,7 @@ function generateNav(depth = 0) {
                 <img src="${prefix}logo.png" alt="${business.name}" class="h-20 w-auto">
             </a>
             <div class="hidden lg:flex items-center space-x-8">
-                <a href="${prefix}sheds-for-sale.html" class="bg-secondary hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-semibold transition shadow-lg">
+                <a href="/sheds4sale" class="bg-secondary hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-semibold transition shadow-lg">
                     Buy Now
                 </a>
                 <a href="/sheds-rto" class="hover:text-secondary transition font-medium">Sheds - Rent-To-Own</a>
@@ -88,7 +88,7 @@ function generateNav(depth = 0) {
             </button>
         </div>
         <div id="mobile-menu" class="hidden lg:hidden border-t bg-white px-6 pb-4">
-            <a href="${prefix}sheds-for-sale.html" class="block py-3 border-b border-gray-100 font-semibold text-secondary hover:text-blue-700 transition">Buy Now</a>
+            <a href="/sheds4sale" class="block py-3 border-b border-gray-100 font-semibold text-secondary hover:text-blue-700 transition">Buy Now</a>
             <a href="/sheds-rto" class="block py-3 border-b border-gray-100 font-medium hover:text-secondary transition">Sheds - Rent-To-Own</a>
             <a href="${prefix}steel-buildings.html" class="block py-3 border-b border-gray-100 font-medium hover:text-secondary transition">Steel Buildings</a>
             <a href="${prefix}locations.html" class="block py-3 border-b border-gray-100 font-medium hover:text-secondary transition">Service Areas</a>

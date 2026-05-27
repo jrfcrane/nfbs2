@@ -13,12 +13,14 @@
     { "source": "/admin", "destination": "/admin/dashboard.html" },
     { "source": "/barns", "destination": "/services/metal-barns.html" },
     { "source": "/sheds", "destination": "/sheds-landing.html" },
-    { "source": "/sheds-rto", "destination": "/sheds.html" }
+    { "source": "/sheds-rto", "destination": "/sheds.html" },
+    { "source": "/sheds4sale", "destination": "/sheds-for-sale.html" }
   ],
   "redirects": [
     { "source": "/services/metal-barns.html", "destination": "/barns", "permanent": true },
     { "source": "/sheds.html", "destination": "/sheds-rto", "permanent": true },
-    { "source": "/sheds-landing.html", "destination": "/sheds", "permanent": true }
+    { "source": "/sheds-landing.html", "destination": "/sheds", "permanent": true },
+    { "source": "/sheds-for-sale.html", "destination": "/sheds4sale", "permanent": true }
   ],
   "headers": [
     {
