@@ -8,7 +8,11 @@
       "Bash(curl:*)",
       "Bash(cd:*)",
       "Bash(convert:*)",
-      "Bash(find \"C:\\\\1CURSOR\\\\josh nfbs\" -name \".env*\" -o -name \"package.json\" -o -name \"README*\" 2>/dev/null | head -20)"
+      "Bash(find \"C:\\\\1CURSOR\\\\josh nfbs\" -name \".env*\" -o -name \"package.json\" -o -name \"README*\" 2>/dev/null | head -20)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)",
+      "WebFetch(domain:www.northfloridabuildingsolutions.com)"
     ]
   }
 }

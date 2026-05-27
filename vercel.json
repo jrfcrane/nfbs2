@@ -1,6 +1,6 @@
 {
   "rewrites": [
-{ "source": "/admin/sheds/:id/edit", "destination": "/admin/shed-form.html" },
+    { "source": "/admin/sheds/:id/edit", "destination": "/admin/shed-form.html" },
     { "source": "/admin/sheds/new", "destination": "/admin/shed-form.html" },
     { "source": "/admin/buildings/:id/edit", "destination": "/admin/building-form.html" },
     { "source": "/admin/buildings/new", "destination": "/admin/building-form.html" },
@@ -10,7 +10,11 @@
     { "source": "/admin/settings", "destination": "/admin/settings.html" },
     { "source": "/admin/leads", "destination": "/admin/leads.html" },
     { "source": "/admin/promo", "destination": "/admin/promo.html" },
-    { "source": "/admin", "destination": "/admin/dashboard.html" }
+    { "source": "/admin", "destination": "/admin/dashboard.html" },
+    { "source": "/barns", "destination": "/services/metal-barns.html" }
+  ],
+  "redirects": [
+    { "source": "/services/metal-barns.html", "destination": "/barns", "permanent": true }
   ],
   "headers": [
     {
