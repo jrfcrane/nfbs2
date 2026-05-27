@@ -78,7 +78,7 @@ function generateNav(depth = 0) {
                 <a href="${prefix}sheds-for-sale.html" class="bg-secondary hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-semibold transition shadow-lg">
                     Buy Now
                 </a>
-                <a href="${prefix}sheds.html" class="hover:text-secondary transition font-medium">Sheds - Rent-To-Own</a>
+                <a href="/sheds-rto" class="hover:text-secondary transition font-medium">Sheds - Rent-To-Own</a>
                 <a href="${prefix}steel-buildings.html" class="hover:text-secondary transition font-medium">Steel Buildings</a>
                 <a href="${prefix}locations.html" class="hover:text-secondary transition font-medium">Service Areas</a>
                 <a href="${prefix}about.html" class="hover:text-secondary transition font-medium">About</a>
@@ -89,7 +89,7 @@ function generateNav(depth = 0) {
         </div>
         <div id="mobile-menu" class="hidden lg:hidden border-t bg-white px-6 pb-4">
             <a href="${prefix}sheds-for-sale.html" class="block py-3 border-b border-gray-100 font-semibold text-secondary hover:text-blue-700 transition">Buy Now</a>
-            <a href="${prefix}sheds.html" class="block py-3 border-b border-gray-100 font-medium hover:text-secondary transition">Sheds - Rent-To-Own</a>
+            <a href="/sheds-rto" class="block py-3 border-b border-gray-100 font-medium hover:text-secondary transition">Sheds - Rent-To-Own</a>
             <a href="${prefix}steel-buildings.html" class="block py-3 border-b border-gray-100 font-medium hover:text-secondary transition">Steel Buildings</a>
             <a href="${prefix}locations.html" class="block py-3 border-b border-gray-100 font-medium hover:text-secondary transition">Service Areas</a>
             <a href="${prefix}about.html" class="block py-3 border-b border-gray-100 font-medium hover:text-secondary transition">About</a>

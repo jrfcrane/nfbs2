@@ -3,7 +3,7 @@ const { getAllSheds } = require('../../../lib/kv');
 module.exports = async function handler(req, res) {
   var slug = req.query.slug;
   var domain = 'https://www.northfloridabuildingsolutions.com';
-  var pageUrl = domain + '/sheds.html';
+  var pageUrl = domain + '/sheds-rto';
 
   try {
     var sheds = await getAllSheds();

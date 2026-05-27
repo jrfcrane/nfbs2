@@ -11,10 +11,14 @@
     { "source": "/admin/leads", "destination": "/admin/leads.html" },
     { "source": "/admin/promo", "destination": "/admin/promo.html" },
     { "source": "/admin", "destination": "/admin/dashboard.html" },
-    { "source": "/barns", "destination": "/services/metal-barns.html" }
+    { "source": "/barns", "destination": "/services/metal-barns.html" },
+    { "source": "/sheds", "destination": "/sheds-landing.html" },
+    { "source": "/sheds-rto", "destination": "/sheds.html" }
   ],
   "redirects": [
-    { "source": "/services/metal-barns.html", "destination": "/barns", "permanent": true }
+    { "source": "/services/metal-barns.html", "destination": "/barns", "permanent": true },
+    { "source": "/sheds.html", "destination": "/sheds-rto", "permanent": true },
+    { "source": "/sheds-landing.html", "destination": "/sheds", "permanent": true }
   ],
   "headers": [
     {
