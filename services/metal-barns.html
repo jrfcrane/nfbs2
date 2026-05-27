@@ -50,7 +50,7 @@
     <nav class="bg-white shadow-md sticky top-0 z-50">
         <div class="container mx-auto px-6 py-3 flex justify-between items-center">
             <a href="/" class="flex items-center gap-3">
-                <img src="../logo.png" alt="North Florida Building Solutions" class="h-20 w-auto">
+                <img src="../logo.png" alt="North Florida Building Solutions" class="h-[120px] w-[120px] object-contain">
             </a>
             <div class="hidden lg:flex items-center space-x-8">
                 <a href="../sheds-for-sale.html" class="bg-secondary hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-semibold transition shadow-lg">
@@ -232,9 +232,14 @@
                             (b.description ? '<p class="text-sm text-gray-600 mb-3">' + b.description + '</p>' : '') +
                             '<div class="flex items-center justify-between">' +
                                 '<div class="text-2xl font-bold text-primary">$' + (b.price ? b.price.toLocaleString() : '-') + '</div>' +
-                                '<button onclick="openPurchase(' + idx + ')" class="bg-secondary hover:bg-blue-700 text-white px-5 py-2 rounded-lg font-semibold transition">' +
-                                    '<i class="fa-solid fa-cart-shopping mr-1"></i> Buy Now' +
-                                '</button>' +
+                                '<div class="flex items-center gap-2">' +
+                                    '<button onclick="event.stopPropagation(); shareBuilding(' + idx + ')" class="w-10 h-10 bg-gray-100 hover:bg-gray-200 text-gray-600 rounded-lg flex items-center justify-center transition" title="Copy link">' +
+                                        '<i class="fa-solid fa-share-nodes"></i>' +
+                                    '</button>' +
+                                    '<button onclick="openPurchase(' + idx + ')" class="bg-secondary hover:bg-blue-700 text-white px-5 py-2 rounded-lg font-semibold transition">' +
+                                        '<i class="fa-solid fa-cart-shopping mr-1"></i> Buy Now' +
+                                    '</button>' +
+                                '</div>' +
                             '</div>' +
                         '</div>' +
                     '</div>';
@@ -353,8 +358,29 @@
         el.classList.remove('hidden');
     }
 
+    function shareBuilding(idx) {
+        var b = inventoryData[idx];
+        if (!b) return;
+        var shareUrl = 'https://www.northfloridabuildingsolutions.com/api/share/building/' + (b.slug || b.id);
+        navigator.clipboard.writeText(shareUrl).then(function() {
+            showCopiedToast();
+        });
+    }
+
+    function showCopiedToast() {
+        var toast = document.getElementById('copied-toast');
+        if (!toast) return;
+        toast.classList.remove('hidden');
+        setTimeout(function() { toast.classList.add('hidden'); }, 2000);
+    }
+
     loadInventory();
     </script>
+
+    <!-- Copied Toast -->
+    <div id="copied-toast" class="hidden fixed bottom-6 left-1/2 -translate-x-1/2 bg-gray-800 text-white px-6 py-3 rounded-xl shadow-2xl z-[200] text-sm font-semibold">
+        <i class="fa-solid fa-check mr-2"></i>Link copied to clipboard!
+    </div>
 
 
     <!-- CTA Section -->
