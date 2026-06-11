@@ -215,6 +215,7 @@
                         <tr>
                             <th class="px-4 py-3 text-xs font-semibold text-gray-500 uppercase">Image</th>
                             <th class="px-4 py-3 text-xs font-semibold text-gray-500 uppercase">Name</th>
+                            <th class="px-4 py-3 text-xs font-semibold text-gray-500 uppercase">Manufacturer</th>
                             <th class="px-4 py-3 text-xs font-semibold text-gray-500 uppercase">Size</th>
                             <th class="px-4 py-3 text-xs font-semibold text-gray-500 uppercase">Style</th>
                             <th class="px-4 py-3 text-xs font-semibold text-gray-500 uppercase">Pricing</th>
@@ -536,9 +537,14 @@
                     ? '<img src="' + imgSrc + '" alt="" class="w-12 h-12 object-cover rounded-lg">'
                     : '<div class="w-12 h-12 bg-gray-200 rounded-lg flex items-center justify-center text-gray-400"><i class="fa-solid fa-image"></i></div>';
 
+                var manufacturerBadge = shed.manufacturer
+                    ? '<span class="bg-gray-100 text-gray-700 text-xs font-semibold px-2 py-0.5 rounded-full">' + shed.manufacturer + '</span>'
+                    : '<span class="text-gray-400 text-xs">&mdash;</span>';
+
                 return '<tr class="border-b hover:bg-gray-50">' +
                     '<td class="px-4 py-3">' + imgTag + '</td>' +
                     '<td class="px-4 py-3 font-semibold">' + shed.name + '</td>' +
+                    '<td class="px-4 py-3 text-sm">' + manufacturerBadge + '</td>' +
                     '<td class="px-4 py-3 text-sm text-gray-600">' + shed.size + '</td>' +
                     '<td class="px-4 py-3 text-sm text-gray-600">' + shed.style + '</td>' +
                     '<td class="px-4 py-3 text-sm">' + pricing.join('<br>') + '</td>' +

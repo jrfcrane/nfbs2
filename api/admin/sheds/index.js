@@ -18,6 +18,7 @@ module.exports = async function handler(req, res) {
         name: body.name,
         size: body.size,
         style: body.style,
+        manufacturer: body.manufacturer,
         images: body.images || [],
         image: (body.images && body.images[0]) || body.image || '',
         description: body.description || '',
