@@ -123,7 +123,20 @@
     <section class="py-16 bg-gray-50">
         <div class="container mx-auto px-6">
             <h2 class="text-3xl font-bold text-center mb-4">Available Inventory</h2>
-            <p class="text-gray-600 text-center mb-12">Click on any shed to see full details and apply to rent</p>
+            <p class="text-gray-600 text-center mb-8">Click on any shed to see full details and apply to rent</p>
+
+            <!-- Manufacturer Filter -->
+            <div id="manufacturer-filter" class="flex flex-wrap justify-center gap-2 mb-10">
+                <button type="button" data-filter="all" class="filter-btn px-5 py-2 rounded-full font-semibold text-sm border-2 transition bg-secondary text-white border-secondary shadow">
+                    All <span class="opacity-75 ml-1" data-count="all">0</span>
+                </button>
+                <button type="button" data-filter="Graceland" class="filter-btn px-5 py-2 rounded-full font-semibold text-sm border-2 transition bg-white text-gray-700 border-gray-300 hover:border-secondary hover:text-secondary">
+                    Graceland <span class="opacity-75 ml-1" data-count="Graceland">0</span>
+                </button>
+                <button type="button" data-filter="Twin City" class="filter-btn px-5 py-2 rounded-full font-semibold text-sm border-2 transition bg-white text-gray-700 border-gray-300 hover:border-secondary hover:text-secondary">
+                    Twin City <span class="opacity-75 ml-1" data-count="Twin City">0</span>
+                </button>
+            </div>
 
             <div id="shed-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Shed cards rendered by JS -->
@@ -133,6 +146,12 @@
                 <i class="fa-solid fa-warehouse text-6xl text-gray-300 mb-4"></i>
                 <h3 class="text-xl font-bold text-gray-500">New inventory coming soon!</h3>
                 <p class="text-gray-400 mt-2">Call us at <a href="tel:+13863501047" class="text-secondary font-bold">(386) 350-1047</a> for availability.</p>
+            </div>
+
+            <div id="no-filter-results" class="hidden text-center py-16">
+                <i class="fa-solid fa-filter text-5xl text-gray-300 mb-4"></i>
+                <h3 class="text-xl font-bold text-gray-500" id="no-filter-msg">No sheds available from this manufacturer right now.</h3>
+                <p class="text-gray-400 mt-2">Try another filter or call us at <a href="tel:+13863501047" class="text-secondary font-bold">(386) 350-1047</a>.</p>
             </div>
         </div>
     </section>
@@ -484,6 +503,8 @@
 
         // Shed inventory - loaded from CMS-managed JSON
         var availableSheds = [];
+        var displayedSheds = [];
+        var currentFilter = 'all';
 
         fetch('/api/sheds')
             .then(function(r) { return r.json(); })
@@ -493,12 +514,13 @@
                     shed.monthlyRTO = calcMonthly(shed.cashPrice, shed.rtoTerm);
                 });
                 availableSheds = sheds.filter(function(s) { return s.available; });
+                updateFilterCounts();
                 renderSheds();
                 // Auto-open shed from share link
                 var params = new URLSearchParams(window.location.search);
                 var shedSlug = params.get('shed');
                 if (shedSlug) {
-                    var idx = availableSheds.findIndex(function(s) { return s.slug === shedSlug; });
+                    var idx = displayedSheds.findIndex(function(s) { return s.slug === shedSlug; });
                     if (idx >= 0) openModal(idx);
                 }
             })
@@ -507,14 +529,70 @@
                 document.getElementById('no-sheds').classList.remove('hidden');
             });
 
+        function updateFilterCounts() {
+            var counts = {
+                all: availableSheds.length,
+                Graceland: availableSheds.filter(function(s) { return s.manufacturer === 'Graceland'; }).length,
+                'Twin City': availableSheds.filter(function(s) { return s.manufacturer === 'Twin City'; }).length
+            };
+            document.querySelectorAll('[data-count]').forEach(function(el) {
+                el.textContent = '(' + (counts[el.getAttribute('data-count')] || 0) + ')';
+            });
+        }
+
+        function setFilter(filter) {
+            currentFilter = filter;
+            // Update button styles
+            document.querySelectorAll('.filter-btn').forEach(function(btn) {
+                var active = btn.getAttribute('data-filter') === filter;
+                if (active) {
+                    btn.classList.add('bg-secondary', 'text-white', 'border-secondary', 'shadow');
+                    btn.classList.remove('bg-white', 'text-gray-700', 'border-gray-300', 'hover:border-secondary', 'hover:text-secondary');
+                } else {
+                    btn.classList.remove('bg-secondary', 'text-white', 'border-secondary', 'shadow');
+                    btn.classList.add('bg-white', 'text-gray-700', 'border-gray-300', 'hover:border-secondary', 'hover:text-secondary');
+                }
+            });
+            renderSheds();
+        }
+
+        // Wire up filter buttons
+        document.querySelectorAll('.filter-btn').forEach(function(btn) {
+            btn.addEventListener('click', function() { setFilter(btn.getAttribute('data-filter')); });
+        });
+
         function renderSheds() {
             var grid = document.getElementById('shed-grid');
+            var noSheds = document.getElementById('no-sheds');
+            var noFilter = document.getElementById('no-filter-results');
+
+            // Apply manufacturer filter
+            displayedSheds = currentFilter === 'all'
+                ? availableSheds.slice()
+                : availableSheds.filter(function(s) { return s.manufacturer === currentFilter; });
+
+            grid.innerHTML = '';
+
             if (availableSheds.length === 0) {
                 grid.classList.add('hidden');
-                document.getElementById('no-sheds').classList.remove('hidden');
+                noSheds.classList.remove('hidden');
+                noFilter.classList.add('hidden');
                 return;
             }
-            availableSheds.forEach(function(shed, index) {
+
+            if (displayedSheds.length === 0) {
+                grid.classList.add('hidden');
+                noSheds.classList.add('hidden');
+                document.getElementById('no-filter-msg').textContent = 'No ' + currentFilter + ' sheds available right now.';
+                noFilter.classList.remove('hidden');
+                return;
+            }
+
+            grid.classList.remove('hidden');
+            noSheds.classList.add('hidden');
+            noFilter.classList.add('hidden');
+
+            displayedSheds.forEach(function(shed, index) {
                 var card = document.createElement('div');
                 card.className = 'bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition cursor-pointer group';
                 card.onclick = function() { openModal(index); };
@@ -577,7 +655,7 @@
 
         // Modal functions
         function openModal(index) {
-            var shed = availableSheds[index];
+            var shed = displayedSheds[index];
             currentModalShed = shed;
             galleryImages = (shed.images && shed.images.length > 0) ? shed.images : (shed.image ? [shed.image] : []);
             galleryIndex = 0;
@@ -627,7 +705,7 @@
         }
 
         function shareRtoShed(idx) {
-            var s = availableSheds[idx];
+            var s = displayedSheds[idx];
             var shareUrl = 'https://www.northfloridabuildingsolutions.com/api/share/rto/' + s.slug;
             navigator.clipboard.writeText(shareUrl).then(function() {
                 showCopiedToast();
@@ -636,7 +714,7 @@
 
         function shareCurrentRtoShed() {
             if (!currentModalShed) return;
-            var idx = availableSheds.indexOf(currentModalShed);
+            var idx = displayedSheds.indexOf(currentModalShed);
             shareRtoShed(idx);
         }
 
