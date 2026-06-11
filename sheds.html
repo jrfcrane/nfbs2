@@ -473,9 +473,13 @@
     </div>
 
     <script>
-        // Auto-calculate monthly RTO: ceil((cashPrice / 31.2) * 1.07) — 60 month term
-        function calcMonthly(price) {
-            return Math.ceil((price / 31.2) * 1.07);
+        // RTO finance: same total payback, divisor scales with term.
+        // 60mo (Twin City) divisor = 31.2; 72mo (Graceland) divisor = 37.44.
+        function rtoDivisor(term) {
+            return term === '72 months' ? 37.44 : 31.2;
+        }
+        function calcMonthly(price, term) {
+            return Math.ceil((price / rtoDivisor(term)) * 1.07);
         }
 
         // Shed inventory - loaded from CMS-managed JSON
@@ -486,7 +490,7 @@
             .then(function(data) {
                 var sheds = data.sheds;
                 sheds.forEach(function(shed) {
-                    shed.monthlyRTO = calcMonthly(shed.cashPrice);
+                    shed.monthlyRTO = calcMonthly(shed.cashPrice, shed.rtoTerm);
                 });
                 availableSheds = sheds.filter(function(s) { return s.available; });
                 renderSheds();

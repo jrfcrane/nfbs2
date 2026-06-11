@@ -13,7 +13,9 @@ module.exports = async function handler(req, res) {
       return res.redirect(302, pageUrl);
     }
 
-    var monthly = Math.ceil((s.cash_price / 31.2) * 1.07);
+    // 60mo (Twin City) divisor = 31.2; 72mo (Graceland) divisor = 37.44.
+    var divisor = s.rto_term === '72 months' ? 37.44 : 31.2;
+    var monthly = Math.ceil((s.cash_price / divisor) * 1.07);
     var title = s.name + ' - $' + monthly + '/mo Rent-To-Own';
     var description = (s.size || '') + ' | No Credit Check | Free Delivery & Setup | North Florida Building Solutions | Call (386) 350-1047';
     var image = (s.images && s.images[0]) || s.image || '';
