@@ -15,6 +15,7 @@ module.exports = async function handler(req, res) {
         name: s.name,
         size: s.size,
         style: s.style,
+        manufacturer: s.manufacturer || '',
         image: (s.images && s.images[0]) || s.image || '',
         images: s.images || (s.image ? [s.image] : []),
         salePrice: s.sale_price,
