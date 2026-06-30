@@ -292,6 +292,7 @@
             <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
                 <img src="logo.png" alt="North Florida Building Solutions" class="w-[150px] h-[150px] object-contain brightness-0 invert">
                 <p class="text-sm">&copy; 2026 North Florida Building Solutions. All rights reserved.</p>
+                <p class="text-sm"><a href="privacy-policy.html" class="hover:text-secondary transition">Privacy Policy</a> <span class="mx-2">&middot;</span> <a href="terms-and-conditions.html" class="hover:text-secondary transition">Terms &amp; Conditions</a></p>
                 <p class="text-sm mt-1">Built by <a href="https://www.ihelpbuild.com" target="_blank" rel="noopener" class="text-secondary hover:text-blue-300 transition">IhelpBuild</a></p>
             </div>
         </div>
@@ -492,13 +493,22 @@
     </div>
 
     <script>
-        // RTO finance: same total payback, divisor scales with term.
-        // 60mo (Twin City) divisor = 31.2; 72mo (Graceland) divisor = 37.44.
+        // RTO finance.
+        // Twin City: same total payback, divisor scales with term (60mo = 31.2, 72mo = 37.44).
+        // Graceland: retail price / 29 (rounded up to the nearest cent), plus 7% sales tax on each payment.
         function rtoDivisor(term) {
             return term === '72 months' ? 37.44 : 31.2;
         }
-        function calcMonthly(price, term) {
-            return Math.ceil((price / rtoDivisor(term)) * 1.07);
+        function calcMonthly(shed) {
+            if (shed.manufacturer === 'Graceland') {
+                var basePayment = Math.ceil((shed.cashPrice / 29) * 100) / 100;
+                return Math.ceil(basePayment * 1.07 * 100) / 100;
+            }
+            return Math.ceil((shed.cashPrice / rtoDivisor(shed.rtoTerm)) * 1.07);
+        }
+        // Format money: whole dollars show no cents, fractional amounts show 2 decimals.
+        function fmtMoney(n) {
+            return Number.isInteger(n) ? String(n) : n.toFixed(2);
         }
 
         // Shed inventory - loaded from CMS-managed JSON
@@ -511,7 +521,7 @@
             .then(function(data) {
                 var sheds = data.sheds;
                 sheds.forEach(function(shed) {
-                    shed.monthlyRTO = calcMonthly(shed.cashPrice, shed.rtoTerm);
+                    shed.monthlyRTO = calcMonthly(shed);
                 });
                 availableSheds = sheds.filter(function(s) { return s.available; });
                 updateFilterCounts();
@@ -606,7 +616,7 @@
                     '<p class="text-gray-500 text-sm mb-4">' + shed.size + '</p>' +
                     '<div class="flex items-end justify-between">' +
                     '<div>' +
-                    '<span class="text-2xl font-bold text-secondary">$' + shed.monthlyRTO + '</span>' +
+                    '<span class="text-2xl font-bold text-secondary">$' + fmtMoney(shed.monthlyRTO) + '</span>' +
                     '<span class="text-gray-500 text-sm">/mo</span>' +
                     '<span class="block text-xs text-green-600 font-medium">Tax included</span>' +
                     '</div>' +
@@ -670,7 +680,7 @@
             document.getElementById('modal-size').textContent = shed.size;
             document.getElementById('modal-style').textContent = shed.style;
             document.getElementById('modal-description').innerHTML = shed.description.replace(/\n/g, '<br>');
-            document.getElementById('modal-monthly').textContent = '$' + shed.monthlyRTO;
+            document.getElementById('modal-monthly').textContent = '$' + fmtMoney(shed.monthlyRTO);
             document.getElementById('modal-cash').textContent = '$' + shed.cashPrice.toLocaleString();
 
             var featuresEl = document.getElementById('modal-features');
@@ -681,11 +691,11 @@
             // Pre-fill form
             var depositAmount = shed.monthlyRTO + 100;
             document.getElementById('form-shed-name').value = shed.name;
-            document.getElementById('form-shed-price').value = '$' + shed.monthlyRTO + '/month (60 months)';
+            document.getElementById('form-shed-price').value = '$' + fmtMoney(shed.monthlyRTO) + '/month (60 months)';
             document.getElementById('form-display-shed').textContent = shed.name;
-            document.getElementById('form-display-price').textContent = '$' + shed.monthlyRTO + '/mo';
-            document.getElementById('modal-deposit').textContent = '$' + depositAmount;
-            document.getElementById('deposit-pay-amount').textContent = '$' + depositAmount;
+            document.getElementById('form-display-price').textContent = '$' + fmtMoney(shed.monthlyRTO) + '/mo';
+            document.getElementById('modal-deposit').textContent = '$' + fmtMoney(depositAmount);
+            document.getElementById('deposit-pay-amount').textContent = '$' + fmtMoney(depositAmount);
 
             // Reset deposit step visibility
             document.getElementById('rto-form').classList.remove('hidden');
@@ -851,14 +861,14 @@
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({
                             amount: depositAmount,
-                            description: 'RTO Deposit: ' + shed.name + ' ($' + shed.monthlyRTO + '/mo + $100 fee)',
+                            description: 'RTO Deposit: ' + shed.name + ' ($' + fmtMoney(shed.monthlyRTO) + '/mo + $100 fee)',
                             name: rtoFormData.name,
                             email: rtoFormData.email,
                             phone: rtoFormData.phone,
                             zip: rtoFormData.zip,
                             type: 'rto',
                             shed_name: shed.name,
-                            shed_price: '$' + shed.monthlyRTO + '/mo'
+                            shed_price: '$' + fmtMoney(shed.monthlyRTO) + '/mo'
                         })
                     }).then(function(r) { return r.json(); })
                     .then(function(d) {

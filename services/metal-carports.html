@@ -6,7 +6,7 @@
     <link rel="icon" type="image/png" href="favicon.png">
     <title>Metal Carports | Custom Steel Carports | North Florida Building Solutions</title>
     <meta name="description" content="Protect your vehicles from Florida's harsh sun, rain, and storms with our durable metal carports. Free delivery and installation throughout North Florida. Call (386) 350-1047 for a free quote.">
-    <link rel="canonical" href="https://www.northfloridabuildingsolutions.com/carports">
+    <link rel="canonical" href="https://www.northfloridabuildingsolutions.com/services/metal-carports.html">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -50,7 +50,7 @@
     <nav class="bg-white shadow-md sticky top-0 z-50">
         <div class="container mx-auto px-6 py-3 flex justify-between items-center">
             <a href="/" class="flex items-center gap-3">
-                <img src="../logo.png" alt="North Florida Building Solutions" class="h-[120px] w-[120px] object-contain">
+                <img src="../logo.png" alt="North Florida Building Solutions" class="h-20 w-auto">
             </a>
             <div class="hidden lg:flex items-center space-x-8">
                 <a href="/sheds4sale" class="bg-secondary hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-semibold transition shadow-lg">
@@ -107,7 +107,7 @@
                     </div>
                 </div>
                 <div class="md:w-1/2">
-                    <img src="../images/carports.jpg" alt="Metal Carports" class="rounded-2xl shadow-2xl">
+                    <img src="../images/building-1.jpg" alt="Metal Carports" class="rounded-2xl shadow-2xl">
                 </div>
             </div>
         </div>
@@ -232,14 +232,9 @@
                             (b.description ? '<p class="text-sm text-gray-600 mb-3">' + b.description + '</p>' : '') +
                             '<div class="flex items-center justify-between">' +
                                 '<div class="text-2xl font-bold text-primary">$' + (b.price ? b.price.toLocaleString() : '-') + '</div>' +
-                                '<div class="flex items-center gap-2">' +
-                                    '<button onclick="event.stopPropagation(); shareBuilding(' + idx + ')" class="w-10 h-10 bg-gray-100 hover:bg-gray-200 text-gray-600 rounded-lg flex items-center justify-center transition" title="Copy link">' +
-                                        '<i class="fa-solid fa-share-nodes"></i>' +
-                                    '</button>' +
-                                    '<button onclick="openPurchase(' + idx + ')" class="bg-secondary hover:bg-blue-700 text-white px-5 py-2 rounded-lg font-semibold transition">' +
-                                        '<i class="fa-solid fa-cart-shopping mr-1"></i> Buy Now' +
-                                    '</button>' +
-                                '</div>' +
+                                '<button onclick="openPurchase(' + idx + ')" class="bg-secondary hover:bg-blue-700 text-white px-5 py-2 rounded-lg font-semibold transition">' +
+                                    '<i class="fa-solid fa-cart-shopping mr-1"></i> Buy Now' +
+                                '</button>' +
                             '</div>' +
                         '</div>' +
                     '</div>';
@@ -358,108 +353,9 @@
         el.classList.remove('hidden');
     }
 
-    function shareBuilding(idx) {
-        var b = inventoryData[idx];
-        if (!b) return;
-        var shareUrl = 'https://www.northfloridabuildingsolutions.com/api/share/building/' + (b.slug || b.id);
-        navigator.clipboard.writeText(shareUrl).then(function() {
-            showCopiedToast();
-        });
-    }
-
-    function showCopiedToast() {
-        var toast = document.getElementById('copied-toast');
-        if (!toast) return;
-        toast.classList.remove('hidden');
-        setTimeout(function() { toast.classList.add('hidden'); }, 2000);
-    }
-
     loadInventory();
     </script>
 
-    <!-- Copied Toast -->
-    <div id="copied-toast" class="hidden fixed bottom-6 left-1/2 -translate-x-1/2 bg-gray-800 text-white px-6 py-3 rounded-xl shadow-2xl z-[200] text-sm font-semibold">
-        <i class="fa-solid fa-check mr-2"></i>Link copied to clipboard!
-    </div>
-
-
-    <!-- FAQ Section -->
-    <section class="py-16 bg-white">
-        <div class="container mx-auto px-6 max-w-3xl">
-            <div class="text-center mb-10">
-                <h2 class="text-3xl font-bold text-primary mb-3">Frequently Asked Questions</h2>
-                <p class="text-gray-600">Everything you need to know about our metal carports.</p>
-            </div>
-            <div class="space-y-3">
-                <details class="group bg-gray-50 rounded-xl border border-gray-200 open:border-secondary transition">
-                    <summary class="cursor-pointer list-none flex items-center justify-between p-5 font-semibold text-primary">
-                        <span>How much are carports and steel buildings?</span>
-                        <i class="fa-solid fa-plus text-secondary group-open:rotate-45 transition-transform"></i>
-                    </summary>
-                    <div class="px-5 pb-5 text-gray-700 leading-relaxed">Pricing is customized based on size and specifications. For a personalized quote tailored to your specific location and design requirements, please contact our specialists or use our online pricing tool.</div>
-                </details>
-                <details class="group bg-gray-50 rounded-xl border border-gray-200 open:border-secondary transition">
-                    <summary class="cursor-pointer list-none flex items-center justify-between p-5 font-semibold text-primary">
-                        <span>Can you do rent-to-own on a carport or steel building?</span>
-                        <i class="fa-solid fa-plus text-secondary group-open:rotate-45 transition-transform"></i>
-                    </summary>
-                    <div class="px-5 pb-5 text-gray-700 leading-relaxed">Absolutely. We offer Rent-to-Own options for all permanent steel buildings. This program is designed to make high-quality storage and workspace solutions accessible immediately through affordable monthly installments and no required credit check.</div>
-                </details>
-                <details class="group bg-gray-50 rounded-xl border border-gray-200 open:border-secondary transition">
-                    <summary class="cursor-pointer list-none flex items-center justify-between p-5 font-semibold text-primary">
-                        <span>Can you include concrete?</span>
-                        <i class="fa-solid fa-plus text-secondary group-open:rotate-45 transition-transform"></i>
-                    </summary>
-                    <div class="px-5 pb-5 text-gray-700 leading-relaxed">Yes, we can provide a comprehensive quote that includes your concrete foundation. By bundling the concrete with your building price, we provide a clearer picture of your total investment and simplify the coordination of your project.</div>
-                </details>
-                <details class="group bg-gray-50 rounded-xl border border-gray-200 open:border-secondary transition">
-                    <summary class="cursor-pointer list-none flex items-center justify-between p-5 font-semibold text-primary">
-                        <span>Does your business pull permits?</span>
-                        <i class="fa-solid fa-plus text-secondary group-open:rotate-45 transition-transform"></i>
-                    </summary>
-                    <div class="px-5 pb-5 text-gray-700 leading-relaxed">While we do not pull permits on behalf of our customers, we provide comprehensive support to help you navigate the process. We can supply the necessary building specifications and plans required by your local building department to ensure a smooth approval.</div>
-                </details>
-                <details class="group bg-gray-50 rounded-xl border border-gray-200 open:border-secondary transition">
-                    <summary class="cursor-pointer list-none flex items-center justify-between p-5 font-semibold text-primary">
-                        <span>Are these customizable?</span>
-                        <i class="fa-solid fa-plus text-secondary group-open:rotate-45 transition-transform"></i>
-                    </summary>
-                    <div class="px-5 pb-5 text-gray-700 leading-relaxed">Yes, our steel structures are fully customizable. We engineer each building to your specific requirements, allowing you to select custom dimensions, roof styles, lean-tos, and specialized door and window placements to suit your functional needs.</div>
-                </details>
-                <details class="group bg-gray-50 rounded-xl border border-gray-200 open:border-secondary transition">
-                    <summary class="cursor-pointer list-none flex items-center justify-between p-5 font-semibold text-primary">
-                        <span>When will my building be installed?</span>
-                        <i class="fa-solid fa-plus text-secondary group-open:rotate-45 transition-transform"></i>
-                    </summary>
-                    <div class="px-5 pb-5 text-gray-700 leading-relaxed">Our standard installation typically occurs within two weeks of order finalization. If your project includes a concrete foundation, completion can be as fast as four weeks to accommodate the necessary curing time and site preparation required for a high-quality build.</div>
-                </details>
-                <details class="group bg-gray-50 rounded-xl border border-gray-200 open:border-secondary transition">
-                    <summary class="cursor-pointer list-none flex items-center justify-between p-5 font-semibold text-primary">
-                        <span>Can you finance the building and concrete together?</span>
-                        <i class="fa-solid fa-plus text-secondary group-open:rotate-45 transition-transform"></i>
-                    </summary>
-                    <div class="px-5 pb-5 text-gray-700 leading-relaxed">Yes. We offer integrated financing solutions that allow you to bundle the cost of your steel building and the concrete foundation into one manageable monthly payment.</div>
-                </details>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQPage JSON-LD for SEO rich snippets -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
-        { "@type": "Question", "name": "How much are carports and steel buildings?", "acceptedAnswer": { "@type": "Answer", "text": "Pricing is customized based on size and specifications. For a personalized quote tailored to your specific location and design requirements, please contact our specialists or use our online pricing tool." } },
-        { "@type": "Question", "name": "Can you do rent-to-own on a carport or steel building?", "acceptedAnswer": { "@type": "Answer", "text": "Absolutely. We offer Rent-to-Own options for all permanent steel buildings. This program is designed to make high-quality storage and workspace solutions accessible immediately through affordable monthly installments and no required credit check." } },
-        { "@type": "Question", "name": "Can you include concrete?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, we can provide a comprehensive quote that includes your concrete foundation. By bundling the concrete with your building price, we provide a clearer picture of your total investment and simplify the coordination of your project." } },
-        { "@type": "Question", "name": "Does your business pull permits?", "acceptedAnswer": { "@type": "Answer", "text": "While we do not pull permits on behalf of our customers, we provide comprehensive support to help you navigate the process. We can supply the necessary building specifications and plans required by your local building department to ensure a smooth approval." } },
-        { "@type": "Question", "name": "Are these customizable?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, our steel structures are fully customizable. We engineer each building to your specific requirements, allowing you to select custom dimensions, roof styles, lean-tos, and specialized door and window placements to suit your functional needs." } },
-        { "@type": "Question", "name": "When will my building be installed?", "acceptedAnswer": { "@type": "Answer", "text": "Our standard installation typically occurs within two weeks of order finalization. If your project includes a concrete foundation, completion can be as fast as four weeks to accommodate the necessary curing time and site preparation required for a high-quality build." } },
-        { "@type": "Question", "name": "Can you finance the building and concrete together?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. We offer integrated financing solutions that allow you to bundle the cost of your steel building and the concrete foundation into one manageable monthly payment." } }
-      ]
-    }
-    </script>
 
     <!-- CTA Section -->
     <section class="py-16 bg-secondary text-white">
@@ -489,9 +385,9 @@
                 <div>
                     <h4 class="font-bold text-white mb-4">Products</h4>
                     <ul class="space-y-2 text-sm">
-                        <li><a href="/carports" class="hover:text-secondary transition">Metal Carports</a></li>
-                        <li><a href="/metal-garages" class="hover:text-secondary transition">Metal Garages</a></li>
-                        <li><a href="/barns" class="hover:text-secondary transition">Metal Barns</a></li>
+                        <li><a href="../services/metal-carports.html" class="hover:text-secondary transition">Metal Carports</a></li>
+                        <li><a href="../services/metal-garages.html" class="hover:text-secondary transition">Metal Garages</a></li>
+                        <li><a href="../services/metal-barns.html" class="hover:text-secondary transition">Metal Barns</a></li>
                         <li><a href="../services/rv-covers.html" class="hover:text-secondary transition">RV Covers & Boat Covers</a></li>
                     </ul>
                 </div>
@@ -524,6 +420,7 @@
             <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
                 <img src="../logo.png" alt="North Florida Building Solutions" class="w-[150px] h-[150px] object-contain brightness-0 invert">
                 <p class="text-sm">&copy; 2026 North Florida Building Solutions. All rights reserved.</p>
+                <p class="text-sm"><a href="../privacy-policy.html" class="hover:text-secondary transition">Privacy Policy</a> <span class="mx-2">&middot;</span> <a href="../terms-and-conditions.html" class="hover:text-secondary transition">Terms &amp; Conditions</a></p>
                 <p class="text-sm mt-1">Built by <a href="https://www.ihelpbuild.com" target="_blank" rel="noopener" class="text-secondary hover:text-blue-300 transition">IhelpBuild</a></p>
             </div>
         </div>
